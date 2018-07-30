@@ -1,36 +1,59 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Deluvi&#39;s website</title>
-    <link>http://example.org/</link>
-    <description>Recent content on Deluvi&#39;s website</description>
+    <title> </title>
+    <link>https://deluvi.com/</link>
+    <description>Recent posts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 29 Jul 2018 14:23:10 +0200</lastBuildDate>
     
-	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://deluvi.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hello World! 🎉</title>
-      <link>http://example.org/blog/hello-world/</link>
+      <link>https://deluvi.com/blog/hello-world/</link>
       <pubDate>Sun, 29 Jul 2018 14:23:10 +0200</pubDate>
       
-      <guid>http://example.org/blog/hello-world/</guid>
-      <description>Hello people! This is Deluvi speaking. Welcome to my first blog post!
-I have been inspired by the Indieweb movement to make my own website. I really like their ideas of owning our own data and content and not letting companies owning them for convenience&amp;rsquo;s sake, since it can be as simple to share on our own website with the help of modern tooling.
-In this first blog post, I will share my current setup of this static website.</description>
+      <guid>https://deluvi.com/blog/hello-world/</guid>
+      <description>&lt;p&gt;Hello people! This is Deluvi speaking. Welcome to my first blog post!&lt;/p&gt;
+
+&lt;p&gt;I have been inspired by the &lt;a href=&#34;https://indieweb.org/&#34;&gt;Indieweb movement&lt;/a&gt; to make my own website. I really like their ideas of owning our own data and content and not letting companies owning them for convenience&amp;rsquo;s sake, since it can be as simple to share on our own website with the help of modern tooling.&lt;/p&gt;
+
+&lt;p&gt;In this first blog post, I will share my current setup of this static website. Mostly, to make a static blogging website, you will need three things:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A &lt;strong&gt;static site generator&lt;/strong&gt;: this is a software that you use to generate your html that you will feed to your provider. To generate my whole website, I use &lt;a href=&#34;https://gohugo.io&#34;&gt;Hugo&lt;/a&gt;. I made my own minimal theme just for funsies, but there are a lot of already made themes that looks good. Once you have a theme, you can start producing content right away. The posts are written in Markdown (a very simple language to write content). You can divide your blog content in different sections (here for example, there is a &lt;a href=&#34;https://deluvi.com/blog&#34;&gt;blog&lt;/a&gt; section and a &lt;a href=&#34;https://deluvi.com/games&#34;&gt;games&lt;/a&gt; section).&lt;/li&gt;
+&lt;li&gt;A &lt;strong&gt;hosting solution&lt;/strong&gt;: you need a server somewhere in the world to serve your html content. For this end, I am using &lt;a href=&#34;https://pages.github.com/&#34;&gt;Github Pages&lt;/a&gt;. The main selling point of this solution is that it allows custom domain names for free unlike some other solutions.&lt;/li&gt;
+&lt;li&gt;A &lt;strong&gt;domain name&lt;/strong&gt;: this part is not mandatory to be able to publish, but if you are farsighted, it is probably more than recommended to have one. Say you don&amp;rsquo;t take one and you are currently hosted on Github pages, if someone wants to link one of your blog post, they will use something like &amp;ldquo;username.github.io/blog/my-awesome-post.html&amp;rdquo;. The day you change your hosting solution, those links will be broken. If you had one domain name, everything will be redirected automatically. The domain name is also your main identity on the web: it is something that you own and that is only for you.&lt;br /&gt;
+As for my setup, I use &lt;a href=&#34;https://www.gandi.net/&#34;&gt;Gandi&lt;/a&gt; as a domain name service for the &lt;a href=&#34;https://deluvi.com&#34;&gt;deluvi.com&lt;/a&gt; name mainly because it has been recommanded to me by someone else; just use one that you trust.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And that&amp;rsquo;s it! With those things, you have a website and are ready to publish on the internet, independently of any entity!&lt;/p&gt;
+
+&lt;p&gt;In the next weeks, I will be trying to implement some of the Indieweb standards into this static website. Currently, I am aiming to implement &lt;a href=&#34;https://indieweb.org/Webmention&#34;&gt;Webmentions&lt;/a&gt; so you can leave me a comment below this article later (maybe you just did, person from the future). I will share my technique on how to implement them in Hugo and the principles to implement them in any static website generator.&lt;/p&gt;
+</description>
     </item>
     
     <item>
       <title>Sid Le Meilleur&#39;s Battleground</title>
-      <link>http://example.org/games/sid-le-meilleur/</link>
+      <link>https://deluvi.com/games/sid-le-meilleur/</link>
       <pubDate>Thu, 25 Jan 2018 11:42:13 +0100</pubDate>
       
-      <guid>http://example.org/games/sid-le-meilleur/</guid>
-      <description>This game has been made for the Make something horrible 2018 gamejam.
-The subject of the gamejam was to make, as the name subject, a horrible game. The theme of this year was: &amp;ldquo;What if the creators switched their games?&amp;rdquo;. For my game, I choosed Sid Meier (Civilization&amp;rsquo;s gamedesigner) with PUBG (a battleroyale game).
-Funfact, it has been my first real game project that I actually finished: even though it has a very unusual graphic style and a very simple gameplay, I look back to this game fondly because I actually finished it on time.</description>
+      <guid>https://deluvi.com/games/sid-le-meilleur/</guid>
+      <description>&lt;p&gt;This game has been made for the &lt;a href=&#34;https://itch.io/jam/make-something-horrible-2018&#34;&gt;Make something horrible 2018&lt;/a&gt; gamejam.&lt;/p&gt;
+
+&lt;p&gt;The subject of the gamejam was to make, as the name subject, a horrible game. The theme of this year was: &amp;ldquo;What if the creators switched their games?&amp;rdquo;. For my game, I choosed Sid Meier (Civilization&amp;rsquo;s gamedesigner) with PUBG (a battleroyale game).&lt;/p&gt;
+
+&lt;p&gt;Funfact, it has been my first real game project that I actually finished: even though it has a very unusual graphic style and a very simple gameplay, I look back to this game fondly because I actually finished it on time.&lt;/p&gt;
+
+&lt;p&gt;Check out the game &lt;a href=&#34;https://deluvi.itch.io/cid-le-meilleurs-battleground&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The game has been made with Gamemaker. You can find the source code &lt;a href=&#34;https://github.com/Deluvi/BRStrategy.gmx&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://deluvi.com/img/games/sid-le-meilleur.png&#34; alt=&#34;Ingame screenshot of Sid Le Meilleur&#39;s Battleground&#34; /&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>

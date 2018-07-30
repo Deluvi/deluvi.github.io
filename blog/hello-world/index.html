@@ -5,6 +5,8 @@
 <title>
 Hello World! 🎉 - Deluvi&#39;s website
 </title>
+<link rel="pingback" href="https://webmention.io/deluvi.com/xmlrpc" />
+<link rel="webmention" href="https://webmention.io/deluvi.com/webmention" />
 <link rel="stylesheet" href="/style.css"/>
 <link rel="icon" type="image/png" href="/img/avatar.png"/>
 </head>
@@ -22,9 +24,12 @@ Hello World! 🎉 - Deluvi&#39;s website
 </header>
 <main>
 
-<article>
-<h1>Hello World! 🎉</h1>
-<time>Sun Jul 29, 2018</time>
+<article class="h-entry">
+<h1 class="p-name">Hello World! 🎉</h1>
+<div>By <a class="p-author h-card" href="https://deluvi.com">Deluvi</a></div>
+<time class="dt-published" datetime="2018-07-29T14:23:10&#43;02:00">Sun Jul 29, 2018</time>
+<div class="p-summary">My very first blog post!</div>
+<div class="e-content">
 <p>Hello people! This is Deluvi speaking. Welcome to my first blog post!</p>
 
 <p>I have been inspired by the <a href="https://indieweb.org/">Indieweb movement</a> to make my own website. I really like their ideas of owning our own data and content and not letting companies owning them for convenience&rsquo;s sake, since it can be as simple to share on our own website with the help of modern tooling.</p>
@@ -42,6 +47,7 @@ As for my setup, I use <a href="https://www.gandi.net/">Gandi</a> as a domain na
 
 <p>In the next weeks, I will be trying to implement some of the Indieweb standards into this static website. Currently, I am aiming to implement <a href="https://indieweb.org/Webmention">Webmentions</a> so you can leave me a comment below this article later (maybe you just did, person from the future). I will share my technique on how to implement them in Hugo and the principles to implement them in any static website generator.</p>
 
+</div>
 </article>
 
 </main>
