@@ -14,9 +14,10 @@ Hello World! 🎉 - Deluvi&#39;s website
 <header>
 
 <h1 id="maintitle"><a href="/">Deluvi's website</a></h1>
+<img id="header-img" src="/img/avatar-medium.png"/>
 <div id="navbar">
-<a href="/blog">Blog</a>
-<a href="/games">Games</a>
+<a href="/blog/">Blog</a>
+<a href="/games/">Games</a>
 <a rel="me" href="https://github.com/Deluvi">Github</a>
 <a rel="me" href="https://deluvi.itch.io/">Itch.io</a>
 </div>
@@ -26,7 +27,7 @@ Hello World! 🎉 - Deluvi&#39;s website
 
 <article class="h-entry">
 <h1 class="p-name">Hello World! 🎉</h1>
-<div>By <a class="p-author h-card" href="https://deluvi.com">Deluvi</a></div>
+<div class="h-card"><img class="u-photo" src="/img/avatar-medium.png" style="display: none;"/>By <a class="p-author p-name u-url" href="https://deluvi.com">Deluvi</a></div>
 <a class="u-url" href="https://deluvi.com/blog/hello-world/"><time class="dt-published" datetime="2018-07-29T14:23:10&#43;02:00">Sun Jul 29, 2018</time></a>
 <div class="p-summary">My very first blog post!</div>
 <div class="e-content">
@@ -49,6 +50,16 @@ As for my setup, I use <a href="https://www.gandi.net/">Gandi</a> as a domain na
 
 </div>
 </article>
+<div class="webmention-form">
+    <form action="https://webmention.io/deluvi.com/webmention" method="post">
+        <label>Did you mentionned this article on your website? Put the URL of your post here:</label><br/>
+        <input name="source" type="url"/>
+        <input name="target" value="https://deluvi.com/blog/hello-world/" type="hidden"/>
+        <input value="Send Webmention" type="submit"/>
+    </form>
+</div>
+
+
 
 </main>
 <footer>
