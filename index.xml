@@ -6,10 +6,87 @@
     <description>Recent posts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 29 Jul 2018 14:23:10 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 05 Aug 2018 20:44:28 +0200</lastBuildDate>
     
         <atom:link href="https://deluvi.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Implementing Webmention on a static website</title>
+      <link>https://deluvi.com/blog/webmention/</link>
+      <pubDate>Sun, 05 Aug 2018 20:44:28 +0200</pubDate>
+      
+      <guid>https://deluvi.com/blog/webmention/</guid>
+      <description>
+
+&lt;p&gt;On my first blog post, I mentioned that my first project for this website is to experiment with some technologies from &lt;a href=&#34;https://indieweb.org/&#34;&gt;the Indieweb&lt;/a&gt;. The technology that attracted me the most is &lt;a href=&#34;https://indieweb.org/Webmention&#34;&gt;Webmention&lt;/a&gt;.&lt;br /&gt;
+In this article, I will first elaborate on what are webmentions. Then, I will explain how to send them. Finally, I will show the different ways to receive them when using a static website.&lt;/p&gt;
+
+&lt;h2 id=&#34;what-is-webmention&#34;&gt;What is Webmention?&lt;/h2&gt;
+
+&lt;p&gt;Webmention is a web standard that allows having interactions in a decentralized way. For example, if you link someone on one of your articles, you can inform that person of the mention. That person can then display your mention on his article page. Mentions can be of different types: comment, like, repost, mention, bookmark, etc. As long as there is a link to the source on the page, the webmention is valid.&lt;/p&gt;
+
+&lt;p&gt;The big advantage of Webmention is that the protocol is very simple: it only relies on an HTTP POST request.&lt;/p&gt;
+
+&lt;h2 id=&#34;sending-webmentions&#34;&gt;Sending webmentions&lt;/h2&gt;
+
+&lt;p&gt;Sending a webmention to someone is easy. As detailed in &lt;a href=&#34;https://aaronparecki.com/2018/06/30/11/your-first-webmention&#34;&gt;Sending your First Webmention from Scratch&lt;/a&gt; (which I recommend you to read to have more information about Webmention and implementing microformats), you just need to create an HTML document accessible on the web with some basic content and notify the person. To notify a website, you first have to find a link tag in the head of the page with the attribute &lt;code&gt;rel=&amp;quot;webmention&amp;quot;&lt;/code&gt; (here, it is &lt;code&gt;&amp;lt;link rel=&amp;quot;webmention&amp;quot; href=&amp;quot;https://webmention.io/deluvi.com/webmention&amp;quot;/&amp;gt;&lt;/code&gt;). Then, you do an HTTP POST request on that URL with two fields: &lt;code&gt;source&lt;/code&gt; which contains the URL of your post and &lt;code&gt;target&lt;/code&gt; which contains the URL of the page you are mentioning. Once notified, the server checks if the target is linked by the source anywhere on the page and adds a new entry internally if that&amp;rsquo;s the case so he can retrieve it later. Some websites (like mine, see below) have a form to submit your webmention via a browser. In theory, the HTTP POST request should be automatic according to &lt;a href=&#34;https://www.w3.org/TR/2017/REC-webmention-20170112/#protocol-summary&#34;&gt;the W3C recommendation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;On most webmention implementations, the server gets more information about the post like the title, the content of the post and the author info by parsing the &lt;a href=&#34;https://indieweb.org/microformats&#34;&gt;microformats&lt;/a&gt; contained in the HTML of the article. Microformats are simply some class attributes added on some HTML tags. The most important microformats to implement are &lt;a href=&#34;http://microformats.org/wiki/h-card&#34;&gt;h-card&lt;/a&gt; which represent your identity and &lt;a href=&#34;http://microformats.org/wiki/h-entry&#34;&gt;h-entry&lt;/a&gt; which contains the information for a particular post. You can test the microformats of your website &lt;a href=&#34;https://indiewebify.me/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;As a side note, you don&amp;rsquo;t have to write an official blog post to answer someone. For example, I have a section /replies/ where I put all my replies. Just do not forget to add the microformat class attribute &lt;code&gt;u-in-reply-to&lt;/code&gt; to a link of the post you are responding to somewhere on your page.&lt;/p&gt;
+
+&lt;h2 id=&#34;receiving-webmentions-in-a-static-context&#34;&gt;Receiving webmentions in a static context&lt;/h2&gt;
+
+&lt;p&gt;In this article, we are assuming that we don&amp;rsquo;t have any dedicated server available to us, only a static webpage provider. First issue, we need something to receive those HTTP POST requests on our behalf. Thankfully for us, there are &lt;a href=&#34;https://indieweb.org/Webmention#Services&#34;&gt;some free services&lt;/a&gt; that can help us receiving and storing webmentions so we can query them later. One of those services, the one I am using, is &lt;a href=&#34;https://webmention.io/&#34;&gt;webmention.io&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Once you have a backend, you have mainly two options to display the webmentions to the client when you are working with a static website. You can make your readers query the server and display the comments using JavaScript. This option is the most dynamic one as the commenter can see his reply as soon as the backend processed his notice. It is also very simple to set up since you just have to include a JavaScript file on the page and let it do its job. However, it means using JavaScript when it is not necessary and also adds more load to the webmention backend that has to be used every time you load the page.&lt;br /&gt;
+The other option is to include the webmention directly in the HTML when the website is generated. With that alternative, no JavaScript and no external queries client side are needed. However, this comes with a cost of interactivity and complexity, since you have to rebuild and reupload your website as you receive new mentions.&lt;br /&gt;
+As an experiment, I chose the second option.&lt;/p&gt;
+
+&lt;p&gt;To be able to query the webmention server and store the mentions so that they can be accessed by my static blog generator, I developed a small tool in Rust called &lt;a href=&#34;https://github.com/Deluvi/getwms&#34;&gt;getwms&lt;/a&gt;. This tool retrieves the webmentions from webmention.io, convert them into a standard JSON format and store them into separate files for each post. In the future, I intend to improve this program by having it only retrieving the newest webmentions, not all of them, building the JSON files incrementally as new mentions appears. Additionally, I will make sure that it notifies if there are no new webmentions available.&lt;/p&gt;
+
+&lt;p&gt;Once the webmentions have been pulled, we just have to use the data to generate the website&amp;rsquo;s webmention sections using our static blog generator functionalities. Hugo has some good functionalities to load and use JSON data. If you want to see the source code to set up your Hugo website to process the JSON, you can check the bottom of &lt;a href=&#34;https://github.com/Deluvi/website/blob/master/themes/deluvi/layouts/_default/single.html&#34;&gt;single.html&lt;/a&gt; and &lt;a href=&#34;https://github.com/Deluvi/website/blob/master/themes/deluvi/layouts/partials/webmention.html&#34;&gt;webmention.html&lt;/a&gt; to have an idea how I am achieving that. Here is the most important part of the code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{{ $pathJSON := (print &amp;quot;data&amp;quot; (strings.TrimSuffix &amp;quot;/&amp;quot; .URL) &amp;quot;.json&amp;quot;) }}
+{{ if fileExists $pathJSON }}
+&amp;lt;div class=&amp;quot;webmentions&amp;quot;&amp;gt;
+    {{ $mJSON := getJSON $pathJSON }}
+    {{ partial &amp;quot;webmention.html&amp;quot; $mJSON }}
+&amp;lt;/div&amp;gt;
+{{ end }}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It generates the path where the JSON file should be, then gives the JSON to the partial template if the file exists. Once this is included on your article template and you defined a partial template to turn the JSON into displayable HTML, you should start to see your webmention on your website! It should be possible to do a similar thing in any static website generator that support JSON files.&lt;/p&gt;
+
+&lt;p&gt;The process has been automated for my website. Right now, I execute a script every hour on my PC. My script:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Runs getwms to get the JSON.&lt;/li&gt;
+&lt;li&gt;Builds the website with Hugo.&lt;/li&gt;
+&lt;li&gt;Tries to commit all changed files on my website repository: it will fail if there were no new changes.&lt;/li&gt;
+&lt;li&gt;Tries to push: it will fail if there were no new changes.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Here is a copy of my batch script:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;getwms -u &amp;quot;https://webmention.io/api/mentions?domain=deluvi.com&amp;amp;token=NOTHINGTOSEEHERE&amp;quot;
+hugo
+cd public
+git commit -a -m &amp;quot;Update&amp;quot;
+git push
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And that&amp;rsquo;s it! This is my current setup to receive webmentions. Feel free to inspire yourself from this method if you think this is suitable for your needs.&lt;/p&gt;
+
+&lt;p&gt;If you are using a more conventional website engine like WordPress, you will probably have a webmention plugin available to you: no need to put so much effort in it. If you want to receive webmentions of likes and replies from social networks, you can syndicate them back to your website using &lt;a href=&#34;https://brid.gy/&#34;&gt;Bridgy&lt;/a&gt;. Syndicating the reaction of your content is important as it makes you more independent from centralized social websites.&lt;br /&gt;
+If you want to send me a webmention, go ahead! The form is just below. Just be patient if you want to see the result, the webmentions will be refreshed as soon as possible.&lt;/p&gt;
+
+&lt;p&gt;As a bonus, here is an interesting conference about Indieweb and some technologies you can use (Webmention, rel=&amp;ldquo;me&amp;rdquo;, IndieAuth, Micropub&amp;hellip;): &lt;a href=&#34;https://vimeo.com/265121482&#34;&gt;Taking Back The Web&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://news.indieweb.org/en&#34; class=&#34;u-syndication&#34;&gt;Posted on IndieNews&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Hello World! 🎉</title>

@@ -6,10 +6,21 @@
     <description>Recent content in Blogs on Deluvi&#39;s website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 29 Jul 2018 14:23:10 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 05 Aug 2018 20:44:28 +0200</lastBuildDate>
     
 	<atom:link href="https://deluvi.com/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Implementing Webmention on a static website</title>
+      <link>https://deluvi.com/blog/webmention/</link>
+      <pubDate>Sun, 05 Aug 2018 20:44:28 +0200</pubDate>
+      
+      <guid>https://deluvi.com/blog/webmention/</guid>
+      <description>On my first blog post, I mentioned that my first project for this website is to experiment with some technologies from the Indieweb. The technology that attracted me the most is Webmention.
+In this article, I will first elaborate on what are webmentions. Then, I will explain how to send them. Finally, I will show the different ways to receive them when using a static website.
+What is Webmention? Webmention is a web standard that allows having interactions in a decentralized way.</description>
+    </item>
     
     <item>
       <title>Hello World! 🎉</title>
