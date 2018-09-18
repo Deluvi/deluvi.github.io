@@ -33,5 +33,14 @@ I have been inspired by the Indieweb movement to make my own website. I really l
 In this first blog post, I will share my current setup of this static website.</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://deluvi.com/blog/nvim-notes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://deluvi.com/blog/nvim-notes/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
