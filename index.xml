@@ -133,14 +133,5 @@ As for my setup, I use &lt;a href=&#34;https://www.gandi.net/&#34;&gt;Gandi&lt;/
 </description>
     </item>
     
-    <item>
-      <title></title>
-      <link>https://deluvi.com/blog/nvim-notes/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://deluvi.com/blog/nvim-notes/</guid>
-      <description></description>
-    </item>
-    
   </channel>
 </rss>
