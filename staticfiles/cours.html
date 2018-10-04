@@ -145,6 +145,8 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/importpreviewtype</li>
+
 <li>$:/state/showeditpreview</li>
 
 <li>$:/state/tab--1963855381</li>
@@ -204,6 +206,8 @@ Error message and password prompt
 <li>Message-Driven Beans</li>
 
 <li>MIMO</li>
+
+<li>PDH</li>
 
 <li>QOS au niveau applicatif</li>
 
@@ -8778,18 +8782,10 @@ Error message and password prompt
 <div created="20181002081927026" modified="20181002085916103" title="$:/DefaultTiddlers">
 <pre>Bienvenue</pre>
 </div>
-<div plugin-type="import" status="pending" title="$:/Import" type="application/json">
-<pre>{
-    &quot;tiddlers&quot;: {
-        &quot;TCP Reno&quot;: {
-            &quot;text&quot;: &quot;TCP Reno est une itération de [[TCP Tahoe]]. Il implémente la mécanique de fast recovery :\n\n* Si on reçoit 3 ACK identiques, cela signifie que l'on a perdu qu'un seul paquet car le receveur continue de recevoir d'autre paquets. En effet, quand le receveur reçoit un paquet, il envoit un ACK. Si il reçoit un paquet qui n'est pas celui qu'il attend, il envoit le ACK du paquet avant celui qu'il attend. Dans ce cas-là, on calcule le seuil comme dans Tahoe, sauf que l'on ne reprend pas depuis le slow start, mais depuis l'étape de congestion avoidance, donc à partir du seuil au lieu de repartir de zéro.\n* Si on ne reçoit plus de ACK, cela signifie qu'il y a une perte importante de paquets. Dans ce cas-là, on utilise la même tactique que TCP Tahoe : on calcule le seuil et on reprend de zéro.\n\nCette itération est beaucoup plus efficace que Tahoe en terme de rapidité brute de transfert. En même temps, on ne perd rien en contrôle de congestion.\n\nCette amélioration donne à TCP cette forme de consommation de débit en dent de scie dans un réseau sans congestion : si on représente l'évolution de la consommation de bande passante d'un flux TCP, la consommation va augmenter linéairement jusqu'à un certains moment où la consommation va chuter brutalement avant de reprendre une ascension linéaire.\n\nCette forme est lié à la fonction qui est AIMD (Additive Increase - Multiplicative Decrease) : augmentation additive, réduction multiplicative. Cette fonction permet à deux flux TCP à RTT égal de converger vers une consommation égale. La division par deux permet cette équité : on laisse la moitié de la bande passante pour un éventuel nouveau flux. Dans le cas où le RTT n'est pas égal, le flux avec le RTT le plus bas disposera d'une plus grande bande passante.\n\nSi on connait le cap N (le nombre de paquets envoyés en même temps) à partir duquel TCP commence à perdre des paquets, on peut calculer la vitesse totale grâce à la formule : 3N/4 * N/2.&quot;,
-            &quot;title&quot;: &quot;TCP Reno&quot;,
-            &quot;tags&quot;: &quot;haut-debit&quot;,
-            &quot;modified&quot;: &quot;20181004100633643&quot;,
-            &quot;created&quot;: &quot;20181003200906974&quot;
-        }
-    }
-}</pre>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[Réseau en circuit]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -8800,6 +8796,9 @@ Error message and password prompt
 <div created="20181002081859888" modified="20181002081901457" title="$:/SiteTitle">
 <pre>Les Cours de M2</pre>
 </div>
+<div created="20181004205619698" modified="20181004205619698" title="$:/state/importpreviewtype">
+<pre>$:/core/ui/ImportPreviews/Diff</pre>
+</div>
 <div created="20181002083656210" modified="20181002083705027" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
@@ -8809,10 +8808,10 @@ Error message and password prompt
 <div created="20181002173753109" modified="20181002173753844" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
-<div created="20181002173649754" modified="20181004101557402" title="$:/state/tab/sidebar--1835078512">
-<pre>$:/core/ui/SideBar/Open</pre>
+<div created="20181002173649754" modified="20181004205607539" title="$:/state/tab/sidebar--1835078512">
+<pre>$:/core/ui/SideBar/Tools</pre>
 </div>
-<div list="" title="$:/StoryList">
+<div list="$:/Import [[Réseau en circuit]] Bienvenue" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9061,7 +9060,7 @@ Typiquement, un entity bean représente une table dans la base de données. Mais
 
 Aujourd'hui, on n'utilise plus que CMP. BMP signifie qu'il faut soi-même écrire du code pour manipuler la base de donnée. Le container peut faire ça automatiquement et plus efficacement que du code custom écrit pour ça.</pre>
 </div>
-<div created="20181003164150017" modified="20181003173616221" tags="haut-debit" title="Etat de la fibre">
+<div created="20181003164150017" modified="20181004201256723" tags="haut-debit" title="Etat de la fibre">
 <pre>La fibre est le moyen le plus rapide et le plus efficace en terme de capacité pour transférer des données aujourd'hui. Néanmoins, elle rencontre des soucis particuliers pour sa mise en place.
 
 !! Utilisation de la fibre
@@ -9072,7 +9071,10 @@ La fibre est plus rarement utilisé pour amener les données à l'utilisateur. C
 
 !! Multiplexage
 
-Le multiplexage consiste à diviser un canal de communication en plusieurs parties distinctes pour pouvoir envoyer plus de données au sein d'un même canal. Dans la fibre optique, cette technique s'utilise en divisant la couleur envoyé en différente partie : on parle de division de la transmission en couleurs.
+Le multiplexage consiste à diviser un canal de communication en plusieurs parties distinctes pour pouvoir envoyer plus de données, ou encore pour permettre le support de plusieurs communications simultanées au sein d'un même canal . Il est possible de séparer le signal en unitées de temps égales, et d'allouer chaque unité à un canal distinct, c'est le TDMA (Time Division Multiple Access) très utilisé dans les réseaux sans fils pour permettre la communication entre une station de base avec plusieurs appareils mobiles à la fois (à compléter). Dans la fibre optique, cette technique s'utilise en divisant la couleur envoyé en différente partie : on parle de l'ajout (Add) ou la soustraction (Drop) de canaux d'informations dans le signal en couleurs grâce à l'Optical Add-Drop Multiplexer (OADM), mécanisme utilisé aujourdhui couramment dans la fibre mais notamment au moment du passage à la téléphonie digitale dans les [[réseaux en circuits|Réseau en circuit]].
+
+Il peut être noté que le multiplexage peut s'effectuer d'autre manières, par division/répartition de fréquence (FDM/MRF), ou encore par division de code (CDM). (Cour de M1 sur les supports de communication.)
+
 
 !! Funfacts
 
@@ -9196,6 +9198,10 @@ Il y a [[une équation sur Wikipédia|https://en.wikipedia.org/wiki/Link_budget#
 <div created="20181003175124607" modified="20181003175136298" tags="haut-debit" title="MIMO">
 <pre>Dans les intérieurs, les ondes sont réfléchis par les murs et le mobilier, ce qui peut causer des interférences : ce sont des trajets multiples. Les équipements MIMO (Multiple Antenna Systems) exploitent ces trajets multiples.</pre>
 </div>
+<div created="20181004202200426" modified="20181004203908643" title="PDH">
+<pre>Pour faire communiquer les réseaux analogues électriques avec les nouveaux réseaux digitaux optiques, une première solution fut adoptée, la Piesosynchronous Digital Hierarchy (PDH). Il consiste en un multiplexage des ondes des réseaux analogiques et leur conversion en signaux digitaux (bits) et à leur positionnement hiérarchique dans le temps (Multiplexage à répartition dans le temps). Chaque canal de communication est répartis à intervalles régulier dans la trame. En revanche, chaque désynchronisation se répercute en un remplissage par des bits de bourrage (padding) afin de ne pas interrompre le flux digital, ce qui a pour conséquence une hausse de la bande passante nécessaire.
+[img[https://puu.sh/BFK8d/cc3b84f1f9.png]]</pre>
+</div>
 <div created="20181003180835798" modified="20181003191935055" tags="haut-debit" title="QOS au niveau applicatif">
 <pre>Effectuer du QOS au dessus du niveau réseau est de faire du QOS dit en end-to-end : tout les routeurs entre les deux utilisateurs du réseau ne font pas du QOS, le QOS est réalisé au niveau des deux utilisateurs. On considère donc que Internet est une boîte noire qui va tenter de transmettre les données : on ne sait pas ce qui se passe dedans et il n'y a aucune garantie que les données arriveront de l'autre côté.
 
@@ -9252,10 +9258,10 @@ Le coeur d'Internet en lui-même n'a aucun problème : il est surdimensionné co
 
 Lorsque l'on tente d'implémenter du QOS au niveau réseau, on peut avoir des conflits entre [[QOS et Neutralité du Net]].</pre>
 </div>
-<div created="20181003184741144" modified="20181003190059454" tags="haut-debit" title="Réseau en circuit">
+<div created="20181003184741144" modified="20181004205848745" tags="haut-debit" title="Réseau en circuit">
 <pre>Avant le réseau en paquet que l'on utilise aujourd'hui pour Internet, il y avait le réseau téléphonique basé sur les réseaux en circuit. Si on voulait communiquer avec quelqu'un par téléphone, on réservait un circuit de bout en bout afin de faire un canal de communication continu. Ainsi, la ressource était réservé tout au long de la communication jusqu'à que quelqu'un raccroche.
 
-Afin de synchroniser les appareils dans un réseau en circuit, on dispose de protocoles de synchronisation. D'abord, il y a eu le protocole [[PDH]]. Ensuite, une amélioration a été développé : [[SONET/SDH]]
+Lors du passage des lignes analogiques (électriques) au lignes téléphoniques digitales (optiques), il a fallu trouver un moyen de synchronisation entre les deux supports, car la conversion ne s'est pas faite en un jour. Afin de synchroniser les différents supports, on dispose de protocoles de synchronisation. D'abord, il y a eu le protocole [[PDH]], très gourmand en bande passante. Ensuite, une amélioration a été développé : la norme [[SONET/SDH]], permettant l'arrivée de réseaux entièrement synchronisés.
 </pre>
 </div>
 <div created="20181002173644157" modified="20181003175424781" tags="haut-debit" title="Réseau hauts débits et Qualité de service">
