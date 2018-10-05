@@ -225,6 +225,8 @@ Error message and password prompt
 
 <li>SigFox</li>
 
+<li>SONET/SDH</li>
+
 <li>TCP</li>
 
 <li>TCP Reno</li>
@@ -234,6 +236,8 @@ Error message and password prompt
 <li>Transaction en EJB</li>
 
 <li>Vue d'ensemble de l'état actuel d'Internet</li>
+
+<li>WDM</li>
 
 </ul>
 </p>
@@ -8785,7 +8789,10 @@ Error message and password prompt
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[Réseau en circuit]]</pre>
+# [[Etat de la fibre]]
+# [[PDH]]
+# [[SONET/SDH]]
+# [[WDM]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -8796,7 +8803,7 @@ Error message and password prompt
 <div created="20181002081859888" modified="20181002081901457" title="$:/SiteTitle">
 <pre>Les Cours de M2</pre>
 </div>
-<div created="20181004205619698" modified="20181004205619698" title="$:/state/importpreviewtype">
+<div created="20181004205619698" modified="20181005100608357" title="$:/state/importpreviewtype">
 <pre>$:/core/ui/ImportPreviews/Diff</pre>
 </div>
 <div created="20181002083656210" modified="20181002083705027" title="$:/state/showeditpreview">
@@ -8808,10 +8815,10 @@ Error message and password prompt
 <div created="20181002173753109" modified="20181002173753844" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
-<div created="20181002173649754" modified="20181004205607539" title="$:/state/tab/sidebar--1835078512">
-<pre>$:/core/ui/SideBar/Tools</pre>
+<div created="20181002173649754" modified="20181005100722067" title="$:/state/tab/sidebar--1835078512">
+<pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="$:/Import [[Réseau en circuit]] Bienvenue" title="$:/StoryList">
+<div list="Bienvenue" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -8827,19 +8834,19 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Noe/Documents/Cours/M2/cours.html&quot;
+            &quot;text&quot;: &quot;https://deluvi.com/staticfiles/cours.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
-            &quot;text&quot;: &quot;&quot;
+            &quot;text&quot;: &quot;deluvi.com&quot;
         },
         &quot;$:/info/url/hostname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/hostname&quot;,
-            &quot;text&quot;: &quot;&quot;
+            &quot;text&quot;: &quot;deluvi.com&quot;
         },
         &quot;$:/info/url/protocol&quot;: {
             &quot;title&quot;: &quot;$:/info/url/protocol&quot;,
-            &quot;text&quot;: &quot;file:&quot;
+            &quot;text&quot;: &quot;https:&quot;
         },
         &quot;$:/info/url/port&quot;: {
             &quot;title&quot;: &quot;$:/info/url/port&quot;,
@@ -8847,7 +8854,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Noe/Documents/Cours/M2/cours.html&quot;
+            &quot;text&quot;: &quot;/staticfiles/cours.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -8855,7 +8862,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/origin&quot;: {
             &quot;title&quot;: &quot;$:/info/url/origin&quot;,
-            &quot;text&quot;: &quot;null&quot;
+            &quot;text&quot;: &quot;https://deluvi.com&quot;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
@@ -9060,7 +9067,7 @@ Typiquement, un entity bean représente une table dans la base de données. Mais
 
 Aujourd'hui, on n'utilise plus que CMP. BMP signifie qu'il faut soi-même écrire du code pour manipuler la base de donnée. Le container peut faire ça automatiquement et plus efficacement que du code custom écrit pour ça.</pre>
 </div>
-<div created="20181003164150017" modified="20181004201256723" tags="haut-debit" title="Etat de la fibre">
+<div created="20181003164150017" modified="20181005082805773" tags="haut-debit" title="Etat de la fibre">
 <pre>La fibre est le moyen le plus rapide et le plus efficace en terme de capacité pour transférer des données aujourd'hui. Néanmoins, elle rencontre des soucis particuliers pour sa mise en place.
 
 !! Utilisation de la fibre
@@ -9071,10 +9078,9 @@ La fibre est plus rarement utilisé pour amener les données à l'utilisateur. C
 
 !! Multiplexage
 
-Le multiplexage consiste à diviser un canal de communication en plusieurs parties distinctes pour pouvoir envoyer plus de données, ou encore pour permettre le support de plusieurs communications simultanées au sein d'un même canal . Il est possible de séparer le signal en unitées de temps égales, et d'allouer chaque unité à un canal distinct, c'est le TDMA (Time Division Multiple Access) très utilisé dans les réseaux sans fils pour permettre la communication entre une station de base avec plusieurs appareils mobiles à la fois (à compléter). Dans la fibre optique, cette technique s'utilise en divisant la couleur envoyé en différente partie : on parle de l'ajout (Add) ou la soustraction (Drop) de canaux d'informations dans le signal en couleurs grâce à l'Optical Add-Drop Multiplexer (OADM), mécanisme utilisé aujourdhui couramment dans la fibre mais notamment au moment du passage à la téléphonie digitale dans les [[réseaux en circuits|Réseau en circuit]].
+Le multiplexage consiste à diviser un canal de communication en plusieurs parties distinctes pour pouvoir envoyer plus de données, ou encore pour permettre le support de plusieurs communications simultanées au sein d'un même canal . Il est possible de séparer le signal en unitées de temps égales, et d'allouer chaque unité à un canal distinct, c'est le TDM (Time Division Multiplexing) très utilisé dans les réseaux sans fils pour permettre la communication entre une station de base avec plusieurs appareils mobiles à la fois (à compléter). Dans la fibre optique, cette technique s'utilise en divisant la couleur envoyé en différente partie, on parle alors de multiplexage par division de longueur d'ondes [[WDM|WDM]].
 
-Il peut être noté que le multiplexage peut s'effectuer d'autre manières, par division/répartition de fréquence (FDM/MRF), ou encore par division de code (CDM). (Cour de M1 sur les supports de communication.)
-
+Il peut être noté que le multiplexage peut également s'effectuer d'autres manières, par division/répartition de fréquence (FDM/MRF), ou encore par division de code (CDM). (Cour de M1 sur les supports de communication.)
 
 !! Funfacts
 
@@ -9198,7 +9204,7 @@ Il y a [[une équation sur Wikipédia|https://en.wikipedia.org/wiki/Link_budget#
 <div created="20181003175124607" modified="20181003175136298" tags="haut-debit" title="MIMO">
 <pre>Dans les intérieurs, les ondes sont réfléchis par les murs et le mobilier, ce qui peut causer des interférences : ce sont des trajets multiples. Les équipements MIMO (Multiple Antenna Systems) exploitent ces trajets multiples.</pre>
 </div>
-<div created="20181004202200426" modified="20181004203908643" title="PDH">
+<div created="20181004202200426" modified="20181005092359724" tags="haut-debit" title="PDH">
 <pre>Pour faire communiquer les réseaux analogues électriques avec les nouveaux réseaux digitaux optiques, une première solution fut adoptée, la Piesosynchronous Digital Hierarchy (PDH). Il consiste en un multiplexage des ondes des réseaux analogiques et leur conversion en signaux digitaux (bits) et à leur positionnement hiérarchique dans le temps (Multiplexage à répartition dans le temps). Chaque canal de communication est répartis à intervalles régulier dans la trame. En revanche, chaque désynchronisation se répercute en un remplissage par des bits de bourrage (padding) afin de ne pas interrompre le flux digital, ce qui a pour conséquence une hausse de la bande passante nécessaire.
 [img[https://puu.sh/BFK8d/cc3b84f1f9.png]]</pre>
 </div>
@@ -9287,6 +9293,14 @@ Il faut noter qu'il ne faut absolument pas redéfinir le constructeur du session
 
 La technologie repose sur une utilisation du spectre très étroite. Cela ne semble pas possible car il faut être capable de recevoir le signal sur un très petit signal dans le spectre. Ce défaut est contrebalancé avec des traitements du signal améliorés. On peut espérer de cette technologie un débit de l'ordre de 100 bit/s</pre>
 </div>
+<div created="20181005084326687" modified="20181005100053695" tags="haut-debit" title="SONET/SDH">
+<pre>SONET et SDH sont des protocoles venu en remplacement de [[PDH|PDH]].
+SONET (pour Synchronous Optical NETworking) fut la première norme mise en place par les américains, dans laquelle la communication entre réseaux optiques est devenue totalement synchrone. SDH (pour Synchronous Digital Hierarchy) est une autre norme venu peu de temps après, qui sera elle utilisée dans le reste du monde, alors que les états unis favorisent SONET.
+
+SONET/SDH permettent, contrairement à PDH, une synchronisation totale des flux de données à l'aide d'horloges atomiques. Ils sont implémentés dans les coeurs du réseau sous forme de [[réseau en circuits|Réseau en circuit]]. Outre la synchronisation, un atout majeur de SONET/SDH est la fiabilitée accrue du système en comparaison aux réseaux de type maillages/étoile. Lors d'une avarie (une coupure du circuit), le protocole vas immédiatement détecter la coupure, et re-router les paquets sur l'un de ses circuits redondants (standby rings). Ce faisant, on passe d'un temps de recouvrement fonctionnel de 10 secondes pour un réseau maillé, à 50ms pour un réseau en circuit sous SONET/SDH. Actuellement, les circuits possèdent plusieurs standby rings, afin de renforcer la fiabilité et de pouvoir supporter de multiples avaries simultanéments.
+
+[img[https://puu.sh/BG1Uh/f98eb39751.png]]</pre>
+</div>
 <div created="20181003192125815" modified="20181003192907079" tags="haut-debit" title="TCP">
 <pre>TCP est LE protocole de transport fiable de l'Internet. Ce protocole apporte fiabilité, un concept de session, un contrôle de flux et un contrôle de la congestion. C'est le protocole de bout-en-bout arrivé au tout début d'Internet et qui est resté depuis le protocole à utiliser dès que l'on veut transmettre des données sans les perdre en route.
 
@@ -9368,6 +9382,15 @@ Le débit grandit de plus en plus, le réseau semble suivre sauf dans certains c
 Le soucis ne vient pas des liens physiques, [[la fibre|Etat de la fibre]] peut atteindre des grandes vitesses jusqu'à 8 Tb/s. Le soucis provient des routeurs qui sont limités par la vitesse de leurs processeurs qui ne progresse pas assez vite comparé à la capacité des liens.
 
 Il y a une émergence des [[réseaux sans-fils|Etat des technologies sans-fil]] qui deviennent de plus en plus dominant dans le domaine des solutions pour l'utilisateur final.</pre>
+</div>
+<div created="20181005081814304" modified="20181005092407721" tags="haut-debit" title="WDM">
+<pre>Le multiplexage par division de longueur d'onde (Wavelength-Division Multiplexing) est la technique consistant à diviser le spectre de la lumière (visible, mais pas que) en plusieurs longueur d'ondes au sein d'une même fibre optique. Ainsi, au lieu de communiquer par le biais d'un seul canal sur une même fibre, il est possible d'utiliser 160 canaux sur les systèmes classiques jusqu'à 600 sur des systèmes avancés, où chaque canal utilisera une longueur d'onde (couleur) différente, permettant des débits d'un autre monde (on passe d'une liaison 100Gbps à des liaisons de l'ordre de 16Tbps).
+
+On trouve le WDM à ses débuts dans la technologie [[PDH|PDH]], grâce à l'Add Drop Multiplexer Optique (OADM), permettant l'ajout (Add) ou la soustraction (Drop) de canaux d'information dans les longueur d'ondes, qui seront alors créées ou supprimées selon la demande. Pour une analogie parlante, on peut imaginer le système comme une autoroute, dans laquelle les voitures représentent les flux d'informations à faire transiter, et les voies d'autoroutes les canaux de couleurs, on vient remplir les voies de l'autoroute au fur et à mesure que le trafic augmente (sauf qu'il y a autant de voies possibles que de couleurs). L'Add-Drop Multiplexer jouerait le role des entrées et sorties d'autoroute, permettant aux flux d'informations de changer d'autoroute ou même de reprendre une route classique (non-optique).
+
+On retrouve également le WDM dans le protocole [[SONET/SDH|SONET/SDH]] dans les [[réseaux en circuits|Réseau en circuit]].
+
+A l'heure actuelle on parle même de Dense Wavelength Division Multiplexing (DWDM), exploitant les amplifieurs de fibre dopés à l'Erbium (EDFA), utilisés en remplacement des régénérateurs de signaux optique-électrique-optique (OEO) utilisés par SONET/SDH. Les amplificateur EDFA permettent de régénérer le signal optique sur les longues distances sans avoir a convertir le signal optique en signal électrique, ce qui présente un avantage considérable sur les liens très longue distance comme les câbles sous-marins.</pre>
 </div>
 
 </div>
