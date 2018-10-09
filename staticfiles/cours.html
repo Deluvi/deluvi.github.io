@@ -193,7 +193,11 @@ Error message and password prompt
 
 <li>Communication entre Beans</li>
 
+<li>Correction étude de cas société JVD</li>
+
 <li>Correction TDEX05</li>
+
+<li>Draft of 'Correction étude de cas société JVD'</li>
 
 <li>Entity Beans</li>
 
@@ -8829,7 +8833,7 @@ Error message and password prompt
 <div created="20181002083656210" modified="20181002083705027" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div created="20181008164651333" modified="20181008165029297" title="$:/state/sidebar">
+<div created="20181008164651333" modified="20181009090555469" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20181002173755313" modified="20181002173804864" title="$:/state/tab--1963855381">
@@ -8841,7 +8845,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20181005100722067" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue [[Sécurité Informatique]] [[Gestion des risques]] Risque [[Appréciation du risque]] [[Bien support]] Impact [[Besoin de sécurité]] [[Correction TDEX05]] [[Bien essentiel]]" title="$:/StoryList">
+<div list="Bienvenue [[Sécurité Informatique]] [[Gestion des risques]] [[Correction étude de cas société JVD]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9127,6 +9131,131 @@ Customer_managementRemote cm = (Customer_managementRemote)jndi_context.lookup(&q
 
 Le serveur peut effectuer des vérifications pour nous pour vérifier si certains modules nécessaire à notre module sont déployés ou non. Pour cela, il faut éditer le fichier `ejb-jar.xml`. Cette déclaration est optionnelle et sert juste de vérification : elle n'est pas nécessaire pour appeler d'autres modules.</pre>
 </div>
+<div created="20181009081455904" modified="20181009105010329" tags="sécurité" title="Correction étude de cas société JVD">
+<pre>!!! Question 1
+
+| !Libellé du bien | !Bien support / Bien essentiel | !Catégorie |
+| Sources des jeux | Bien essentiel | Information |
+| Plans des jeux existants | Bien essentiel | Information |
+| Plans des futurs jeux en conception | Bien essentiel | Information |
+| Journal des Bonnes Idées | Bien essentiel | Information |
+| Site web de vente | Bien essentiel | Information |
+| Fichier commerciaux | Bien essentiel | Information |
+| Vente des jeux en ligne | Bien essentiel | Processus |
+| Conception des jeux | Bien essentiel | Processus |
+| Personnel mobile | Bien essentiel | Personne |
+| Personnel fixe | Bien essentiel | Personne |
+| Bâtiment de l'entreprise | Bien support | Local |
+| Local d'accueil | Bien support | Local |
+| Lieu public | Bien support | Local |
+| Réseau interne de l'entreprise (RES) | Bien support | Réseau |
+| Réseau public externe | Bien support | Réseau |
+| SERV1 | Bien support | Matériel |
+| SERV2 | Bien support | Matériel |
+| Ordinateur fixe | Bien support | Matériel |
+| Ordinateur portable | Bien support | Matériel |
+| Imprimante/Photocopieuse | Bien support | Matériel |
+| Routeur | Bien support | Matériel |
+| Système d'exploitation | Bien support | Logiciel |
+| DJV | Bien support | Logiciel |
+| Model3D | Bien support | Logiciel |
+| Logiciel serveur Web | Bien support | Logiciel |
+| Papier imprimé | Bien support | Papier |
+
+!!! Question 2
+
+1.3.3) Déterminer le lien entre les biens essentiels et les biens supports.
+
+Cette activité permet de prendre connaissance des bien supports qui manipulent les biens essentiels : cela permet de voir quels sont les biens essentiels affectés dans le cas de vulnérabilités dans un bien support.
+
+| | !Sources issues des développements | !Plans des jeux existants | !Plans des futurs jeux en conception | !Journal des bonnes idées | !Site Web de vente | !Vente des jeu en ligne | !Conception des jeux |
+| Bâtiment |x|x|x|x|x|x|x|
+| Lieux publics |x|x|x|x|||x|
+| Papier imprimé |||x||||x|
+| Personnel mobile |x|x|x|x|x|x|x|
+| Personnel fixe |x|x|x|x|x|x|x|
+| DJV |x|x|x|||||
+| Model3D ||x|x|||||
+| SERV1 |x|x|x|x|||x|
+| SERV2 |||||x|x||
+| Ordinateur portable |x|x|x|x|||x|
+| Ordinateur fixe |x|x|x|x|x|x|x|
+| Réseau interne |x|x|x|x|x|x|x|
+| Réseau Internet |||||x|x||
+| Routeur |||||x|x||
+
+!!! Question 3
+
+1.2) Préparer les métriques :
+
+L'important dans la fabrication des échelles est que ces dernières soient compréhensible par tout le monde, pas seulement par l'expert en sécurité. Tous les niveaux doivent être établit clairement et précisément sans qu'il n'y ait de confusions possible pour tout le monde. Il s'agit de faire de la pédagogie efficacement car la précision des estimations est importante dans une étude de risques.
+
+!!! Question 4
+
+!!!! Risque n°1 :
+
+| !Source de menace | Feu |
+| !Menace | Incendie (vraisemblance élevé) |
+| !Vulnérabilité(s) | Absence de cloisonnement anti-feu (vulnérabilité élevé) |
+| !Bien(s) support(s) | Locaux du site, biens supports contenu dans le locaux |
+| !Bien(s) essentiel(s) | Tous |
+| !Besoin(s) de sécurité | Disponibilité |
+| !Impact(s) | Arrêt d'activité |
+
+!!!! Risque n°2 :
+
+| !Source de menace | Personne malveillante |
+| !Menace | Vol de matériel ou de document |
+| !Vulnérabilité(s) | Absence d'inventaire du matériel, disque dur facilement démontable, matériel attractif |
+| !Bien(s) support(s) | Support informatique ou document imprimé |
+| !Bien(s) essentiel(s) | I.PARA, I.TECH, I.CDC, I.CONTRAT, I.DEVIS, I.DOS, I.FACT|
+| !Besoin(s) de sécurité | Confidentialité |
+| !Impact(s) | Perte d'image de marque et perte d'avantage concurrentiel |
+
+!!!! Risque n°3 :
+
+| !Source de menace | Épidémie virale locale |
+| !Menace | Dégradation d'une personne |
+| !Vulnérabilité(s) | Absence de plan de sensibilisation et de formation des processus de continuité, absence de processus de gestion de la continuité des activités professionnelles, absence de procédures de transfert de connaissances |
+| !Bien(s) support(s) | Personnes et l'organisation dans son ensemble |
+| !Bien(s) essentiel(s) | F.PLAN, I.DOSS, I.TECH |
+| !Besoin(s) de sécurité | Disponibilité |
+| !Impact(s) | Perte d'image de marque et perte d'un avantage concurrentiel |
+
+!!! Question 5
+
+!!! Question 6
+
+Ces tableaux sont le résultat d'interviews, d'interrogations et des confrontations avec les gens du métier pour pouvoir établir les meilleurs valeurs dans les besoins de sécurités.
+
+!!! Question 7
+
+Cela permet de documenter plus précisément chaque menace, dans le cadre de la documentation tout à l'écrit. Cela permet également de reprendre chaque menace dans le futur et voir si les menaces sont toujours d'actualité.
+
+Les croix correspondent aux critère de sécurité particulier la menace s'attaque à.
+
+!!! Question 8
+
+Les vulnérabilités sont attachées aux biens supports.
+
+!!! Question 9
+
+MAXIME, ICI TA METHODE REVOLUTIONNAIRE !!!
+
+1. SM1 utilise la menace MA01 à l'aide des vulnérabilités v1, v2 et v3. v1 a le niveau 3, v2 le niveau 3 et v3 le niveau 2. Les vulnérabilités affectent les supports S1, S8 et S4. Ensemble, tout ces supports affectent les essentiels E1, E3, E2, E4 et E6. MA01 affecte les besoins de Disponibilité et d'Intégrité. On remarque que l'essentiel E1 a un besoin de Disponibilité de 4. Ainsi, on en déduit que la valeurs des biens affectés par cette menace est de 4. En consultant le tableau pour calculer la valeur du risque avec les variables Improbable, facilité Moyenne et valeurs des biens égale à 4, on trouve un risque de 4.
+
+2. SM2 utilise la menace MA05 à l'aide de la vulnérabilité v4. v4 a le niveau 2. La vulnérabilité affecte le support S8. Ce support affecte les essentiels E2 et E4. MA05 affecte les besoins de Disponibilité et d'Intégrité. On remarque que l'essentiel E2 a un besoin de Disponibilité de 2. Ainsi, on en déduit que la valeurs des biens affectés par cette menace est de 2. En consultant le tableau pour calculer la valeur du risque avec les variables Probable, facilité Moyenne et valeurs des biens égale à 2, on trouve un risque de 3.
+
+3. Risque de 6.
+
+4. Risque de 3.
+
+5. Risque de 7.
+
+6. Risque de 6.
+
+7. Risque de 5.</pre>
+</div>
 <div created="20181008153200696" modified="20181008162952882" tags="sécurité" title="Correction TDEX05">
 <pre>[ext[Le PDF du TP|GR-EX05-leDirecteur.pdf]]
 
@@ -9197,6 +9326,9 @@ Risque complet :
 
 Traduction : le directeur se connecte sur un réseau public dans une salle d'attente. Il veut envoyer un courrier électronique confidentiel qui contient un secret. Ce réseau public est écouté par un pirate qui intercepte les communications. Comme le transfert des mails n'est pas sécurisé, le pirate intercepte le mail et peut lire son contenu. Le pirate viole le besoin de confidentialité du contenu du mail. Son impact est la fuite d'un secret industriel et la perte financière lors de la diffusion de ce secret.</pre>
 </div>
+<div modified="20181009103040041" title="Draft of 'Correction étude de cas société JVD'">
+<pre></pre>
+</div>
 <div created="20181002083327707" modified="20181002090633639" tags="ejb" title="Entity Beans">
 <pre>Un entity bean gère une connexion à la base de donnée de manière transparente : il s'agit d'une réflexion de la base de donnée, donc si on modifie un champs de l'objet, le changement va se refléter à la base de donnée.
 
@@ -9265,7 +9397,7 @@ D'un côté, on a le Best Effort. Le réseau essaye de faire au mieux pour distr
 
 De l'autre côté, il y a la Leased Line (la ligne dédié). De ce côté, on a toutes les garanties possible : on a une ligne de bout en bout réservée pour nous afin d'être sûr à 99,9% que toutes les données seront reçus de l'autre côté. C'était là où le modèle téléphonique était situé.</pre>
 </div>
-<div created="20181008121057362" modified="20181008163537643" tags="sécurité" title="Gestion des risques">
+<div created="20181008121057362" modified="20181009081405404" tags="sécurité" title="Gestion des risques">
 <pre>Liste des PDF :
 
 * [ext[definitionRisque.pdf]]
@@ -9283,7 +9415,9 @@ De l'autre côté, il y a la Leased Line (la ligne dédié). De ce côté, on a 
 
 [[Risque]]
 
-[[Correction TDEX05]]</pre>
+[[Correction TDEX05]]
+
+[[Correction étude de cas société JVD]]</pre>
 </div>
 <div created="20181008160642678" modified="20181008161034268" tags="sécurité" title="Impact">
 <pre>Un impact est une conséquence d'une trahison d'un besoin de sécurité. Un impact a une gravité variable selon l'impact</pre>
