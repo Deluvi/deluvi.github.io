@@ -173,6 +173,8 @@ Error message and password prompt
 
 <li>6LowPan</li>
 
+<li>Algorithme de chiffrement</li>
+
 <li>Appréciation du risque</li>
 
 <li>Architecture orienté service</li>
@@ -193,6 +195,10 @@ Error message and password prompt
 
 <li>Communication entre Beans</li>
 
+<li>Correction étude de cas société JVD</li>
+
+<li>Correction GREX03</li>
+
 <li>Correction TDEX05</li>
 
 <li>Droit et Numérique</li>
@@ -208,6 +214,10 @@ Error message and password prompt
 <li>Gestion des risques</li>
 
 <li>Impact</li>
+
+<li>ISO 27001-27002</li>
+
+<li>ISO 27005</li>
 
 <li>Java Cryptography Extension</li>
 
@@ -8813,10 +8823,9 @@ Error message and password prompt
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[Etat de la fibre]]
-# [[PDH]]
-# [[SONET/SDH]]
-# [[WDM]]</pre>
+# [[Sécurité Informatique]]
+# [[Java Cryptography Extension]]
+# [[Droit et Numérique]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -8830,10 +8839,10 @@ Error message and password prompt
 <div created="20181004205619698" modified="20181005100608357" title="$:/state/importpreviewtype">
 <pre>$:/core/ui/ImportPreviews/Diff</pre>
 </div>
-<div created="20181002083656210" modified="20181012134246512" title="$:/state/showeditpreview">
+<div created="20181002083656210" modified="20181002083705027" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div created="20181008164651333" modified="20181008165029297" title="$:/state/sidebar">
+<div created="20181008164651333" modified="20181009090555469" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20181002173755313" modified="20181002173804864" title="$:/state/tab--1963855381">
@@ -8842,10 +8851,10 @@ Error message and password prompt
 <div created="20181002173753109" modified="20181002173753844" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
-<div created="20181002173649754" modified="20181005100722067" title="$:/state/tab/sidebar--1835078512">
+<div created="20181002173649754" modified="20181013112411899" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue [[Sécurité Informatique]] [[Droit et Numérique]]" title="$:/StoryList">
+<div list="" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -8861,7 +8870,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///home/19/nbjacque/T%C3%A9l%C3%A9chargements/cours.html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/No%C3%A9%20Baylac-Jacqu%C3%A9/Documents/Projets/deluvi.github.io/staticfiles/cours.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -8881,7 +8890,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/home/19/nbjacque/T%C3%A9l%C3%A9chargements/cours.html&quot;
+            &quot;text&quot;: &quot;/C:/Users/No%C3%A9%20Baylac-Jacqu%C3%A9/Documents/Projets/deluvi.github.io/staticfiles/cours.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -8893,16 +8902,16 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
+            &quot;text&quot;: &quot;1536&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
+            &quot;text&quot;: &quot;864&quot;
         }
     }
 }</pre>
 </div>
-<div created="20181002085000811" modified="20181004101610169" title="$:/temp/search">
+<div created="20181002085000811" modified="20181013112410751" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20181002173759197" modified="20181002173800281" title="$:/theme">
@@ -9023,6 +9032,24 @@ Error message and password prompt
 <div created="20181003174610450" modified="20181003174843968" tags="haut-debit" title="6LowPan">
 <pre>6LowPan est un protocole qui adapte IPv6 pour les petits objets. Un des problèmes d'IPv6 est la taille de l'en-tête : 40 bytes. Pour l'optimiser, on compresse l'en-tête en jetant une partie de l'adresse IPv6 qui sera constante : la partie qui définit le réseau. Un routeur entre Internet et le réseau local s'occupe de transformer les paquets en paquets IPv6 valide.</pre>
 </div>
+<div created="20181009135923638" modified="20181009140257042" tags="sécurité" title="Algorithme de chiffrement">
+<pre>Un algorithme de chiffrement doit obéir à des principes généraux : 
+
+* les algorithmes sont connus de tous
+* pas d'augmentation de la taille des messages
+* pas d'augmentation du taux d'erreur
+* rapidité d'exécution
+* la sécurité ne doit pas dépendre de la nature du message à chiffrer
+
+!! Attaques
+
+* Texte chiffré seul : on doit retrouver le texte en clair d'origine
+* Texte en clair : on doit retrouver la clé en ayant le texte en clair et le texte chiffré
+* Texte en clair choisi : on doit retrouver la clé en ayant choisis le texte en clair et en obtenant le texte chiffré
+* Texte chiffré choisi
+
+Les attaques vont du plus difficile au plus facile.</pre>
+</div>
 <div created="20181008163228134" modified="20181008164916497" tags="sécurité" title="Appréciation du risque">
 <pre>[ext[PDF associé|GR05-appreciationRisque.pdf]]
 
@@ -9130,6 +9157,214 @@ Customer_managementRemote cm = (Customer_managementRemote)jndi_context.lookup(&q
 !! Déclarer une dépendence pour une vérification au déploiement
 
 Le serveur peut effectuer des vérifications pour nous pour vérifier si certains modules nécessaire à notre module sont déployés ou non. Pour cela, il faut éditer le fichier `ejb-jar.xml`. Cette déclaration est optionnelle et sert juste de vérification : elle n'est pas nécessaire pour appeler d'autres modules.</pre>
+</div>
+<div created="20181009081455904" modified="20181009132356146" tags="sécurité" title="Correction étude de cas société JVD">
+<pre>!!! Question 1
+
+| !Libellé du bien | !Bien support / Bien essentiel | !Catégorie |
+| Sources des jeux | Bien essentiel | Information |
+| Plans des jeux existants | Bien essentiel | Information |
+| Plans des futurs jeux en conception | Bien essentiel | Information |
+| Journal des Bonnes Idées | Bien essentiel | Information |
+| Site web de vente | Bien essentiel | Information |
+| Fichier commerciaux | Bien essentiel | Information |
+| Vente des jeux en ligne | Bien essentiel | Processus |
+| Conception des jeux | Bien essentiel | Processus |
+| Personnel mobile | Bien essentiel | Personne |
+| Personnel fixe | Bien essentiel | Personne |
+| Bâtiment de l'entreprise | Bien support | Local |
+| Local d'accueil | Bien support | Local |
+| Lieu public | Bien support | Local |
+| Réseau interne de l'entreprise (RES) | Bien support | Réseau |
+| Réseau public externe | Bien support | Réseau |
+| SERV1 | Bien support | Matériel |
+| SERV2 | Bien support | Matériel |
+| Ordinateur fixe | Bien support | Matériel |
+| Ordinateur portable | Bien support | Matériel |
+| Imprimante/Photocopieuse | Bien support | Matériel |
+| Routeur | Bien support | Matériel |
+| Système d'exploitation | Bien support | Logiciel |
+| DJV | Bien support | Logiciel |
+| Model3D | Bien support | Logiciel |
+| Logiciel serveur Web | Bien support | Logiciel |
+| Papier imprimé | Bien support | Papier |
+
+!!! Question 2
+
+1.3.3) Déterminer le lien entre les biens essentiels et les biens supports.
+
+Cette activité permet de prendre connaissance des bien supports qui manipulent les biens essentiels : cela permet de voir quels sont les biens essentiels affectés dans le cas de vulnérabilités dans un bien support.
+
+| | !Sources issues des développements | !Plans des jeux existants | !Plans des futurs jeux en conception | !Journal des bonnes idées | !Site Web de vente | !Vente des jeu en ligne | !Conception des jeux |
+| Bâtiment |x|x|x|x|x|x|x|
+| Lieux publics |x|x|x|x|||x|
+| Papier imprimé |||x||||x|
+| Personnel mobile |x|x|x|x|x|x|x|
+| Personnel fixe |x|x|x|x|x|x|x|
+| DJV |x|x|x|||||
+| Model3D ||x|x|||||
+| SERV1 |x|x|x|x|||x|
+| SERV2 |||||x|x||
+| Ordinateur portable |x|x|x|x|||x|
+| Ordinateur fixe |x|x|x|x|x|x|x|
+| Réseau interne |x|x|x|x|x|x|x|
+| Réseau Internet |||||x|x||
+| Routeur |||||x|x||
+
+!!! Question 3
+
+1.2) Préparer les métriques :
+
+L'important dans la fabrication des échelles est que ces dernières soient compréhensible par tout le monde, pas seulement par l'expert en sécurité. Tous les niveaux doivent être établit clairement et précisément sans qu'il n'y ait de confusions possible pour tout le monde. Il s'agit de faire de la pédagogie efficacement car la précision des estimations est importante dans une étude de risques.
+
+!!! Question 4
+
+!!!! Risque n°1 :
+
+| !Source de menace | Feu |
+| !Menace | Incendie (vraisemblance élevé) |
+| !Vulnérabilité(s) | Absence de cloisonnement anti-feu (vulnérabilité élevé) |
+| !Bien(s) support(s) | Locaux du site, biens supports contenu dans le locaux |
+| !Bien(s) essentiel(s) | Tous |
+| !Besoin(s) de sécurité | Disponibilité |
+| !Impact(s) | Arrêt d'activité |
+
+!!!! Risque n°2 :
+
+| !Source de menace | Personne malveillante |
+| !Menace | Vol de matériel ou de document |
+| !Vulnérabilité(s) | Absence d'inventaire du matériel, disque dur facilement démontable, matériel attractif |
+| !Bien(s) support(s) | Support informatique ou document imprimé |
+| !Bien(s) essentiel(s) | I.PARA, I.TECH, I.CDC, I.CONTRAT, I.DEVIS, I.DOS, I.FACT|
+| !Besoin(s) de sécurité | Confidentialité |
+| !Impact(s) | Perte d'image de marque et perte d'avantage concurrentiel |
+
+!!!! Risque n°3 :
+
+| !Source de menace | Épidémie virale locale |
+| !Menace | Dégradation d'une personne |
+| !Vulnérabilité(s) | Absence de plan de sensibilisation et de formation des processus de continuité, absence de processus de gestion de la continuité des activités professionnelles, absence de procédures de transfert de connaissances |
+| !Bien(s) support(s) | Personnes et l'organisation dans son ensemble |
+| !Bien(s) essentiel(s) | F.PLAN, I.DOSS, I.TECH |
+| !Besoin(s) de sécurité | Disponibilité |
+| !Impact(s) | Perte d'image de marque et perte d'un avantage concurrentiel |
+
+!!! Question 5
+
+!!!! Risque 1
+
+!!!!! Événement redouté
+
+* Source de menace : Concurrent malveillant
+* Bien essentiel : Source des jeux
+* Besoin : Confidentialité
+* Impact : Perte d'un avantage concurrentiel
+
+!!!!! Scénario de menace
+
+* Source de menace : Concurrent malveillant
+* Menace : vol de matériel
+* Vulnérabilité : portable, accessible
+* Bien support : ordinateur portable
+
+Un concurrent malveillant vole l'ordinateur portable qui était utilisé dans un lieu public, en sachant que l'ordinateur portable est facilement volable et accessible. Dans le disque dur, il y a le code source d'un jeu. Cette personne malveillante dispose donc de ces données censées être confidentielle, ce qui impacte l'entreprise qui subit un vol d'une idée originale et donc une perte d'avantage concurrentiel.
+
+!!!! Risque 2
+
+!!!!! Événement redouté
+
+* Source de menace : Rongeur
+* Bien essentiel : Plan des jeux
+* Besoin : Disponibilité
+* Impact : 
+
+!!!!! Scénario de menace
+
+* Source de menace : Rongeur
+* Menace : ronge un câble électrique
+* Vulnérabilité : Absence de dispositif de secours, absence de protection anti-rongeurs
+* Bien support : (câble électrique), serveur SERV1.
+
+Note : dans l'examen, le professeur conseille de séparer évènement redouté et scénario de menace pour décrire un risque.
+
+!!! Question 6
+
+Ces tableaux sont le résultat d'interviews, d'interrogations et des confrontations avec les gens du métier pour pouvoir établir les meilleurs valeurs dans les besoins de sécurités.
+
+!!! Question 7
+
+Cela permet de documenter plus précisément chaque menace, dans le cadre de la documentation tout à l'écrit. Cela permet également de reprendre chaque menace dans le futur et voir si les menaces sont toujours d'actualité.
+
+Les croix correspondent aux critère de sécurité particulier la menace s'attaque à.
+
+!!! Question 8
+
+Les vulnérabilités sont attachées aux biens supports.
+
+!!! Question 9
+
+MAXIME, ICI TA METHODE REVOLUTIONNAIRE !!!
+
+1. SM1 utilise la menace MA01 à l'aide des vulnérabilités v1, v2 et v3. v1 a le niveau 3, v2 le niveau 3 et v3 le niveau 2. Les vulnérabilités affectent les supports S1, S8 et S4. Ensemble, tout ces supports affectent les essentiels E1, E3, E2, E4 et E6. MA01 affecte les besoins de Disponibilité et d'Intégrité. On remarque que l'essentiel E1 a un besoin de Disponibilité de 4. Ainsi, on en déduit que la valeurs des biens affectés par cette menace est de 4. En consultant le tableau pour calculer la valeur du risque avec les variables Improbable, facilité Moyenne et valeurs des biens égale à 4, on trouve un risque de 4.
+
+2. SM2 utilise la menace MA05 à l'aide de la vulnérabilité v4. v4 a le niveau 2. La vulnérabilité affecte le support S8. Ce support affecte les essentiels E2 et E4. MA05 affecte les besoins de Disponibilité et d'Intégrité. On remarque que l'essentiel E2 a un besoin de Disponibilité de 2. Ainsi, on en déduit que la valeurs des biens affectés par cette menace est de 2. En consultant le tableau pour calculer la valeur du risque avec les variables Probable, facilité Moyenne et valeurs des biens égale à 2, on trouve un risque de 3.
+
+3. Risque de 6.
+
+4. Risque de 3.
+
+5. Risque de 7.
+
+6. Risque de 6.
+
+7. Risque de 5.
+
+8. Risque de 4.
+
+9. Risque de 2.
+
+10. Risque de 4.
+
+!!! Question 10
+
+1.2.4) Définir les critères de gestion des risques.
+
+Quand on définit ce critère, on le fait avec l'accord du maître d'ouvrage (directeur).
+
+En tant que maître d'oeuvre, on peut prendre la décision d'éliminer le risque 9 car il a un risque acceptable.
+
+!!! Question 11
+
+| | !Risque initial | !Risque résiduel |
+| !R1 | 4 | 1,5 |
+| !R2 | 3 | 0,5 |
+| !R3 | 6 | 1 |
+| !R4 | 3 | 1,5 |
+| !R5 | 7 | 2,5 |
+| !R6 | 6 | 2 |
+| !R7 | 5 | 3 |
+| !R8 | 4 | 1 |
+| !R9 | 2 | 1 |
+| !R10 | 2 | 0 |
+
+On observe que R5 et R7 ont un risque résiduel plus grand que 2. Cela signifie que ces deux risques ne sont pas encore acceptable. Le choix est au maître d'ouvrage (directeur) si il veut payer plus pour réduire le risque ou accepter le risque comme cela.
+
+!!! Question 12
+
+On remarque que comme il n'y a qu'un seul réseau interne, le réseau tout entier est vulnérable à une seule attaque : si le pirate accède à un serveur, il pourra probablement accéder à l'ensemble des appareils et du réseau. Pour contrer ce problème, on peut mettre en œuvre des pare-feux pour séparer les serveurs entre eux et les serveurs des postes fixes.</pre>
+</div>
+<div created="20181009150239234" modified="20181009151137285" tags="sécurité" title="Correction GREX03">
+<pre>| !Libellé de l'action | !Phase(s) de la roue de Deming | !Module(s) / Activité(s) de la méthode EBIOS |
+| Délimiter le périmètre de l'étude | Plan | 1.1.3 |
+| Communiquer sur le risque | Les 4 | Tout |
+| Apprécier le risque | Plan | 1, 2, 3, 4.1 |
+| Réaliser un contrôle interne | Check | Rien ou 5.2 |
+| Décider d'ajouter un nouvel indicateur au SMSI | Act | 5.2 |
+| Identifier les sources de menaces | Plan | 1.1.5 |
+| Croiser les événements redoutés et les scénarios de menace | Plan | 4.1.1 |
+| Bâtir un plan d'action | Do | 5.2.1 |
+| Installer un système de détection d'intrusion | Do | 5.2 |
+| Organiser des séances de sensibilisations du personnel à la sécurité des systèmes d'information | Do | 5.2 |</pre>
 </div>
 <div created="20181008153200696" modified="20181008162952882" tags="sécurité" title="Correction TDEX05">
 <pre>[ext[Le PDF du TP|GR-EX05-leDirecteur.pdf]]
@@ -9317,7 +9552,7 @@ D'un côté, on a le Best Effort. Le réseau essaye de faire au mieux pour distr
 
 De l'autre côté, il y a la Leased Line (la ligne dédié). De ce côté, on a toutes les garanties possible : on a une ligne de bout en bout réservée pour nous afin d'être sûr à 99,9% que toutes les données seront reçus de l'autre côté. C'était là où le modèle téléphonique était situé.</pre>
 </div>
-<div created="20181008121057362" modified="20181008163537643" tags="sécurité" title="Gestion des risques">
+<div created="20181008121057362" modified="20181009150224750" tags="sécurité" title="Gestion des risques">
 <pre>Liste des PDF :
 
 * [ext[definitionRisque.pdf]]
@@ -9326,19 +9561,138 @@ De l'autre côté, il y a la Leased Line (la ligne dédié). De ce côté, on a 
 * [ext[GR03-processusGestionDuRisque.pdf]]
 * [ext[GR04-vocabulaire.pdf]]
 * [ext[GR05-appreciationRisque.pdf]]
+* [ext[GR06-traitementRisque.pdf]]
+* [ext[GR07-etudeContexte.pdf]]
+* [ext[GR08-norme27005.pdf]]
+* [ext[GR09-27001-27002.pdf]]
 * [ext[GR-DEX000-ANSSI-EBIOS-1-GuideMethodologique-2010-01-25.pdf]]
 * [ext[GR-DEX001-ANSSI-EBIOS-2-BasesDeConnaissances-2010-01-25.pdf]]
 * [ext[GR-DEX002-ANSSI-EBIOS-EtudeDeCas-Archimed-2010-01-25.pdf]]
+* [ext[GR-DIN000-syntheseGestionRisque.pdf]]
+* [ext[GR-DIN002-decompositionActiviteEbios.pdf]]
 * [ext[GR-EX01.1-smMeVu.pdf]]
 * [ext[GR-EX01.2-menaceVulnérabilite.pdf]]
 * [ext[GR-EX05-leDirecteur.pdf]]
+* [ext[reseauJVD.pdf]]
+* [ext[jvd.ods]]
+* [ext[directeur.ods]]
+
 
 [[Risque]]
 
-[[Correction TDEX05]]</pre>
+[[Correction GREX03]]
+
+[[Correction TDEX05]]
+
+[[Correction étude de cas société JVD]]
+
+[[ISO 27005]]
+
+[[ISO 27001-27002]]
+
+!!! Politique de sécurité vs charte de sécurité
+
+La charte de sécurité a une vocation de pédagogie aux employés et autres.
+
+Au contraire, la politique de sécurité est un document technique précis à destination des professionnels de la sécurité.</pre>
 </div>
 <div created="20181008160642678" modified="20181008161034268" tags="sécurité" title="Impact">
 <pre>Un impact est une conséquence d'une trahison d'un besoin de sécurité. Un impact a une gravité variable selon l'impact</pre>
+</div>
+<div created="20181009140648142" modified="20181009150009230" tags="sécurité" title="ISO 27001-27002">
+<pre>Les normes ISO27001-27002 proposent de mettre en œuvre un SMSI.
+
+[[Système de Management]]
+
+!! Système de Management de la Sécurité de l'Information (SMSI)
+
+2 composantes :
+
+* Système de management
+* Sécurité de l'information
+
+Un système de management est un système qui permet :
+
+* d'établir une politique
+* d'établir des objectifs
+* d'atteindre ces objectifs
+
+Il faut maintenir le niveau après avoir atteint les objectifs
+
+Propriétés de systèmes de managements :
+
+* Large spectre de métiers et de compétences (approche transversale).
+* Un projet fédérateur et mobilisateur (approche verticale) : toute la hiérarchie est concernée de la direction aux employés.
+* Importance de l'écrit.
+* Auditabilité.
+
+Un système de management coûte cher. Néanmoins, cela apporte :
+
+* des bonnes pratiques.
+* une augmentation de la fiabilité.
+* de la confiance (apport le plus important).
+
+!!! Adoption de bonnes pratiques
+
+Chaque SM a son guide de bonnes pratiques. Le SMSI dispose du guide ISO-27001 qui permettra d'adopter les bonnes pratiques permettant d'améliorer la sécurité de l'information.
+
+!!! Fiabilité
+
+Conséquence de l'adoption de bonnes pratiques
+
+!!! Confiance
+
+Ce sont les parties prenantes (actionnaires, clients, partenaires, banques, assureurs, etc) qui nous obligent à mettre en place un SM. Grâce à la confiance apportée par un SM, on gagne de l'argent. C'est la notion de certification qui apporte la confiance (quelqu'un de neutre qui contrôle la validité du SM).
+
+!! Norme ISO 27001
+
+Elle concerne la mise en place d'un Système de Management pour la sécurité de l'information. Elle contient 10 pages intéressantes.
+
+!!! Plan
+
+* définir le périmètre et la politique.
+* apprécier les risques : voir la norme [[ISO 27005]] ou la méthode EBIOS.
+* traiter le risque et identifier le risque résiduel.
+* sélectionner les mesures de sécurité.
+
+!!! Do
+
+* rédiger un plan de traitement des risques : liste des actions à entreprendre, les moyens nécessaires.
+* déployer les mesures de sécurité : importance d'une bonne gestion de projet.
+* générer des indicateurs : chaque objectif a son indicateur (ISO 27004, norme concernant la mise en œuvre des indicateurs).
+* sensibiliser et former le personnel.
+* détecter et réagir rapidement aux incidents.
+
+!!! Check
+
+* audits internes : planifié à l'avance, l'auditeur étudie les documents écrits et il vérifie sur le terrain que les documents sont respectés.
+* contrôle interne : contrôle d'un point précis sans prévenir, l'effet de surprise est volontaire sans vouloir piéger.
+* revues : bilan des audits internes.
+
+!!! Act
+
+On applique les constats de la phase Check :
+
+* actions correctives
+* actions préventives
+* actions d'amélioration
+
+!! Norme ISO 27002
+
+Il s'agit d'un catalogue de bonnes pratiques. Il y a 133 mesures réparties dans 11 chapitres dans 110 pages. Il ne faut mettre en place que les mesures nécessaires couvrant des risques identifiés.
+
+Cette norme fournit un cadre et de consolider les mesures à adopter. Cela améliore la politique  de sécurité dans son ensemble.</pre>
+</div>
+<div created="20181009132448885" modified="20181009133235752" tags="sécurité" title="ISO 27005">
+<pre>L'ISO 27005 est la norme sur la gestion du risque. C'est un consensus international autour des différentes méthodes comme EBIOS. C'est moins complet que les méthodes mais toutes les méthodes sont standardisés et compatible sur ce ISO. Les méthodes sont plus approfondies.
+
+!! Processus de gestion du risque :
+
+Comme déjà vu précédemment, il y a une utilisation de la roue de Deming (Plan, Do, Check, Act) qui rend la gestion du risque cyclique. Comme dans la méthode EBIOS, on a plusieurs étapes comme l'appréciation du risque et le traitement du risque. Dans l'appréciation du risque, il y a l'analyse des risques et l'évaluation des risques.
+
+Le processus de gestion du risque doit être reproductible et comparable.
+
+Dans les 55 pages, il y a 20 pages qui sont importantes dans la norme mais qui ne donnent pas beaucoup de détails.</pre>
 </div>
 <div created="20181012080109019" modified="20181012082028786" tags="sécurité" title="Java Cryptography Extension">
 <pre>!! Cipher
@@ -9513,8 +9867,9 @@ Lors du passage des lignes analogiques (électriques) au lignes téléphoniques 
 
 Afin de voir l'échelle du risque, on doit faire une [[appréciation du risque|Appréciation du risque]].</pre>
 </div>
-<div created="20181008121043098" modified="20181012130224962" tags="sécurité" title="Sécurité Informatique">
+<div created="20181008121043098" modified="20181013112355431" tags="sécurité" title="Sécurité Informatique">
 <pre>* [[Gestion des risques]]
+* [[Algorithme de chiffrement]]
 * [[Java Cryptography Extension]]
 * [[Droit et Numérique]]</pre>
 </div>
