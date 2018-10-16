@@ -183,6 +183,8 @@ Error message and password prompt
 
 <li>Besoin de sécurité</li>
 
+<li>BIC TCP</li>
+
 <li>Bien essentiel</li>
 
 <li>Bien support</li>
@@ -194,6 +196,8 @@ Error message and password prompt
 <li>Cognitive Radio</li>
 
 <li>Communication entre Beans</li>
+
+<li>Compound TCP</li>
 
 <li>Correction étude de cas société JVD</li>
 
@@ -212,6 +216,8 @@ Error message and password prompt
 <li>Garantie en réseau</li>
 
 <li>Gestion des risques</li>
+
+<li>HighSpeed TCP</li>
 
 <li>Impact</li>
 
@@ -272,6 +278,8 @@ Error message and password prompt
 <li>Vue d'ensemble de l'état actuel d'Internet</li>
 
 <li>WDM</li>
+
+<li>XCP</li>
 
 </ul>
 </p>
@@ -8854,7 +8862,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20181013112411899" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue [[La technologie EJB]] [[Transaction en EJB]] [[Session Beans]] [[Les arnaques en EJB]]" title="$:/StoryList">
+<div list="Bienvenue [[Réseau hauts débits et Qualité de service]] TCP XCP [[Compound TCP]] [[BIC TCP]] [[HighSpeed TCP]] [[TCP Tahoe]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -8870,19 +8878,19 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;https://deluvi.com/staticfiles/cours.html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Noe/Projets/websites/deluvi-blog/public/staticfiles/cours.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
-            &quot;text&quot;: &quot;deluvi.com&quot;
+            &quot;text&quot;: &quot;&quot;
         },
         &quot;$:/info/url/hostname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/hostname&quot;,
-            &quot;text&quot;: &quot;deluvi.com&quot;
+            &quot;text&quot;: &quot;&quot;
         },
         &quot;$:/info/url/protocol&quot;: {
             &quot;title&quot;: &quot;$:/info/url/protocol&quot;,
-            &quot;text&quot;: &quot;https:&quot;
+            &quot;text&quot;: &quot;file:&quot;
         },
         &quot;$:/info/url/port&quot;: {
             &quot;title&quot;: &quot;$:/info/url/port&quot;,
@@ -8890,7 +8898,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/staticfiles/cours.html&quot;
+            &quot;text&quot;: &quot;/C:/Users/Noe/Projets/websites/deluvi-blog/public/staticfiles/cours.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -8898,20 +8906,20 @@ Error message and password prompt
         },
         &quot;$:/info/url/origin&quot;: {
             &quot;title&quot;: &quot;$:/info/url/origin&quot;,
-            &quot;text&quot;: &quot;https://deluvi.com&quot;
+            &quot;text&quot;: &quot;null&quot;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1536&quot;
+            &quot;text&quot;: &quot;1920&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;864&quot;
+            &quot;text&quot;: &quot;1080&quot;
         }
     }
 }</pre>
 </div>
-<div created="20181002085000811" modified="20181013113013697" title="$:/temp/search">
+<div created="20181002085000811" modified="20181016161219373" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20181002173759197" modified="20181002173800281" title="$:/theme">
@@ -9083,6 +9091,17 @@ L'architecture orienté service est basé sur l'architecture orienté composant.
 * [[Disponibilité]]
 * [[Traçabilité]]</pre>
 </div>
+<div created="20181016163046787" modified="20181016163552757" tags="haut-debit" title="BIC TCP">
+<pre>Avec [[HighSpeed TCP]], on s’aperçoit que incrémenter de 1 est trop lent, mais incrémenter de plus de 1 est trop agressif et porte préjudice à d'autres connexions en concurrence.
+
+Au lieu de faire cela, BIC TCP a un concept bien différent. Au lieu d'incrémenter de manière fixe, on réalise des sauts. Ces sauts ont une grande longueur au début, mais la longueur est de plus en plus petite au fur et à mesure que l'on se rapproche du point que l'on pense être le point de rupture. On appelle cela la Binary Increase, et le protocole Binary Increase Congestion Control. BIC TCP ne résout toujours pas le problème des connexions à RTT différentes où la connexion avec le plus faible RTT dispose d'un bien meilleur débit.
+
+Il a été utilisé dans les noyaux Linux. Depuis, il a été amélioré avec CUBIC.
+
+!! CUBIC TCP
+
+CUBIC améliore BIC en ajoutant un mécanisme de reprise d'ascension : si on est resté un moment au point de rupture sans avoir subit la moindre perte, on recommence à monter très rapidement vers un point de rupture plus haut.</pre>
+</div>
 <div created="20181008154755689" modified="20181008161058544" tags="sécurité" title="Bien essentiel">
 <pre>Il s'agit des données ou des processus qui font la valeur de l'entreprise. Ce sont les biens à protéger des menaces. Ils sont sujets à des [[besoins de sécurités|Besoin de sécurité]].
 
@@ -9157,6 +9176,11 @@ Customer_managementRemote cm = (Customer_managementRemote)jndi_context.lookup(&q
 !! Déclarer une dépendence pour une vérification au déploiement
 
 Le serveur peut effectuer des vérifications pour nous pour vérifier si certains modules nécessaire à notre module sont déployés ou non. Pour cela, il faut éditer le fichier `ejb-jar.xml`. Cette déclaration est optionnelle et sert juste de vérification : elle n'est pas nécessaire pour appeler d'autres modules.</pre>
+</div>
+<div created="20181016163601747" modified="20181016163953165" tags="haut-debit" title="Compound TCP">
+<pre>Tout les protocoles TCP à présent n'ont pris en compte que la perte de paquet pour identifier la congestion d'un réseau. Si on y réfléchit, on dispose également du RTT de chaque paquet comme indicateur de congestion. Ainsi, si on constate un accroissement du RTT, on peut en déduire que le réseau devient congestionné. Ce concept a été étudié dans TCP Vegas. On a vite constaté que le débit obtenu était plus lent : le RTT n'est pas forcément le meilleur indicateur de congestion car plusieurs facteurs peuvent affecter le RTT.
+
+Compound TCP combine à la fois le facteur perte de paquet et le facteur délai pour faire un contrôle de la congestion. Microsoft est le détenteur de ce protocole et il l'a implémenté sur Windows. On ne dispose que de peu d'information vu que Windows n'est pas open-source. On sait néanmoins qu'il faut en théorie l'activer manuellement et qu'il n'est pas par défaut.</pre>
 </div>
 <div created="20181009081455904" modified="20181009132356146" tags="sécurité" title="Correction étude de cas société JVD">
 <pre>!!! Question 1
@@ -9596,6 +9620,13 @@ La charte de sécurité a une vocation de pédagogie aux employés et autres.
 
 Au contraire, la politique de sécurité est un document technique précis à destination des professionnels de la sécurité.</pre>
 </div>
+<div created="20181016162516051" modified="20181016163023454" tags="haut-debit" title="HighSpeed TCP">
+<pre>Le concept de HighSpeed TCP est d'adapter l'incrémentation et la décrémentation en fonction du taux de perte de paquets. Dans un taux de perte de paquets élevé, le comportement de HighSpeed TCP est quasiment identique à celui d'un TCP classique. Néanmoins, moins le taux de perte de paquets est élevé, plus vite HighSpeed TCP gagne du débit rapidement.
+
+Il existe différentes manières de mettre en relation le taux de perte de paquets et l'incrémentation et la décrémentation. Néanmoins, le principe est que plus le taux de perte est bas, plus l'incrément est grand et plus le décrément est petit.
+
+Le problème majeur de HighSpeed TCP est que dans le cas d'un conflit entre un TCP classique, HighSpeed TCP récupère toute la bande passante et ne cède qu'une toute petite partie à chaque fois à une nouvelle connexion. Le constat est le même dans le cas d'un conflit entre deux HighSpeed TCP car le dernier à démarrer aura le même comportement qu'un TCP classique.</pre>
+</div>
 <div created="20181008160642678" modified="20181008161034268" tags="sécurité" title="Impact">
 <pre>Un impact est une conséquence d'une trahison d'un besoin de sécurité. Un impact a une gravité variable selon l'impact</pre>
 </div>
@@ -9857,10 +9888,11 @@ Lorsque l'on tente d'implémenter du QOS au niveau réseau, on peut avoir des co
 Lors du passage des lignes analogiques (électriques) au lignes téléphoniques digitales (optiques), il a fallu trouver un moyen de synchronisation entre les deux supports, car la conversion ne s'est pas faite en un jour. Afin de synchroniser les différents supports, on dispose de protocoles de synchronisation. D'abord, il y a eu le protocole [[PDH]], très gourmand en bande passante. Ensuite, une amélioration a été développé : la norme [[SONET/SDH]], permettant l'arrivée de réseaux entièrement synchronisés.
 </pre>
 </div>
-<div created="20181002173644157" modified="20181003175424781" tags="haut-debit" title="Réseau hauts débits et Qualité de service">
+<div created="20181002173644157" modified="20181016164553220" tags="haut-debit" title="Réseau hauts débits et Qualité de service">
 <pre>* [[Vue d'ensemble de l'état actuel d'Internet]]
 * [[Qualité de service]]
-* [[TCP]]</pre>
+* [[TCP]]
+* [[Routeur et réseaux haut-débit]]</pre>
 </div>
 <div created="20181008155636961" modified="20181008163218153" tags="sécurité" title="Risque">
 <pre>Un risque provient d'une [[source de menace|Source de menace]] qui peut exercer une [[menace|Menace]] sur une [[vulnérabilité|Vulnérabilité]] d'un [[bien support|Bien support]]. Ces menaces menacent de trahir les [[besoins de sécurités|Besoin de sécurité]] des [[biens essentiels|Bien essentiel]]. Cette trahison de ces besoins de sécurités provoquent des [[conséquences ou impact|Impact]].
@@ -9899,7 +9931,7 @@ SONET/SDH permettent, contrairement à PDH, une synchronisation totale des flux 
 
 [img[https://puu.sh/BG1Uh/f98eb39751.png]]</pre>
 </div>
-<div created="20181003192125815" modified="20181003192907079" tags="haut-debit" title="TCP">
+<div created="20181003192125815" modified="20181016162224841" tags="haut-debit" title="TCP">
 <pre>TCP est LE protocole de transport fiable de l'Internet. Ce protocole apporte fiabilité, un concept de session, un contrôle de flux et un contrôle de la congestion. C'est le protocole de bout-en-bout arrivé au tout début d'Internet et qui est resté depuis le protocole à utiliser dès que l'on veut transmettre des données sans les perdre en route.
 
 !! Historique
@@ -9910,7 +9942,29 @@ En 1986, on a observé un premier effondrement d'Internet. En 1988, on a identif
 
 En 1990, on améliore TCP grâce à la version [[TCP Reno]].
 
-Il y a eu de nouvelles versions jusqu'à la version de 2004, TCP NewReno. Cette version est encore utilisée aujourd'hui en majorité dans nos systèmes d'exploitations. D'autres versions de TCP expérimentales sont disponible également.</pre>
+Il y a eu de nouvelles versions jusqu'à la version de 2004, TCP NewReno. Cette version est encore utilisée aujourd'hui en majorité dans nos systèmes d'exploitations. D'autres versions de TCP expérimentales sont disponible également.
+
+!! TCP et les grandes connexions
+
+Dans le cœur du réseau, on a typiquement des liens très grands et très rapides. Dans un lien à 2000 Mb/s, on observe que TCP New Reno n'arrive pas à utiliser la moitié du lien. Les réseaux hauts-débits sont donc des réseaux à grande capacité, et pas forcément à grande performance.
+
+On peut dans un premier temps optimiser les paramètres de TCP en ajustant :
+
+* la taille de la fenêtre de congestion : la valeur optimale de la fenêtre est égale à la bande passante * RTT.
+* le RTO timeout
+* S ACKs
+* la taille du paquet
+
+Néanmoins, on s'aperçoit assez vite que c'est l'incrémentation additive qui est trop lente dans le cas des très gros liens : dans un lien à 10 Gb/s, lorsque l'on atteint le point de saturation, on repasse à 5 Gb/s. On prend environs 1h40 pour récupérer les 10 Gb/s. Dans le cas des réseaux sans fils, la perte de paquet ne signifie pas forcément une saturation du réseau mais peut simplement provenir d'une mauvaise qualité du réseau.
+
+Une des solutions envisagée est de faire des connexions TCP en parallèle. Dans cette solution, le soucis principal est que les systèmes d'exploitations ne sont pas conçus pour prendre en charge une grande quantité de flux TCP, ce qui peut entraîner une surcharge.
+
+Une autre solution serait de concevoir une amélioration de ce protocole. Nous avons vu en cours ces protocoles-ci :
+
+* [[HighSpeed TCP]]
+* [[BIC TCP]]
+* [[Compound TCP]]
+* [[XCP]]</pre>
 </div>
 <div created="20181003200906974" modified="20181004100633643" tags="haut-debit" title="TCP Reno">
 <pre>TCP Reno est une itération de [[TCP Tahoe]]. Il implémente la mécanique de fast recovery :
@@ -9989,6 +10043,15 @@ On trouve le WDM à ses débuts dans la technologie [[PDH|PDH]], grâce à l'Add
 On retrouve également le WDM dans le protocole [[SONET/SDH|SONET/SDH]] dans les [[réseaux en circuits|Réseau en circuit]].
 
 A l'heure actuelle on parle même de Dense Wavelength Division Multiplexing (DWDM), exploitant les amplifieurs de fibre dopés à l'Erbium (EDFA), utilisés en remplacement des régénérateurs de signaux optique-électrique-optique (OEO) utilisés par SONET/SDH. Les amplificateur EDFA permettent de régénérer le signal optique sur les longues distances sans avoir a convertir le signal optique en signal électrique, ce qui présente un avantage considérable sur les liens très longue distance comme les câbles sous-marins.</pre>
+</div>
+<div created="20181016164009362" modified="20181016164501234" tags="haut-debit" title="XCP">
+<pre>XCP utilise une approche très différente des autres protocoles. Dans la plupart des protocoles TCP, on ne prend en compte que la source et la destination lorsque l'on conçoit le protocole. XCP veut utiliser les routeurs qui sont présents dans le réseau pour avoir une meilleure information sur le point de rupture.
+
+L'idée principale est qu'un hôte peut demander au routeur la capacité disponible du réseau sous la forme d'un feedback. Le feedback est calculé en gros comme ceci : Output rate - Input rate. Le feedback est donc sous la forme d'un nombre positif ou négatif. Si il est négatif, cela veut dire que le client consomme trop de ressources et devrait ralentir. Si il est positif, le client peut envoyer plus de données.
+
+Le problème principal de ce protocole est que le feedback est une valeur globale : le routeur donne la quantité de ressource disponible à tout le monde. Ainsi, pour agir, les hôtes devraient prendre en compte les autres hôtes sans savoir combien ils sont.
+
+Il existe une amélioration de XCP : XCP-r.</pre>
 </div>
 
 </div>
