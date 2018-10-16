@@ -8854,7 +8854,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20181013112411899" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="" title="$:/StoryList">
+<div list="Bienvenue [[La technologie EJB]] [[Transaction en EJB]] [[Session Beans]] [[Les arnaques en EJB]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -8870,19 +8870,19 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/No%C3%A9%20Baylac-Jacqu%C3%A9/Documents/Projets/deluvi.github.io/staticfiles/cours.html&quot;
+            &quot;text&quot;: &quot;https://deluvi.com/staticfiles/cours.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
-            &quot;text&quot;: &quot;&quot;
+            &quot;text&quot;: &quot;deluvi.com&quot;
         },
         &quot;$:/info/url/hostname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/hostname&quot;,
-            &quot;text&quot;: &quot;&quot;
+            &quot;text&quot;: &quot;deluvi.com&quot;
         },
         &quot;$:/info/url/protocol&quot;: {
             &quot;title&quot;: &quot;$:/info/url/protocol&quot;,
-            &quot;text&quot;: &quot;file:&quot;
+            &quot;text&quot;: &quot;https:&quot;
         },
         &quot;$:/info/url/port&quot;: {
             &quot;title&quot;: &quot;$:/info/url/port&quot;,
@@ -8890,7 +8890,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/No%C3%A9%20Baylac-Jacqu%C3%A9/Documents/Projets/deluvi.github.io/staticfiles/cours.html&quot;
+            &quot;text&quot;: &quot;/staticfiles/cours.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -8898,7 +8898,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/origin&quot;: {
             &quot;title&quot;: &quot;$:/info/url/origin&quot;,
-            &quot;text&quot;: &quot;null&quot;
+            &quot;text&quot;: &quot;https://deluvi.com&quot;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
@@ -8911,7 +8911,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20181002085000811" modified="20181013112410751" title="$:/temp/search">
+<div created="20181002085000811" modified="20181013113013697" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20181002173759197" modified="20181002173800281" title="$:/theme">
@@ -9873,14 +9873,14 @@ Afin de voir l'échelle du risque, on doit faire une [[appréciation du risque|A
 * [[Java Cryptography Extension]]
 * [[Droit et Numérique]]</pre>
 </div>
-<div created="20181002083344603" modified="20181002094451592" tags="ejb" title="Session Beans">
+<div created="20181002083344603" modified="20181013113252904" tags="ejb" title="Session Beans">
 <pre>Un session bean est un objet qui expose une interface utilisable par d'autres session beans qui sont extérieurs ou intérieur au serveur. Ils implémentent une interface locale (utilisable par les beans qui sont dans le même projet) et/ou remote (utilisable par tout les beans). L'interface locale doit disposer de l'annotation `@javax.ejb.Local` alors que l'interface remote doit disposer de l'annotation `@javax.ejb.Remote`. Pour que le serveur comprennent que l'interface est utilisé par un bean, il faut déclarer que le bean implémente l'interface via la mécanique `implements`.
 
 !! Différent types de session beans
 
-* Stateless : l'objet que l'on manipule n'est pas garanti d'être le même à chaque appel de business method. C'est le type de session bean le plus commun. Annotation à mettre pour la class : `@javax.ejb.Remote`.  Par convention, un bean stateless ne contient qu'une seule business method, mais rien ne nous empêche de mettre plusieurs méthode si le cœur nous en dit.
-* Stateful : au contraire de Stateless, Stateful nous garantit que l'objet manipulé est toujours le même entre deux appels de business method. Il est plus gourmand en terme de ressources que le stateless. Annotation à mettre pour la class : `@javax.ejb.Stateful`
-* Singleton : type un peu particulier, le singleton signifie que le bean n'est créé qu'une fois et cette instance est servie à tout les utilisateurs de ce bean. Ce bean a donc intérêt à supporter les appels de méthodes en parallèle pour qu'il soit efficace. Annotation à mettre pour la class : `@javax.ejb.Singleton`
+* Stateless : l'objet que l'on manipule n'est pas garanti d'être le même à chaque appel de business method. C'est le type de session bean le plus commun. Annotation à mettre pour la class : `@javax.ejb.Stateless`.  Par convention, un bean stateless ne contient qu'une seule business method, mais rien ne nous empêche de mettre plusieurs méthode si le cœur nous en dit.
+* Stateful : au contraire de Stateless, Stateful nous garantit que l'objet manipulé est toujours le même entre deux appels de business method. Il est plus gourmand en terme de ressources que le stateless. Annotation à mettre pour la class : `@javax.ejb.Stateful`.
+* Singleton : type un peu particulier, le singleton signifie que le bean n'est créé qu'une fois et cette instance est servie à tout les utilisateurs de ce bean. Ce bean a donc intérêt à supporter les appels de méthodes en parallèle pour qu'il soit efficace. Annotation à mettre pour la class : `@javax.ejb.Singleton`.
 
 !! Constructeur
 
