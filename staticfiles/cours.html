@@ -259,6 +259,8 @@ Error message and password prompt
 
 <li>Risque</li>
 
+<li>Routeur et réseaux haut-débit</li>
+
 <li>Sécurité Informatique</li>
 
 <li>Session Beans</li>
@@ -8862,7 +8864,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20181013112411899" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue [[Réseau hauts débits et Qualité de service]] TCP XCP [[Compound TCP]] [[BIC TCP]] [[HighSpeed TCP]] [[TCP Tahoe]]" title="$:/StoryList">
+<div list="Bienvenue [[Réseau hauts débits et Qualité de service]] [[Routeur et réseaux haut-débit]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -8878,19 +8880,19 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Noe/Projets/websites/deluvi-blog/public/staticfiles/cours.html&quot;
+            &quot;text&quot;: &quot;https://deluvi.com/staticfiles/cours.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
-            &quot;text&quot;: &quot;&quot;
+            &quot;text&quot;: &quot;deluvi.com&quot;
         },
         &quot;$:/info/url/hostname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/hostname&quot;,
-            &quot;text&quot;: &quot;&quot;
+            &quot;text&quot;: &quot;deluvi.com&quot;
         },
         &quot;$:/info/url/protocol&quot;: {
             &quot;title&quot;: &quot;$:/info/url/protocol&quot;,
-            &quot;text&quot;: &quot;file:&quot;
+            &quot;text&quot;: &quot;https:&quot;
         },
         &quot;$:/info/url/port&quot;: {
             &quot;title&quot;: &quot;$:/info/url/port&quot;,
@@ -8898,7 +8900,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Noe/Projets/websites/deluvi-blog/public/staticfiles/cours.html&quot;
+            &quot;text&quot;: &quot;/staticfiles/cours.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -8906,7 +8908,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/origin&quot;: {
             &quot;title&quot;: &quot;$:/info/url/origin&quot;,
-            &quot;text&quot;: &quot;null&quot;
+            &quot;text&quot;: &quot;https://deluvi.com&quot;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
@@ -8919,7 +8921,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20181002085000811" modified="20181016161219373" title="$:/temp/search">
+<div created="20181002085000811" modified="20181018142546988" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20181002173759197" modified="20181002173800281" title="$:/theme">
@@ -9898,6 +9900,66 @@ Lors du passage des lignes analogiques (électriques) au lignes téléphoniques 
 <pre>Un risque provient d'une [[source de menace|Source de menace]] qui peut exercer une [[menace|Menace]] sur une [[vulnérabilité|Vulnérabilité]] d'un [[bien support|Bien support]]. Ces menaces menacent de trahir les [[besoins de sécurités|Besoin de sécurité]] des [[biens essentiels|Bien essentiel]]. Cette trahison de ces besoins de sécurités provoquent des [[conséquences ou impact|Impact]].
 
 Afin de voir l'échelle du risque, on doit faire une [[appréciation du risque|Appréciation du risque]].</pre>
+</div>
+<div created="20181018125129358" modified="20181018151031621" tags="haut-debit" title="Routeur et réseaux haut-débit" type=" ">
+<pre>Pour que les paquets arrivent à la bonne destination, le réseau Internet est composé de routeurs. Ces routeurs connectent les sous-réseaux des bordures entre eux. De nos jours, Internet est composé de réseaux de routeurs qui relient les sous-réseaux privés. Les réseaux de routeurs publics sont quand à eux relié au coeur du réseau grâce à des interconnexions [[SONET/SDH]]. Dans l'environnement, on trouve les routeurs dans les points de présences des opérateurs. Un point de présence peut contenir plusieurs routeurs selon l'importance de ce point.
+
+Le routeur est composé de deux parties :
+
+* le plan de contrôle : il gère les protocoles de routage et la table de routage. C'est à lui qu'il faut demander sur quelle interface où envoyer un paquet.
+* le plan des données : ce sont les différentes interfaces. Ce plan gère la table de commutation ainsi que le transfert physique des données d'une interface à une autre.
+
+Dans la RFC qui contrôle IP, il est explicitement énoncé qu'un routeur doit être capable de prendre une décision pour la route d'un paquet (forwarding) et de transférer le paquet à l'interface appropriée (switching). On s'apperçoit que les deux plans répondent à ce besoin.
+
+Il est possible que les routeurs fassent des traitements spécifiques de paquets comme filtrer les paquets pour des raisons de sécurités, ajouter des priorités entre les paquets, maintenir des statistiques ou livrer des paquets avec un délai garanti. Néanmoins, faire ces traitements nécessitent d'identifier les différents flux à partir des paquets, ce qui est possible mais compliqué quand on doit gérer des millions de paquets à la seconde, ce qui est le cas des routeurs du cœur du réseau. On différencie les routeurs entre les flow-aware routers et les flow-unaware routers.
+
+On a vu que les processeurs ne peuvent pas suivre la vitesse nécessaire pour traiter des débits de plus en plus grand. Néanmoins, on a un autre élément du routeur qui est encore plus limitant : il s'agit de la vitesse d'accès de la mémoire vive. La vitesse d'accès n'a que très peu accéléré comparé au routeur ou à d'autres composants. Ainsi, cela va devenir un problème.
+
+!! Générations de routeurs
+
+Une des grandes problématiques est de pouvoir transférer les données d'une interface à une autre. 3 générations de routeurs ont essayé de résoudre ce problème en utilisant des architectures différentes.
+
+!!! Première génération
+
+La première génération disposait d'une mémoire partagée entre toutes les interfaces. Cette mémoire servait à transférer les paquets entre les interfaces. Comme dit précédemment, l'élément bloquant de ce genre d'appareils est le temps des accès mémoires. Ainsi, cette architecture n'est utilisée que par les switchs ethernet ou les routeurs peu cher, car elle reste peu cher et avec les composants actuels, il est possible de router suffisamment de paquets pour des particuliers ou des petits réseaux.
+
+!!! Seconde génération
+
+Dans la seconde génération, chaque interface dispose de sa propre mémoire individuelle. Les communications entre les interfaces se font grâce à un bus de données. Chaque interface de sa table de commutation en cache.
+
+!!! Troisième génération
+
+Dans la troisième génération, les communications entre interfaces se font grâce à des switchs optimisés pour router des données en parallèle, tant que deux interfaces ne veulent pas transférer à une même interface en même temps.
+
+Un des switchs est le crossbar. Soit N interfaces. Le crossbar contient N*N croisements. Cela permet de faire autant de transfert de données en parallèles qu'on veut. Le problème principal du crossbar est qu'il nécessite donc N*N croisements, ce qui rend le composant complexe, mais également long à configurer quand on rajoute de plus en plus d'interfaces.
+
+Un autre type de switch peut être basé sur l'architecture Banyan. Cette architecture repose sur des composants qui routent les données différemment selon l'étiquette que l'on a fourni. Par exemple, si le bit est 0, le composant route vers le haut, si le bit est 1, le composant route vers le bas. Ainsi, on ajoute au début de notre envoi de données l'identifiant de l'interface avec laquelle on veut communiquer. Ces composants vont permettre de communiquer avec l'interface correcte. Cette architecture n'a pas besoin d'être reconfiguré en direct pour router correctement les données : cela le fait tout seul.
+
+Néanmoins, l'architecture Banyan rajoute des soucis de concurrence. En effet, deux flux de données peuvent passer par le même composant et doivent prendre le même chemin à partir de ce composant. Ce problème a été résolu dans l'architecture Batcher-Banyan.  Dans cette architecture, on rajoute un pré-traitement avec de rentrer dans le switch Banyan. Ce pré-traitement contient des composants qui routent les flux différemments selon si il n'y a qu'un flux ou deux flux qui tentent d'accéder au composant : si le flux est seul, il va dans le sens inverse d'une flèche déterminé. Si deux flux accèdent au composant, ils sont séparés dans les deux sens de manière déterministe (le flux avec le plus grand bit suit la direction de la flèche).
+
+!! Circuit virtuel
+
+Un autre problème des routeurs d'aujourd'hui est le lookup des paquets. Comme on n'identifie aucun flux, il faut traiter chaque paquets indépendamment. Ainsi, à chaque paquets, il faut lire l’adresse du paquet, en déduire la commutation à faire et la réaliser. Cette opération est d'autant plus longue avec l'apparition du CIDR. Le CIDR signifie qu'il n'y a plus de classes d’adresses prédéterminé. Ainsi, cela peut causer des conflits dans la table de routage où un réseau peut être dans un autre réseau plus grand. La règle est de prendre l'adresse réseau qui correspond à l'adresse de la machine avec le CIDR le plus bas. Ainsi, il faut parcourir toute la table de routage pour voir si il n'y a pas d'adresse réseau correspondant avec un CIDR plus bas, pour chaque paquet.
+
+Avec ces problèmes, certaines personnes ont remis en cause le réseau IP dans son concept : il serait plus simple d'identifier des flux : cela permettrait de ne faire le routage que pour le premier paquet et de faire passer les autres paquets appartenant au même flux par le même chemin, sans faire de calculs : on réalise des circuits virtuels.
+
+En pratique, chaque routeur maintient une pile d'étiquette. Cette pile permet de ne pas avoir d'étiquettes en doublons au sein du même routeur. Le routeur maintient également une table d'étiquettes. Cette table contient quatre colonnes :
+
+| !Etiquette entrée | !Interface entrée | !Etiquette sortie | !Interface sortie |
+
+Cette table permet de savoir quelle interface prendre et quelle étiquette donner au paquet dans le cas où on reçoit un paquet avec une étiquette spécifique dans une entrée spécifique.
+
+Pour disposer d'une entrée dans ce tableau, on envoie en premier lieu une demande de connexion. Cette demande contient l'étiquette donnée à cette partie du flux par l'hôte. Lors de cette demande de connexion, le routeur effectue le routage et en déduit vers quelle interface envoyer le flux. Le paquet de demande de connexion est passé au routeur suivant en modifiant l'étiquette pour en prendre une dans la pile des étiquettes libres et met à jour le tableau pour inclure la nouvelle valeur.
+
+Dans le cas où un lien qu'utilisait le flux est cassé, le client peut décider de refaire de lui-même une demande de connexion s'il ne reçoit plus de données. De nos jours, les liens ont une durée de vie beaucoup plus grande que les flux, donc ce processus sera utilisé de manière exceptionnelle.
+
+VP (Virtual Path) et VC (Virtual Circuit) : on peut diviser l'étiquette en deux parties.
+
+!! Routeurs en fibre optique
+
+En premier lieux, pour faire communiquer des routeurs par la fibre optique, on convertit le signal électrique en signal lumineux d'un côté et on fait l'inverse de l'autre côté à chaque communication entre routeurs. Cette conversion prend du temps, ce qui peut emmener de la latence mais aussi du travail supplémentaire aux routeurs.
+
+Dans l'idée, on pourrait disposer de routeurs qui fonctionnent entière en optique, sans transformation intermédiaires pour effectuer un traitement. Cela pourrait être possible dans le cas du routage par circuits virtuels, où les étiquettes seraient des couleurs différentes. Si un signal avec une certaine couleur arrive à une certaine interface, alors on redirige ce signal vers cette interface avec cette couleur. Il existe aujourd'hui des technologies qui permettraient d'effectuer ce traitement sans convertir le signal lumineux en signal électrique mais en effectuant les transformations directement dans le signal lumineux.</pre>
 </div>
 <div created="20181008121043098" modified="20181013112355431" tags="sécurité" title="Sécurité Informatique">
 <pre>* [[Gestion des risques]]
