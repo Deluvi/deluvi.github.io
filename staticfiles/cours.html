@@ -133,6 +133,8 @@ Error message and password prompt
 
 <p>This <a class="tc-tiddlylink-external" href="https://tiddlywiki.com" rel="noopener noreferrer" target="_blank">TiddlyWiki</a> contains the following tiddlers:</p><p><ul>
 
+<li>$:/config/RelinkOnRename</li>
+
 <li>$:/core</li>
 
 <li>$:/DefaultTiddlers</li>
@@ -215,6 +217,8 @@ Error message and password prompt
 
 <li>Etat des technologies sans-fil</li>
 
+<li>Files de paquets</li>
+
 <li>Garantie en réseau</li>
 
 <li>Gestion des risques</li>
@@ -222,6 +226,8 @@ Error message and password prompt
 <li>HighSpeed TCP</li>
 
 <li>Impact</li>
+
+<li>Introduction à la qualité de service</li>
 
 <li>ISO 27001-27002</li>
 
@@ -299,6 +305,9 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
+<div created="20181024122507006" modified="20181024122507006" title="$:/config/RelinkOnRename">
+<pre>yes</pre>
+</div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.17">
 <pre>{
     &quot;tiddlers&quot;: {
@@ -8870,7 +8879,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20181013112411899" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue [[Sécurité Informatique]] [[Gestion des risques]] Anglais [[Vocabulaire M2]] [[Vocabulaire M1]]" title="$:/StoryList">
+<div list="Bienvenue [[Réseau hauts débits et Qualité de service]] [[Qualité de service]] [[Files de paquets]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -8886,7 +8895,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/No%C3%A9%20Baylac-Jacqu%C3%A9/Documents/Projets/deluvi.github.io/staticfiles/cours.html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Noe/Documents/Cours/M2/cours.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -8906,7 +8915,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/No%C3%A9%20Baylac-Jacqu%C3%A9/Documents/Projets/deluvi.github.io/staticfiles/cours.html&quot;
+            &quot;text&quot;: &quot;/C:/Users/Noe/Documents/Cours/M2/cours.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -8918,11 +8927,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1536&quot;
+            &quot;text&quot;: &quot;1920&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;864&quot;
+            &quot;text&quot;: &quot;1080&quot;
         }
     }
 }</pre>
@@ -9582,6 +9591,60 @@ La plupart des technologies de communications reposent sur des communications ''
 * [[Beam Forming]]
 * [[Cognitive Radio]]</pre>
 </div>
+<div created="20181024164322518" modified="20181024164339965" tags="haut-debit" title="Files de paquets">
+<pre>Dans un routeur, il faut gérer les files de paquets qui sont en attente d'être transmis. On peut  gérer les files en utilisant différentes ''disciplines de files''. On les définit par 2 éléments : l'''ordonnancement'' et la ''gestion de la file''.
+
+Naïvement, on a tendance à utiliser l'ordonnancement FIFO (First In, First Out). Le problème majeur de cette gestion de file est qu'il est impossible de faire de la qualité de service sur la file car tout les paquets se retrouvent dans la même file : on a donc du chacun pour soi, le contraire de la qualité de service. Comme gestion de file, on a tendance à utiliser le drop-tail : si la file est pleine, on oublie le paquet qui vient d'arriver. Le problème majeur de cette gestion de file est que le routeur va avoir tendance à exclure énormément de paquets venant du même flux car les paquets ont tendance à arriver en rafale, particulièrement dans le cas d'une connexion TCP.
+
+!! Gestion de files
+
+Ainsi, on peut en déduire notre gestionnaire de file idéal. Il devrait :
+
+* éviter la synchronisation
+** Drop aléatoire : dropper un paquet choisi aléatoirement
+** Drop front : dropper le paquet à la tête de la queue.
+* gérer les rafales de paquets
+** Early drop : dropper avant que la file soit pleine. Il ne faut pas dropper les paquets trop tôt car la file peut être juste surchargé sur le moment et pas en général.
+* Flux gourmand contre les flux fragiles
+** Dropper des paquets proportionnellement à l'occupation des paquets du flux dans la file
+** Protection des flux fragiles (petits flux) contre la perte de paquet (classification)
+* Dropper vs marquer les paquets
+
+!!! RED
+
+Pour le early drop, il existe un algorithme de gestion de file appelé RED (Random Early Detection). On divise les paquets en différentes classes. Pour chaque classe, on définit un seuil d'occcupation de file minimal et maximal. Si le taux d'occupation de file est plus petit que le taux d'occupation minimal, on laisse passer tout les paquets. Si le taux d'occupation de file est plus grand que le seuil d'occupation maximal, on jette tout les paquets entrant. Si le taux d'occupation de file se situe entre les deux, on jette les paquets selon une loi de probabilité qui fait que plus on se rapproche du seuil d'occupation maximum, plus on jette de paquets (voir le graphique dans QOS scheduling du prof).
+
+RED ne résout pas tout les problèmes :
+
+* il ne protège pas les flux fragiles.
+* il peut y avoir une grande oscillation d'occupation de la file quand il y a des changements de chargements.
+* c'est extrêmement sensible aux paramètres.
+* cela n'isole pas les flux efficacement.
+
+RED peut être utilisé avec différent seuils selon la classe de paquet utilisé.
+
+Une amélioration de RED a été réalisé : REM. La loi de probabilité a été ajusté pour améliorer les performances sans atteindre le point de rupture.
+
+!! Ordonnancement (scheduling)
+
+L'ordonnancement consiste à décider quel paquet envoyer et quand à l'interface de sortie.
+
+Le mécanisme principal est de diviser les paquets en différentes classes et de créer des files différentes pour chaque classe. On peut définir des priorités à chaque classe et donc faire un ordonnancement par priorité en envoyant d'abord les paquets qui ont la plus grande priorité.
+
+!!! Round robin
+
+Un algorithme plus développé est le Round Robin (RR) : chaque file dispose de son temps d'envoi égal et on prend des paquets de chaque file en tournant. Par exemple, si on a 3 files et on a un Round Robin d'un cycle de 300ms, on prend 100ms pour envoyer les paquets d'une file, puis 100ms pour envoyer les paquets de l'autre file puis 100ms pour envoyer les paquets de la troisième file. Puis on recommence du début.
+
+Le problème du Round Robin est qu'il ne donne pas de priorité à une file particulière, contrairement au Weighted Round Robin (WRR). Dans cette version, on donne un poids à chaque file. La somme de tout les poids fait 1 au total, le poids correspond donc à la proportion du cycle occupé par une file.
+
+L'avantage principal du Round Robin est qu'il propose une isolation des flux efficaces : les flux qui ne se comportent pas correctement sont séparés des autres flux.
+
+!!! Generalize Processor Sharing (GPS)
+
+Le GPS est comme un Round Robin : il y a plusieurs files et on sert les différentes files en distribuant. Le GPS suppose que le flux est fluide : il suppose qu'il n'y a qu'une série de bit, et non pas des paquets comme en réalité. Il n'est pas implémentable en tant que tel. A la place, on fait une approximation de ce système en le simulant : on se demande quel paquet serait passé en premier dans un tel système, et on procède alors à transférer ce paquet là. Puis, en suivant la simulation du système, on transfère le prochain paquet qui serait passé théoriquement.
+
+On appelle cette simulation de Fair Queuing (FQ). Comme avec le Round Robin, on a un équivalent qui dispose des poids : le Weighted Fair Queueing.</pre>
+</div>
 <div created="20181003183720786" modified="20181003184145895" tags="haut-debit" title="Garantie en réseau">
 <pre>La garantie peut être défini par un spectre avec deux extrémités.
 
@@ -9642,6 +9705,31 @@ Le problème majeur de HighSpeed TCP est que dans le cas d'un conflit entre un T
 </div>
 <div created="20181008160642678" modified="20181008161034268" tags="sécurité" title="Impact">
 <pre>Un impact est une conséquence d'une trahison d'un besoin de sécurité. Un impact a une gravité variable selon l'impact</pre>
+</div>
+<div created="20181003180448023" modified="20181024122508476" tags="haut-debit" title="Introduction à la qualité de service">
+<pre>La Qualité de Service (ou QOS pour Quality Of Service), c'est essayer d'apporter des [[Garantie en réseau]]. En effet, sur Internet, on ne dispose d'aucune garanties.
+
+Néanmoins, Internet a besoin de résoudre quelques problèmes pour être efficace :
+
+* isolation : le voisin ne doit pas nous affecter.
+* protection (résilience) : si un noeu est coupé, le réseau ne se coupe pas.
+* bande passante : plus grande la bande passante, plus rapide le réseau est.
+* délai (ping) : les paquets doivent se transmettre rapidement d'un bout à l'autre du réseau;
+
+On peut réaliser du QOS à deux niveaux :
+
+* [[QOS au niveau applicatif]]
+* [[QOS au niveau réseau]]
+
+A l'origine, le réseau Internet était construit sur un [[Réseau en circuit]].
+
+Le coeur d'Internet en lui-même n'a aucun problème : il est surdimensionné comparé aux besoins. La congestion survient au bord du réseau, là où les liens et les routeurs sont beaucoup moins performant. C'est donc la liaison entre l'utilisateur et le coeur qui est saturé.
+
+[[Protocole IP]]
+
+[[Edge Computing]]
+
+Lorsque l'on tente d'implémenter du QOS au niveau réseau, on peut avoir des conflits entre [[QOS et Neutralité du Net]].</pre>
 </div>
 <div created="20181009140648142" modified="20181009150009230" tags="sécurité" title="ISO 27001-27002">
 <pre>Les normes ISO27001-27002 proposent de mettre en œuvre un SMSI.
@@ -9870,30 +9958,89 @@ Un exemple d'utilisation de ce QOS au niveau réseau est le réencodage d'un flu
 <div created="20181003185050978" modified="20181003185241563" tags="haut-debit" title="QOS et Neutralité du Net">
 <pre>La neutralité du net est la raison de pourquoi Internet est si simple. Cette simplicité nous empêche de faire [[des garanties|Garantie en réseau]]. Néanmoins, cette simplicité a fait son succès que l'on connait aujourd'hui. On est indépendant du réseau : on est donc plus libre dans le développement d'application car on n'attend aucune fonctionnalité du réseau autre le routage. Cela accélère également le développement du réseau.</pre>
 </div>
-<div created="20181003180448023" modified="20181003192011439" tags="haut-debit" title="Qualité de service">
-<pre>La Qualité de Service (ou QOS pour Quality Of Service), c'est essayer d'apporter des [[Garantie en réseau]]. En effet, sur Internet, on ne dispose d'aucune garanties.
+<div created="20181024163959882" modified="20181024164600320" tags="haut-debit" title="Qualité de service">
+<pre>!! Contrôle de la congestion
 
-Néanmoins, Internet a besoin de résoudre quelques problèmes pour être efficace :
+Dans internet, à partir d'un moment où un lien n'est pas suffisamment grand pour accueillir l'ensemble du trafic qui passe, un phénomène de congestion survient où des paquets sont perdu car ils ont dû faire de la place pour les nouveaux paquets entrant.
 
-* isolation : le voisin ne doit pas nous affecter.
-* protection (résilience) : si un noeu est coupé, le réseau ne se coupe pas.
-* bande passante : plus grande la bande passante, plus rapide le réseau est.
-* délai (ping) : les paquets doivent se transmettre rapidement d'un bout à l'autre du réseau;
+Si on trace une courbe, on s'apperçoit que plus on s'approche du point de saturation, plus les paquets prennent du temps à être routé et moins le débit augmente (knee), jusqu'à ce qu'on arrive au point de rupture où on n'a plus aucun débit car le routeur reçoit tellement de paquets qu'il n'a même plus le temps d'en envoyer (cliff). Dans ce cas-là, le système s'écroule, impossible de router quoi que ce soit tant qu'il y a autant de paquets envoyés : c'est un cercle vicieux. (Voir graphique sur QOS scheduling du prof)
 
-On peut réaliser du QOS à deux niveaux :
+Le but est donc d'augmenter le débit le plus possible mais s'arrêter avant pour ne pas dépasser le point de rupture qui provoque un écroulement du réseau. Pour cela, on a besoin de feedback du réseau. Par exemple, TCP repose sur la détection de perte du paquet pour détecter une congestion.
 
-* [[QOS au niveau applicatif]]
-* [[QOS au niveau réseau]]
+Le contrôle de la congestion peut se faire de deux manières :
 
-A l'origine, le réseau Internet était construit sur un [[Réseau en circuit]].
+* Réactive : quand la congestion est détecté, une réaction se fait (TCP par exemple).
+* Préventive : une réaction est faite avant la congestion car un feedback nous l'informe (un noeud émet des informations).
 
-Le coeur d'Internet en lui-même n'a aucun problème : il est surdimensionné comparé aux besoins. La congestion survient au bord du réseau, là où les liens et les routeurs sont beaucoup moins performant. C'est donc la liaison entre l'utilisateur et le coeur qui est saturé.
+Le contrôle de la congestion peut se faire à deux endroits différents :
 
-[[Protocole IP]]
+* Bout à bout (end-to-end) : le network est vu comme une boîte noire, on ne considère que seul les bouts peuvent faire des feedbacks (TCP par exemple)
+* Assisté par le réseau (Router-assisted) : les routeurs qui composent le réseau envoit un feedback de l'état de congestion actuel : les routeurs peuvent retourner un feedback.
 
-[[Edge Computing]]
+On a vu que TCP ne marche pas très bien dans le cas des communications sans-fils : la perte de paquet dans ces conditions ne signifie pas forcément une congestion du réseau mais tout simplement une mauvaise qualité du signal à cause d'interférences ou autre. Et il s'avère qu'on perd des paquets beaucoup plus souvent à cause de la qualité de transmission qu'à cause d'une congestion. On peut résoudre ce problème en renvoyant l'état de congestion du routeur par exemple. On peut également utiliser d'autres channels pour détecter la congestion ou mesurer la fidélité du réseau en comparant aux déclarations d'une autre source.
 
-Lorsque l'on tente d'implémenter du QOS au niveau réseau, on peut avoir des conflits entre [[QOS et Neutralité du Net]].</pre>
+!! Principe de qualité de service
+
+Pour que Internet évolue indépendamment du réseau, on est toujours parti du principe que le réseau est comme une boîte noire qui peut perdre les paquets. C'est aux protocoles end-to-end de prendre en compte ce risque. Ils supposent que le réseau Internet est en best-effort.
+
+Néanmoins, nous allons voir qu'au sein du réseau, des protocoles ont été évolués pour essayer de faire des garanties.
+
+Pour faire de la qualité de service, on dispose de 4 principes essentiels :
+
+# Les paquets peuvent être distingués et séparés en différentes classes : les routeurs peuvent être configuré pour traiter les paquets de différentes classes différemment (par exemple, donner la priorité à certains types de paquets) : c'est la ''classification''
+# Une classe est isolée de l'autre, il ne faut pas qu'une classe provoque des ralentissements à une autre classe car elle ne se comporte pas convenablement : c'est l'''isolation''.
+# Même si le trafic est isolé, il faudrait utiliser dans l'idéal le lien au maximum de sa capacité : c'est l'''optimisation de l'utilisation des ressources''.
+# Si il y a une demande impossible à réaliser (réserver 3 mb/s sur un lien à 2 mb/s), il faut la refuser : c'est l'''admissions''.
+
+Ces 4 principes sont les piliers de la qualité de service.
+
+!! [[Files de paquets]]
+
+Il est possible d'appliquer du QOS dans la gestion des [[Files de paquets]] des routeurs. Voir la page particulière du wiki
+
+!! Spécification de la qualité de service
+
+On peut quantifier la qualité de service à l'aide de différents critères :
+
+* le taux de perte.
+* le délai.
+* la nervosité du délai : la différence maximum entre deux délais de deux paquets d'un même flux.
+* la bande passante.
+* la garantie sur le spectre de la qualité de service : Best Effort &lt;-------&gt; Leased Line.
+
+Hard Real Time : le réseau est garantie de disposer d'un délai de réponse dans une limite haute.
+
+Soft Real Time : le réseau garantit les mêmes performances qu'un client en best effort sans surcharge.
+
+Dans les deux cas, le client s'engage à ne pas envoyer plus que dans l'accord. Il y a une notion de contrat : le QOS contient donc à la fois des garanties mais également des contraintes.
+
+Pour limiter le flux d'un client, il faut pouvoir quantifier et limiter le flux de l'utilisateur. Un exemple de modèle qui permet de limiter est le Token Bucket. On peut également limiter le trafic au niveau du routeur en utilisant un service model.
+
+!!! Token Bucket
+
+On peut caractériser un token bucket par 3 paramètres (b,R,C):
+
+* la contenance du bucket b mesurée en token.
+* le taux de remplissage du bucket R mesurée en token/s.
+* la capacité du lien sortant C mesurée en bit/s.
+
+Le principe du token bucket est que quand on veut envoyer des données, on vérifie que le token bucket contient des tokens. Si il contient suffisamment de tokens pour les données que l'on veut envoyer. On peut dépasser le débit R tant qu'il reste des tokens dans le bucket. Si le bucket est vide, on doit attendre qu'il se remplit. Le token bucket se remplit constammment avec une vitesse égale au taux de remplissage R.
+
+Le principal avantage du token bucket est, comme dit précédemment, que l'on peut prédire le débit maximum de l'utilisateur (effet d'enveloppe).
+
+!!! Service model
+
+Il s'agit de moyen de caractériser la relation entre trafic disponible, trafic envoyé, et d'autres processus externes.
+
+[ext[AUSKUUUUR|https://youtu.be/9UJkq95DtYo?t=15m30s]] (Veuillez m'aider à remplir, j'ai rien compris aux diapos)
+
+!! Solution QOS Stateless et Stateful
+
+Les solutions stateless ne gardent pas un état du trafic. Cela apporte des routeurs scalable et robustes mais hélas des services limités.
+
+Les solutions stateful maintiennent un état du trafic. Donc, au contraire du stateless, on peut faire des services plus intelligent comme de la garantie de service, une meilleure différentiation ou apporter de la protection au réseau. C'est donc moins scalable et moins robuste.
+
+Integrated Services (IntServ) apporte une solution stateful de QOS. Cela consiste à réserver des ressources qui seront maintenues par les routeurs du réseau.</pre>
 </div>
 <div created="20181003184741144" modified="20181004205848745" tags="haut-debit" title="Réseau en circuit">
 <pre>Avant le réseau en paquet que l'on utilise aujourd'hui pour Internet, il y avait le réseau téléphonique basé sur les réseaux en circuit. Si on voulait communiquer avec quelqu'un par téléphone, on réservait un circuit de bout en bout afin de faire un canal de communication continu. Ainsi, la ressource était réservé tout au long de la communication jusqu'à que quelqu'un raccroche.
@@ -9901,11 +10048,12 @@ Lorsque l'on tente d'implémenter du QOS au niveau réseau, on peut avoir des co
 Lors du passage des lignes analogiques (électriques) au lignes téléphoniques digitales (optiques), il a fallu trouver un moyen de synchronisation entre les deux supports, car la conversion ne s'est pas faite en un jour. Afin de synchroniser les différents supports, on dispose de protocoles de synchronisation. D'abord, il y a eu le protocole [[PDH]], très gourmand en bande passante. Ensuite, une amélioration a été développé : la norme [[SONET/SDH]], permettant l'arrivée de réseaux entièrement synchronisés.
 </pre>
 </div>
-<div created="20181002173644157" modified="20181016164553220" tags="haut-debit" title="Réseau hauts débits et Qualité de service">
+<div created="20181002173644157" modified="20181024163934238" tags="haut-debit" title="Réseau hauts débits et Qualité de service">
 <pre>* [[Vue d'ensemble de l'état actuel d'Internet]]
-* [[Qualité de service]]
+* [[Introduction à la qualité de service]]
 * [[TCP]]
-* [[Routeur et réseaux haut-débit]]</pre>
+* [[Routeur et réseaux haut-débit]]
+* [[Qualité de service]]</pre>
 </div>
 <div created="20181008155636961" modified="20181008163218153" tags="sécurité" title="Risque">
 <pre>Un risque provient d'une [[source de menace|Source de menace]] qui peut exercer une [[menace|Menace]] sur une [[vulnérabilité|Vulnérabilité]] d'un [[bien support|Bien support]]. Ces menaces menacent de trahir les [[besoins de sécurités|Besoin de sécurité]] des [[biens essentiels|Bien essentiel]]. Cette trahison de ces besoins de sécurités provoquent des [[conséquences ou impact|Impact]].
