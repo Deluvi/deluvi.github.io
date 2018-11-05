@@ -263,6 +263,10 @@ Error message and password prompt
 
 <li>Qualité de service</li>
 
+<li>Questions récurrentes pour réseau haut débits</li>
+
+<li>Questions récurrentes pour sécurité informatique</li>
+
 <li>Réseau en circuit</li>
 
 <li>Réseau hauts débits et Qualité de service</li>
@@ -8881,7 +8885,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20181013112411899" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue [[Réseau hauts débits et Qualité de service]] [[Différentiation de service sur Internet]]" title="$:/StoryList">
+<div list="Bienvenue [[Sécurité Informatique]] [[Questions récurrentes pour sécurité informatique]] [[Réseau hauts débits et Qualité de service]] [[Questions récurrentes pour réseau haut débits]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -8897,19 +8901,19 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Noe/Projets/websites/deluvi-blog/public/staticfiles/cours.html&quot;
+            &quot;text&quot;: &quot;https://deluvi.com/staticfiles/cours.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
-            &quot;text&quot;: &quot;&quot;
+            &quot;text&quot;: &quot;deluvi.com&quot;
         },
         &quot;$:/info/url/hostname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/hostname&quot;,
-            &quot;text&quot;: &quot;&quot;
+            &quot;text&quot;: &quot;deluvi.com&quot;
         },
         &quot;$:/info/url/protocol&quot;: {
             &quot;title&quot;: &quot;$:/info/url/protocol&quot;,
-            &quot;text&quot;: &quot;file:&quot;
+            &quot;text&quot;: &quot;https:&quot;
         },
         &quot;$:/info/url/port&quot;: {
             &quot;title&quot;: &quot;$:/info/url/port&quot;,
@@ -8917,7 +8921,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Noe/Projets/websites/deluvi-blog/public/staticfiles/cours.html&quot;
+            &quot;text&quot;: &quot;/staticfiles/cours.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -8925,7 +8929,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/origin&quot;: {
             &quot;title&quot;: &quot;$:/info/url/origin&quot;,
-            &quot;text&quot;: &quot;null&quot;
+            &quot;text&quot;: &quot;https://deluvi.com&quot;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
@@ -10109,19 +10113,220 @@ Les solutions stateful maintiennent un état du trafic. Donc, au contraire du st
 
 Integrated Services (IntServ) apporte une solution stateful de QOS. Cela consiste à réserver des ressources qui seront maintenues par les routeurs du réseau.</pre>
 </div>
+<div created="20181105191900584" modified="20181105192947503" tags="haut-debit" title="Questions récurrentes pour réseau haut débits">
+<pre>''Quelle est la technologie qui fait que le débit brut n’est plus un problème dans les réseaux de cœurs en fibre optique des opérateurs ? Expliquer le principe.''
+
+WDM : Multiplexage à longueur d’onde : Utiliser plusieurs couleurs  pour les signaux afin de ne pas mélanger.
+
+''Le FTTH (Fiber To The Home) a été vu comme la solution pour permettre aux résidentiels d’avoir du haut débit. Pourquoi n’est-ce pas forcément acquis maintenant ?''
+
+Il pose le problème des boucles locales radios. Donc la fibre n’est plus la solution.
+
+''Pourquoi  la notion de circuit permet-elle de simplifier un certain nombre de paramètres de fonctionnements d’un réseau ? Lesquels ?''
+
+Car elle repose sur le principe de 2 voies de transmission ce qui permet une communication mutuelle en garantissant la réservation des ressources (Circuit bout en bout / Même chemin)
+
+''Même si l’Internet actuel offre des débits assez rapides, quelles sont les fonctionnalités qu’il n’offre pas du tout ?''
+
+Garantir le débit, taux de perte, latence, modèles de communication.
+
+''Expliquer pourquoi  802.15.4 est-il plus adapté aux capteurs/objets sans fils que 802.11 par exemple ? ''
+
+Car elle a un faible débit de consommation d’énergie avec une modulation robuste pour récupérer les erreurs au détriment du débit.
+
+''Qu’est ce que le « link budget » ?''
+
+La somme des gains et des pertes (atténuations) ; Pr doit être supérieure à la sensibilité du récepteur pour la bonne détection.
+
+''Qu’apporte 6LowPan à l’Internet des objets ?''
+
+C’est une méthode qui permet de compresser les entêtes des @IPv6 afin de permettre aux objets à faibles ressources de se connecter à Internet.
+
+''Expliquer les problèmes posés par un système PDH ? ''
+
+La désynchronisation (sur débit) ce qui nécessite un démultiplexage séquentiel.
+
+''Les opérateurs télécoms ont très rapidement adopté la technologie SONET/SDH à cause de sa capacité de résilience. Expliquer ce principe de résilience et comment il est mis on œuvre. Quel type de multiplexage utilise SONET/SDH ?''
+
+Le principe de résilience consiste dans le fait de pouvoir résilier un anneau sans altérer le fonctionnement des autres si jamais un lien se casse. Type de multiplexage : Temporel.
+
+''Expliquer le principe utilisé par les méthodes FEC (Forward Error Correction) pour corriger les erreurs dans le cas de trafic multimédia ne pouvant pas être retransmis. Réalisez un exemple montrant ce principe.''
+
+Le principe : Corriger les erreurs dans un trafic multimédia qui n’arrive pas à se transmettre.
+
+* Exemple 1 : Interleaving : L’envoie des paquets Audio ; au lieu d’envoyer des paquets audio en séquence, mélanger puis transmettre les paquets avec des échantillons mélangés, si un paquet se perd il n’impactera pas une suite d’échantillon.
+* Exemple 2 : Paquets de contrôle construit à partir des paquets de données avec des opérations : C1= x1⊕ x2⊕x3, si x1 est perdu, possibilité de le récupérer par l’équation  x1 = c1⊕x2⊕x3.
+
+''Expliquer ce que l’on entend par « Net Neutrality » ? Qu’a-t-il apporté dans le développement de l’Internet ?''
+
+C’est un réseau considéré comme une boite noire, il garantit l’envoie de tous les flux de données d’une source à une  destination sans se préoccuper du contenu de l’information transmise.
+
+Son apport à Internet : En découplant l’évolution du réseau par rapport aux applications, elles implémentent ce qu’elles veulent sans s’occuper de ce qui va fournir le réseau. Inconvénient : Implémenter d’une manière redondante certaines fonctions. Avantage : Négligence de l’évolution du réseau.
+
+''Quel est le principal avantage d’un processus AIMD( Additive Increase, Multiplicative Decrease) par rapport à un processus AIAD (Additive Increase, Additive Decrease)  pour la gestion de la fenêtre de congestion de TCP ?''
+
+AIMD préserve la proportionnalité entre les flux :   = 
+
+''La vitesse d’accroissement de la fenêtre de congestion de TCP, ainsi que la forte baisse en cas de congestion limitent le débit de TCP dans les réseaux à très haut débit. Pourquoi ne peut-on pas simplement accroitre plus rapidement la fenêtre  lorsqu’il n’y a pas de pertes et limiter la baisse en cas de la congestion ? ''
+
+???????
+
+''Quelles sont les différences entre un routeur de 1er et de 2e  génération ? Quels étaient les goulots d’étranglement dans la 1ère génération ? Pourquoi la 2e génération permet de router plus rapidement ? ''
+
+* Les différences : la mémoire qui partagée pour la 1e génération et séparée pour la deuxième au niveau des interfaces, les cartes d’interface permettant de jeter les paquets sur ces cartes  sans passer par le bus de mémoire.
+* Les goulots d’étranglement de la 1e génération : L’accès à la mémoire.
+* la 2e génération permet de router plus rapidement grâce à la mémoire sur la carte qui possède la table de commutation.
+* + La 3eme génération : les communications entre les interfaces se font grâce à des switchs optimisés pour router des données en parallèle. 
+
+''Quels inconvénients les commutateurs multi-étages présentent-ils par rapport au cross-bar ? Représentez un commutateur multi-étage 8x8 avec des éléments 2x2.''
+
+* Probabilité de blocage car il y’a moins de points d’interconnexion.
+* Il se situe entre la connexité minimale des réseaux en bus et la connexité maximale des réseaux de commutation matricielle (cross-bar). Certains chemins entre des paires de noeuds auront donc des parties communes. Il peut donc y avoir conflit et attente.
+
+''Expliquer les avantages d’avoir des paquets de petites tailles fixes par rapport à la grande taille variable des paquets IP.''
+
+Taille fixe permet de savoir d’avance le temps de traitement des paquets.
+
+''Quels sont les avantages des circuits virtuels (Commutation d’étiquette) par rapport au mode datagramme IP ?''
+
+* Les paquets empruntent le même chemin.
+* Possibilité de planifier facilement la réservation des ressources.
+* Pas de déséquencement, pas de risque de paquet qui boucle dans le réseau.
+
+Exemple : MPLS, ATM, X.25.
+
+''En mode datagramme IP : chaque paquet est envoyé indépendamment dans le réseau et peut emprunter un chemin différent. Inconvénient : Risque de déséquencement, paquet qui boucle dans le réseau, quasi-certitude d’arrivée du paquet à destination quel que soit l’état du réseau.
+Expliquer en détails les étapes d’une connexion TCP sur un réseau à circuits virtuels.''
+
+* TCP fonctionne en mode connecté ; avant de commencer le transfert les 2 applications se mettent en relation avec leurs systèmes d’opérations en exprimant leur désir d’établir ou de recevoir une communication. (Pratiquement; une application effectue un appel et l’autre doit accepter). Ensuite, les protocoles débutent la communication en envoyant des msgs pour vérifier que le transfert est possible et que les apps sont prêtes pour leurs roles. Enfin, les modules de protocoles informent les apps que la connexion est établie et que le transfert peut débuter. (Pendant le transfert, le dialogue entre les protocoles continue afin de vérifier le bon acheminement des données)
+
+''Dans un réseau à commutation de circuits virtuels, qui met en place des VC (chemin virtuel) permanents PVC ? Dans quel but ?''
+
+Les opérateurs. Il permet de fournir un lien dédié en 2 points d’accès (connexions répétées). But : optimiser l’utilisation de leurs infrastructures. 
+
+''Expliquer ce qu’est le « traffic engineering » et les différences par rapport à une approche réseau classique basée sur le routage IP.''
+
+Il permet de trouver la meilleure route dans ce qui est le plus adapté à l’utilisateur et en fonction de ce qui est déployé dans le réseau.
+
+''Pourquoi, et en quoi, la détection de la congestion est-elle plus difficile dans un réseau sans fils ? ''
+
+Dans un réseau filaire, l’état de la file d’attente permet de donner des informations sur la congestion ; perte de paquets et des AKTs ; dans un réseau sans fils : possibilité d’avoir une file d’attente vide en plus de la perte des paquets à cause des interférences.
+
+''Quel est le principe de RED (Random Early Drop/Detection) ? Pourquoi permet-il d’améliorer les performances de TCP ?''
+
+Principe : Jeter (ou marquer) les paquets avant que les files soient pleines. Ne pas jeter des paquets de même type. ca évite à TCP de réinitialiser sa fenêtre à 1 et de rester en mode fast recovery où il divise cwnd par 2 et continuer en mode linéaire. 
+
+''Au niveau de l’ordonnancement, Weighted Round Robin permet d’éviter qu’un flux trop gourmand n’affecte les autres flux. Expliquer comment cela est réalisé.''
+* Le poids représente la proportion des ressources de la ligne par rapport à cette file, quelque soit ce qui est envoyé les autres files reçoivent du traitement.
+* Autoriser les files d'attente à bande passante supérieure à envoyer plus d'un paquet à chaque visite au cours d'une tournée de services.
+* Permettre à chaque file d'attente d'envoyer un seul paquet à chaque visite, mais de visiter plusieurs fois les files d'attente de bande passante supérieure au cours d'une même ronde de services
+
+''Pourquoi l’isolation du trafic d’un utilisateur est-il moins intéressant pour un opérateur ?''
+
+Isoler c’est conserver. L'isolation d'un trafic signifie également qu'il s'agit d'une garantie à apporter à l'utilisateur, qui est plus compliqué que de faire au mieux.
+
+''Token Bucket : à quoi sert un tel mécanisme pour un opérateur réseau ? Si celui-ci connait son modèle de service, comment peut-il garantir (faire en sorte) que le délai n’excède pas un τ donné ?''
+
+Il sert à borner le trafic utilisateur afin que l’opérateur puisse réserver les ressources.
+
+''Pourquoi MPLS ré-introduit-il la notion de circuit virtuel dans le réseau ? Quel est l’avantage pour l’opérateur ?''
+
+Pour pouvoir planifier facilement son infrastructure et faire des trafics 
+Avantage : exploiter avec flexibilité son architecture réseau ainsi il pourra décider de faire passer un trafic entre 2 bouts sur une ligne dédiée.
+
+''Cet opérateur propose un service IP fiable avec MPLS sans utiliser SONET : SDH pour exploiter ses fibres. Quels mécanismes de MPLS permettent de s’affranchir de la résilience offerte par SONET/SDH ?''
+
+Fast recovery : permet de créer des liens de backup ( circuit permanent, si il lien se casse on utilise le chemin de bakcup). L’avantage c’est que les chemins sont déjà crées, le temps de basculement d’un lien cassé vers un autre est moins de 25ms.
+
+''A quel moment intervient le routage IP dans un réseau MPLS ? Comment passe t-on d’une table de routage IP à des étiquettes MPLS ?''
+
+''Dans quels buts intègre-t-on le protocole MPLS dans un réseau de nos jours ? Soyez exhaustif ? Comparer MPLS et ATM.''
+
+''Présentez les fonctions d’un routeur DiffServ de bordure et celle d’un routeur DiffServ de cœur de réseau. Comment l’opérateur peut-il faire pour que le taux de perte d’un trafic de type UDP audio streaming soit plus grand que celui d’un trafic de type TCP FTP alors qu’ils peuvent tous les 2 etre dans la catégorie AF ?''
+
+''Quelles sont les principales différences entre le PHB EF et le PHB AF ? Quel comportement, ou quelle méthode d’accès, essayent-ils, chacun, d’émuler ? Expliquez.''
+
+''Comment un opérateur, avec la connaissance du trafic utilisateur et de son modèle de service, peut-il décider si une demande particulière peut etre satisfaite ou non ? Faites un schéma explicatif précis.''
+
+''Sur le schéma précédent, si la demande ne peut pas être satisfaite, quelles sont les différentes possibilités pour l’opérateur ?''
+
+''Normalement les jetons en excès par rapport à la taille du seau (le paramètre b) sont perdus. Proposez quelques méthodes pour utiliser plus efficacement ces jetons.''
+
+''Que signifie « RED casse la synchronisation des flux TCP » ? Faire un schéma. ''
+
+''Quel est néanmoins le facteur d’économie en nombre de points d’interconnexion par rapport à un crossbar si on considère un commutateur 1x1 réalisé avec des éléments 2x2 ?''
+
+''Dans un réseau ATM, qui met en place des VP permanents ? Dans quel but ?''
+
+''Pourquoi les opérateur ont-ils adopté si vite SONET/SDH et pourquoi le gardent ils toujours ?''
+
+''Quelle est la définition d’un circuit pour les télécoms ? Pourquoi la notion de circuit permet-elle de simplifier un certain nombre de paramètres de fonctionnement d’un réseau ?''
+
+''Quels sont les techniques les plus importantes permettant de passer de la 3G à la 4G ? Expliquer rapidement leurs principes''
+
+''Quel est l’avantage (autre que connectivité) de fournir une connectivité IP pour les nouveaux appareils ? En quoi consiste selon vous : « fournir une connectivité IP » ?''
+
+''Citez 2 raisons qui ont permis à Internet (ou le web) d’atteindre un tel niveau de complexité de service en si peu de temps ?''
+
+''Qu’est ce qu’une ligne T1 ou E1 ?''
+
+''Présentez 2 techniques de qualité de service que l’on peut implémenter au niveau applicatif pour du trafic multimédia ?''
+
+''A quoi sert une infrastructure ATM à la périphérie d’un réseau SONET/SDH ?''
+
+''Pourquoi un ordonnancement parfait comme GPS n’est-il pas possible dans les routeurs ?''
+
+''Pourquoi dit-on que la configuration de RED est délicate sur un chemin de l’Internet ?''
+
+''Comment peut-on obtenir un modèle de service d’un routeur ? D’une infrastructure réseaux ?''
+
+''Pourquoi dit-t-on que MPLS est « multi-protocole » et dites où se situe la « couche » MPLS dans l’architecture OSI ? Présentez les motivations et les raisons qui ont conduits les opérateurs à rapidement adopter MPLS.''
+
+''Pourquoi dit-on que Token Bucket est un processus d’enveloppe ? Quel est l’intérêt de son déploiement coté client pour un opérateur ? ''
+
+''Pourquoi impose t-on souvent une taille limite pour le bucket ? Que pourrait t-on faire avec les jetons en excès ? ''
+
+''Expliquer ce qu’est un modèle de service ?''
+
+''Dans le multicast IP, expliquez ce qu’est le routage en mode arbre partagé par rapport au mode proposé initialement : un arbre par source multicast. Faites un schéma explicatif et citer les avantages de ce mode partagé et dans quel scénario multicast il est performant. Montrez comment les donnés de plusieurs sources peuvent etre diffusées.''
+
+''La plupart des approches « TCP » utilisent la perte comme critère de congestion. Que peut-on utiliser d’autres ? Comment peut-on stabiliser ce critère pour éviter les oscillations ? Citez un protocole de transport utilisant autre chose que la perte comme signal de congestion. Citez les avantages et les inconvénients.''
+
+''L’architecture DiffServ propose de donner des priorités aux paquets en contrôlant les paramètres de qualité de service comme le taux le perte et le débit. En ce qui concerne le débit, expliquer en quoi l’introduction d’un modèle de trafic comme le Tocken Bucket est important pour l’opérateur. Faites un schéma pour montrer comment en utilisant ce modèle de trafic, un opérateur peut-il déterminer s’il peut accepter ou non une demande spécifiant un délai maximum et un taux de perte maximum.''</pre>
+</div>
+<div created="20181105193032247" modified="20181105193145328" tags="sécurité" title="Questions récurrentes pour sécurité informatique">
+<pre>''Lors de la définition d’une politique de sécurité, qu’est-ce qu’un leurre ? Que signifie la valeur restricted lors de l’accès à une information?''
+
+''En Java, l’environnement standard propose des mécanismes de sécurité pour contrôler les applications/applets qui veulent exécuter des opérations « sensibles ». Expliquez comment est définie la politique de sécurité?(Présentez l’architecture sécurité JAVA pour controler l’éxécution d’app/applets en octroyant des permissions aux classes pour les opérations « sensibles ». Explique le fonctionnement des mécanismes mis en œuvre, de la définition d’une permission jusqu’à l’exécution du programme sous contrôle d’un gestionnaire de sécurité) Mécanismes : gestionnaire de sécurité, politique de sécurité, permissions, contrôle d’accès…''
+
+''Lorsque le gestionnaire de sécurité doit valider, ou pas, l’exécution d’une instruction nécessitant une permission spécifique, quel est le processus de décision? ''
+
+''Qu’est ce qu’un certificat ? Donnez un exemple d’utilisation en Java pour vérifier la signature d’une classe avant de lui attribuer des permissions (cf. notions de signature numérique, d’authentification,...). ''
+
+''Présentez les principaux éléments à mettre en oeuvre en Java pour chiffrer/déchiffrer les informations d’un flux de données entre deux composants Java (via PAPI de cryptographie standard).''
+
+''Expliquer ce qu’est une politique de sécurité obligatoire. Quels en sont les avantages et les inconvénients ? Donnez un exemple''
+
+''Qu’appelle-t-on un système à clés publiques/clés privées ? Expliquez son fonctionnement pour le chiffrement, la signature, l’authentification.''
+
+''Expliquer comment un système de chiffrement asymétrique peut etre utilisé comme signature électronique. Justifier par un exemple''
+
+''Signatures &amp; Certificats : Commet sont utilisés les mécanismes de signature et de certificat en Java ?''</pre>
+</div>
 <div created="20181003184741144" modified="20181004205848745" tags="haut-debit" title="Réseau en circuit">
 <pre>Avant le réseau en paquet que l'on utilise aujourd'hui pour Internet, il y avait le réseau téléphonique basé sur les réseaux en circuit. Si on voulait communiquer avec quelqu'un par téléphone, on réservait un circuit de bout en bout afin de faire un canal de communication continu. Ainsi, la ressource était réservé tout au long de la communication jusqu'à que quelqu'un raccroche.
 
 Lors du passage des lignes analogiques (électriques) au lignes téléphoniques digitales (optiques), il a fallu trouver un moyen de synchronisation entre les deux supports, car la conversion ne s'est pas faite en un jour. Afin de synchroniser les différents supports, on dispose de protocoles de synchronisation. D'abord, il y a eu le protocole [[PDH]], très gourmand en bande passante. Ensuite, une amélioration a été développé : la norme [[SONET/SDH]], permettant l'arrivée de réseaux entièrement synchronisés.
 </pre>
 </div>
-<div created="20181002173644157" modified="20181026160608615" tags="haut-debit" title="Réseau hauts débits et Qualité de service">
+<div created="20181002173644157" modified="20181105191853378" tags="haut-debit" title="Réseau hauts débits et Qualité de service">
 <pre>* [[Vue d'ensemble de l'état actuel d'Internet]]
 * [[Introduction à la qualité de service]]
 * [[TCP]]
 * [[Routeur et réseaux haut-débit]]
 * [[Qualité de service]]
-* [[Différentiation de service sur Internet]]</pre>
+* [[Différentiation de service sur Internet]]
+* [[Questions récurrentes pour réseau haut débits]]</pre>
 </div>
 <div created="20181008155636961" modified="20181008163218153" tags="sécurité" title="Risque">
 <pre>Un risque provient d'une [[source de menace|Source de menace]] qui peut exercer une [[menace|Menace]] sur une [[vulnérabilité|Vulnérabilité]] d'un [[bien support|Bien support]]. Ces menaces menacent de trahir les [[besoins de sécurités|Besoin de sécurité]] des [[biens essentiels|Bien essentiel]]. Cette trahison de ces besoins de sécurités provoquent des [[conséquences ou impact|Impact]].
@@ -10188,11 +10393,12 @@ En premier lieux, pour faire communiquer des routeurs par la fibre optique, on c
 
 Dans l'idée, on pourrait disposer de routeurs qui fonctionnent entière en optique, sans transformation intermédiaires pour effectuer un traitement. Cela pourrait être possible dans le cas du routage par circuits virtuels, où les étiquettes seraient des couleurs différentes. Si un signal avec une certaine couleur arrive à une certaine interface, alors on redirige ce signal vers cette interface avec cette couleur. Il existe aujourd'hui des technologies qui permettraient d'effectuer ce traitement sans convertir le signal lumineux en signal électrique mais en effectuant les transformations directement dans le signal lumineux.</pre>
 </div>
-<div created="20181008121043098" modified="20181013112355431" tags="sécurité" title="Sécurité Informatique">
+<div created="20181008121043098" modified="20181105193026090" tags="sécurité" title="Sécurité Informatique">
 <pre>* [[Gestion des risques]]
 * [[Algorithme de chiffrement]]
 * [[Java Cryptography Extension]]
-* [[Droit et Numérique]]</pre>
+* [[Droit et Numérique]]
+* [[Questions récurrentes pour sécurité informatique]]</pre>
 </div>
 <div created="20181002083344603" modified="20181013113252904" tags="ejb" title="Session Beans">
 <pre>Un session bean est un objet qui expose une interface utilisable par d'autres session beans qui sont extérieurs ou intérieur au serveur. Ils implémentent une interface locale (utilisable par les beans qui sont dans le même projet) et/ou remote (utilisable par tout les beans). L'interface locale doit disposer de l'annotation `@javax.ejb.Local` alors que l'interface remote doit disposer de l'annotation `@javax.ejb.Remote`. Pour que le serveur comprennent que l'interface est utilisé par un bean, il faut déclarer que le bean implémente l'interface via la mécanique `implements`.
