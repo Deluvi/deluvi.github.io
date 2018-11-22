@@ -8891,7 +8891,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20181013112411899" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue [[Réseau hauts débits et Qualité de service]] [[Différentiation de service sur Internet]] [[Questions récurrentes pour réseau haut débits]]" title="$:/StoryList">
+<div list="[[QOS au niveau applicatif]] [[Éléments de transmission physique]] [[Etat des technologies sans-fil]] [[La technologie 2G/Edge/3G/4G/5G]] [[Qualité de service]] [[Différentiation de service sur Internet]] [[Questions récurrentes pour réseau haut débits]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -8948,7 +8948,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20181002085000811" modified="20181018142546988" title="$:/temp/search">
+<div created="20181002085000811" modified="20181122175433203" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20181002173759197" modified="20181002173800281" title="$:/theme">
@@ -10283,7 +10283,7 @@ Les solutions stateful maintiennent un état du trafic. Donc, au contraire du st
 
 Integrated Services (IntServ) apporte une solution stateful de QOS. Cela consiste à réserver des ressources qui seront maintenues par les routeurs du réseau.</pre>
 </div>
-<div created="20181105191900584" modified="20181122140447886" tags="haut-debit" title="Questions récurrentes pour réseau haut débits">
+<div created="20181105191900584" modified="20181122175435266" tags="haut-debit" title="Questions récurrentes pour réseau haut débits">
 <pre>''Quelle est la technologie qui fait que le débit brut n’est plus un problème dans les réseaux de cœurs en fibre optique des opérateurs ? Expliquer le principe.''
 
 WDM : Multiplexage à longueur d’onde : Utiliser plusieurs couleurs  pour les signaux afin de ne pas mélanger.
@@ -10410,9 +10410,13 @@ Fast recovery : permet de créer des liens de backup ( circuit permanent, si il
 
 ''A quel moment intervient le routage IP dans un réseau MPLS ? Comment passe t-on d’une table de routage IP à des étiquettes MPLS ?''
 
+Le routage intervient lors de l'entrée du premier paquet du flux dans le réseau MPLS. Le passage entre la table de routage IP à des étiquettes MPLS s'effectue de manière similaire qu'avec un réseau en circuit virtuel classique : le routeur d'entrée envoie une requête pour créer un nouveau circuit virtuel entre lui et le routeur de sortie du réseau. La demande passe de routeur en routeur : les routeurs intermédiaires garde en mémoire le circuit à effectuer pour l'étiquette particulière. Une fois que la demande a traversé le réseau, le circuit est contruit. On garde en mémoire la correspondance entre une IP et une étiquette à l'aide d'une table de correspondance.
+
 ''Dans quels buts intègre-t-on le protocole MPLS dans un réseau de nos jours ? Soyez exhaustif ? Comparer MPLS et ATM.''
 
 ''Présentez les fonctions d’un routeur DiffServ de bordure et celle d’un routeur DiffServ de cœur de réseau. Comment l’opérateur peut-il faire pour que le taux de perte d’un trafic de type UDP audio streaming soit plus grand que celui d’un trafic de type TCP FTP alors qu’ils peuvent tous les 2 etre dans la catégorie AF ?''
+
+Un routeur DiffServ de bordure va effectuer la demande de connexion alors que les routeurs DiffServ de coeurs vont se contenter de transmettre les demandes tout en gardant en mémoire les correspondances d'étiquettes pour garder les circuits.
 
 ''Quelles sont les principales différences entre le PHB EF et le PHB AF ? Quel comportement, ou quelle méthode d’accès, essayent-ils, chacun, d’émuler ? Expliquez.''
 
@@ -10422,6 +10426,8 @@ Fast recovery : permet de créer des liens de backup ( circuit permanent, si il
 
 ''Normalement les jetons en excès par rapport à la taille du seau (le paramètre b) sont perdus. Proposez quelques méthodes pour utiliser plus efficacement ces jetons.''
 
+Pour utiliser plus efficacement ces jetons, on peut jouer avec les autres paramètres du Token Bucket. On peut diminuer la vitesse de remplissage des tokens ou augmenter la taille du lien de sortie.
+
 ''Que signifie « RED casse la synchronisation des flux TCP » ? Faire un schéma. ''
 
 ''Quel est néanmoins le facteur d’économie en nombre de points d’interconnexion par rapport à un crossbar si on considère un commutateur 1x1 réalisé avec des éléments 2x2 ?''
@@ -10430,17 +10436,26 @@ Fast recovery : permet de créer des liens de backup ( circuit permanent, si il
 
 ''Pourquoi les opérateur ont-ils adopté si vite SONET/SDH et pourquoi le gardent ils toujours ?''
 
+SONET/SDH est un protocole résiliant, fiable et qui exploite les réseaux téléphoniques historiques. Ainsi, il est peu cher à mettre en oeuvre mais surtout il est très résistant aux pannes, ce qui fait que le réseau marche très bien de manière générale.
+
 ''Quelle est la définition d’un circuit pour les télécoms ? Pourquoi la notion de circuit permet-elle de simplifier un certain nombre de paramètres de fonctionnement d’un réseau ?''
 
-''Quels sont les techniques les plus importantes permettant de passer de la 3G à la 4G ? Expliquer rapidement leurs principes''
+''Quels sont les techniques les plus importantes permettant de passer de la 3G à la 4G ?
+ Expliquer rapidement leurs principes''
+
+La technique la plus importante introduite pour la 4G est l'Orthogonal Frequency Division Multiplex (OFDM). Cette technologie résulte en une meilleure exploitation des bandes de fréquences allouées en faisant en sorte qu'elles se superposent au maximum sans apporter d'interférences. On peut donc supporter bien plus de communications en parallèles en 4G qu'en 3G avec les mêmes bandes de fréquences.
 
 ''Quel est l’avantage (autre que connectivité) de fournir une connectivité IP pour les nouveaux appareils ? En quoi consiste selon vous : « fournir une connectivité IP » ?''
 
 ''Citez 2 raisons qui ont permis à Internet (ou le web) d’atteindre un tel niveau de complexité de service en si peu de temps ?''
 
+Sur Internet, les protocoles de communications et d'applications ont été développé sur les clients du réseau et non pas sur les routeurs. On obtient donc un coeur de réseau très simple qui remplit juste une simple tâche de transmettre des paquets d'un point A à un point B. On peut voir Internet comme une boîte noire où on ne peut pas agir dessus directement mais où on utilise ses services très simple. Ainsi, l'évolution des applications qui exploitent Internet peut s'effectuer en ignorant l'évolution du réseau.
+
 ''Qu’est ce qu’une ligne T1 ou E1 ?''
 
 ''Présentez 2 techniques de qualité de service que l’on peut implémenter au niveau applicatif pour du trafic multimédia ?''
+
+On peut reconstituer les paquets perdus en utilisant des techniques de reconstitutions de paquets. En effet, dans du trafic multimédia, on peut se permettre de perdre quelques paquets et de reconstruire l'image ou l'audio en utilisant les paquets précédents et suivants. On peut sinon stocker les données multimédia dans un buffer
 
 ''A quoi sert une infrastructure ATM à la périphérie d’un réseau SONET/SDH ?''
 
@@ -10461,6 +10476,8 @@ Fast recovery : permet de créer des liens de backup ( circuit permanent, si il
 ''Dans le multicast IP, expliquez ce qu’est le routage en mode arbre partagé par rapport au mode proposé initialement : un arbre par source multicast. Faites un schéma explicatif et citer les avantages de ce mode partagé et dans quel scénario multicast il est performant. Montrez comment les donnés de plusieurs sources peuvent etre diffusées.''
 
 ''La plupart des approches « TCP » utilisent la perte comme critère de congestion. Que peut-on utiliser d’autres ? Comment peut-on stabiliser ce critère pour éviter les oscillations ? Citez un protocole de transport utilisant autre chose que la perte comme signal de congestion. Citez les avantages et les inconvénients.''
+
+On peut utiliser également la latence de la réponse des paquets comme critère de congestion.
 
 ''L’architecture DiffServ propose de donner des priorités aux paquets en contrôlant les paramètres de qualité de service comme le taux le perte et le débit. En ce qui concerne le débit, expliquer en quoi l’introduction d’un modèle de trafic comme le Tocken Bucket est important pour l’opérateur. Faites un schéma pour montrer comment en utilisant ce modèle de trafic, un opérateur peut-il déterminer s’il peut accepter ou non une demande spécifiant un délai maximum et un taux de perte maximum.''
 
