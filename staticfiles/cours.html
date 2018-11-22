@@ -8891,7 +8891,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20181013112411899" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue [[Réseau hauts débits et Qualité de service]] [[Questions récurrentes pour réseau haut débits]]" title="$:/StoryList">
+<div list="Bienvenue [[Réseau hauts débits et Qualité de service]] [[Différentiation de service sur Internet]] [[Questions récurrentes pour réseau haut débits]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -8907,19 +8907,19 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;https://deluvi.com/staticfiles/cours.html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Noe/Projets/websites/deluvi-blog/static/staticfiles/cours.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
-            &quot;text&quot;: &quot;deluvi.com&quot;
+            &quot;text&quot;: &quot;&quot;
         },
         &quot;$:/info/url/hostname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/hostname&quot;,
-            &quot;text&quot;: &quot;deluvi.com&quot;
+            &quot;text&quot;: &quot;&quot;
         },
         &quot;$:/info/url/protocol&quot;: {
             &quot;title&quot;: &quot;$:/info/url/protocol&quot;,
-            &quot;text&quot;: &quot;https:&quot;
+            &quot;text&quot;: &quot;file:&quot;
         },
         &quot;$:/info/url/port&quot;: {
             &quot;title&quot;: &quot;$:/info/url/port&quot;,
@@ -8927,7 +8927,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/staticfiles/cours.html&quot;
+            &quot;text&quot;: &quot;/C:/Users/Noe/Projets/websites/deluvi-blog/static/staticfiles/cours.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -8935,7 +8935,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/origin&quot;: {
             &quot;title&quot;: &quot;$:/info/url/origin&quot;,
-            &quot;text&quot;: &quot;https://deluvi.com&quot;
+            &quot;text&quot;: &quot;file://&quot;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
@@ -9497,24 +9497,19 @@ Risque complet :
 
 Traduction : le directeur se connecte sur un réseau public dans une salle d'attente. Il veut envoyer un courrier électronique confidentiel qui contient un secret. Ce réseau public est écouté par un pirate qui intercepte les communications. Comme le transfert des mails n'est pas sécurisé, le pirate intercepte le mail et peut lire son contenu. Le pirate viole le besoin de confidentialité du contenu du mail. Son impact est la fuite d'un secret industriel et la perte financière lors de la diffusion de ce secret.</pre>
 </div>
-<div created="20181026160615157" modified="20181026160913329" tags="haut-debit" title="Différentiation de service sur Internet">
+<div created="20181026160615157" modified="20181122165514577" tags="haut-debit" title="Différentiation de service sur Internet">
 <pre>L'idée est de rajouter la capacité à différencier le service en ajoutant des notions de priorités dans les paquets. On divise les paquets en classes (premium, gold, silver, bronze) et on traite les paquets en priorités. On gère cette priorité et on prend les décisions au niveau des bordures.
 
-Dans le paquet IP, on a un champ &quot;Type Service&quot;.
+En pratique, on peut rajouter un champ &quot;Type Service&quot; dans le paquet IP.
 
-DSCP: Differentiated Service Code Point.
+Quelques acronymes :
 
-PHB: Per hop behavior: se fait au coeur du réseau.
+* ''DSCP'' : Differentiated Service Code Point.
+* ''PHB'' : Per hop behavior: se fait au coeur du réseau.
+* ''DiffServ'' : differentiated service.
+* ''Traffic Conditionning Shaping'' : se fait au bord du réseau. Ce rôle peut être rempli par la box ou le routeur utilisateur. Il régule le traffic et ajuste les paquets.
 
-DiffServ: differentiated service.
-
-Traffic Conditionning Shaping: se fait au bord du réseau
-
-On a vu la plupart des blocs de bases pour faire de la différentiation de service.
-
-!! Traffic Conditionning:
-
-Se fait au bord du réseau. Ce rôle peut être rempli par la box ou le routeur utilisateur. Il régule le traffic et ajuste les paquets.
+On a vu précédemment la plupart des blocs de bases pour faire de la différentiation de service.
 
 !! Architecture DiffServ
 
@@ -9523,20 +9518,22 @@ Se fait au bord du réseau. Ce rôle peut être rempli par la box ou le routeur 
 * Expedited Forwarding (EF, premium) : on reçoit le paquet, on l'envoit dans la limite du débit alloué. On écrête si jamais le débit reçu dépasse le débit alloué.
 * Assured Forwarding (AF) : on garantit la limite du débit alloué, mais on peut tenter d'envoyer plus. Le débit en plus peut passer si le traffic n'est pas congestionné.
 
-L'implémentation se fait en token bucket :
+L'implémentation se fait à l'aide d'un token bucket :
 
-* Premium Service : on attend un jeton. Si il a un jeton, il envoit le paquet en settant le bit P (P comme premium). Le paquet atterit dans la file de priorité haute Premium.
+* Premium Service : on attend un jeton. Si il a un jeton, il envoit le paquet en settant le bit P (P comme premium). Le paquet atterit dans la file de priorité haute Premium. Si il n'y a pas de jetons, on jette le paquet.
 * Assured Service : on attend un jeton. Si il a un jeton, il envoit le paquet en settant le bit A (comme Assured). Si il n'a pas de jeton, il envoit un paquet sans le bit A. Le paquet sans le bit A passe dans un filtre RED pour être éventuellement injecté dans la file de priorité basse Assured. Si le réseau est congestionné, le paquet est jeté si il n'a pas le bit A. Si le paquet a le bit A quand c'est congestionné, il passe par le RED.
 
 Filtre RED : filtre qui utilise une probabilité de rejet selon la congestion du réseau.
 
-DSCP ne regarde pas les flux : il code des classes selon le type de traffics et redirige en Premium ou en Assured.
+DSCP ne regarde pas les flux indivduellements : il code des classes selon le type de traffics et redirige en Premium ou en Assured.
 
 Pour gérer les files, il faut choisir un ordonnanceur adapté.
 
 !! Ingénierie de trafic
 
-On va de plus en plus vers une notion de circuit car cela fournit des mécanismes pratiques pour réserver des ressources ou planifier des ressources. On dispose des réseaux en circuit virtuel avec les étiquettes. Cela accélère les routeurs car cela permet au routeur de ne pas faire un lookup pour chaque routeur. Maintenant, les routeurs sont plus rapide, assez rapide pour faire un lookup à chaque paquet. Le circuit virtuel n'apporte pas seulement de la performance mais surtout car cela permet de faire de l'ingénierie de trafic et de mieux gérer l'infrastructure du réseau.
+On va de plus en plus vers une notion de circuit car cela fournit des mécanismes pratiques pour réserver des ressources ou planifier des ressources. On dispose des réseaux en circuit virtuel avec les étiquettes. Cela accélère les routeurs car cela permet au routeur de ne pas faire un lookup pour chaque nouveau paquet. Maintenant, les routeurs sont plus rapide, assez rapide pour faire un lookup à chaque paquet dans des conditions classiques, mais dans le coeur du réseau, il est essentiel de procéder au routage rapidement. Le circuit virtuel n'apporte pas seulement de la performance mais surtout cela permet de faire de l'ingénierie de trafic et de mieux gérer l'infrastructure du réseau.
+
+!! MultiProtocol Label Switching
 
 MPLS : MultiProtocol Label Switching. On a des étiquettes en entrées et en sorties, c'est le circuit virtuel. MPLS s'insère entre la couche 2 et 3 (entre Ethernet et IP par exemple). Le principe de MPLS est que les différentes technologies réseaux étaient différencié (SONET/SDH, ATM, FR). A chaque fois qu'il fallait réserver des ressources, il fallait réserver chaque type de ressources, ce qui n'est pas pratique dans le cas des multi-opérateurs. (exemple intuitif : Paris -&gt; Delhi, il faut réserver bus/train/avion pour arriver d'un point à un autre).
 
