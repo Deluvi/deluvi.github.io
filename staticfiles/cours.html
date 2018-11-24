@@ -8891,7 +8891,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20181013112411899" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="[[QOS au niveau applicatif]] [[Éléments de transmission physique]] [[Etat des technologies sans-fil]] [[La technologie 2G/Edge/3G/4G/5G]] [[Qualité de service]] [[Différentiation de service sur Internet]] [[Questions récurrentes pour réseau haut débits]]" title="$:/StoryList">
+<div list="[[Réseau hauts débits et Qualité de service]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -8948,7 +8948,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20181002085000811" modified="20181122175433203" title="$:/temp/search">
+<div created="20181002085000811" modified="20181124124601694" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20181002173759197" modified="20181002173800281" title="$:/theme">
@@ -9124,12 +9124,30 @@ L'architecture orienté service est basé sur l'architecture orienté composant.
 * [[Disponibilité]]
 * [[Traçabilité]]</pre>
 </div>
-<div created="20181016163046787" modified="20181016163552757" tags="haut-debit" title="BIC TCP">
+<div created="20181016163046787" modified="20181124124452252" tags="haut-debit" title="BIC TCP">
 <pre>Avec [[HighSpeed TCP]], on s’aperçoit que incrémenter de 1 est trop lent, mais incrémenter de plus de 1 est trop agressif et porte préjudice à d'autres connexions en concurrence.
 
 Au lieu de faire cela, BIC TCP a un concept bien différent. Au lieu d'incrémenter de manière fixe, on réalise des sauts. Ces sauts ont une grande longueur au début, mais la longueur est de plus en plus petite au fur et à mesure que l'on se rapproche du point que l'on pense être le point de rupture. On appelle cela la Binary Increase, et le protocole Binary Increase Congestion Control. BIC TCP ne résout toujours pas le problème des connexions à RTT différentes où la connexion avec le plus faible RTT dispose d'un bien meilleur débit.
 
 Il a été utilisé dans les noyaux Linux. Depuis, il a été amélioré avec CUBIC.
+
+!! Algorithme
+
+Soit Wmax la taille de fenêtre maximale, Wmin la taille de fenêtre minimale, Smax l'incrémentation maximale et Smin l'incrémentation minimale :
+
+```
+while Wmin &lt;= Wmax {
+  inc = (Wmin + Wmax) / 2 - cwnd
+  if inc &gt; Smax
+    inc = Smax
+  else if inc &lt; Smin
+    inc = Smin
+  cwnd = cwnd + inc
+  if no packet losses
+    Wmin = cwnd
+  else break
+}
+```
 
 !! CUBIC TCP
 
