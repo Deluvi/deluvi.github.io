@@ -8860,9 +8860,7 @@ Error message and password prompt
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[Sécurité Informatique]]
-# [[Java Cryptography Extension]]
-# [[Droit et Numérique]]</pre>
+# [[Qualité de service]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -8888,10 +8886,10 @@ Error message and password prompt
 <div created="20181002173753109" modified="20181002173753844" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
-<div created="20181002173649754" modified="20181013112411899" title="$:/state/tab/sidebar--1835078512">
+<div created="20181002173649754" modified="20181126212847165" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue [[Réseau hauts débits et Qualité de service]] [[Vue d'ensemble de l'état actuel d'Internet]] [[Etat des technologies sans-fil]] LauRa" title="$:/StoryList">
+<div list="Bienvenue" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10217,7 +10215,7 @@ Un exemple d'utilisation de ce QOS au niveau réseau est le réencodage d'un flu
 <div created="20181003185050978" modified="20181003185241563" tags="haut-debit" title="QOS et Neutralité du Net">
 <pre>La neutralité du net est la raison de pourquoi Internet est si simple. Cette simplicité nous empêche de faire [[des garanties|Garantie en réseau]]. Néanmoins, cette simplicité a fait son succès que l'on connait aujourd'hui. On est indépendant du réseau : on est donc plus libre dans le développement d'application car on n'attend aucune fonctionnalité du réseau autre le routage. Cela accélère également le développement du réseau.</pre>
 </div>
-<div created="20181024163959882" modified="20181024164600320" tags="haut-debit" title="Qualité de service">
+<div created="20181024163959882" modified="20181126211636083" tags="haut-debit" title="Qualité de service">
 <pre>!! Contrôle de la congestion
 
 Dans internet, à partir d'un moment où un lien n'est pas suffisamment grand pour accueillir l'ensemble du trafic qui passe, un phénomène de congestion survient où des paquets sont perdu car ils ont dû faire de la place pour les nouveaux paquets entrant.
@@ -10289,9 +10287,32 @@ Le principal avantage du token bucket est, comme dit précédemment, que l'on pe
 
 !!! Service model
 
-Il s'agit de moyen de caractériser la relation entre trafic disponible, trafic envoyé, et d'autres processus externes.
+(Il s'agit de moyen de caractériser la relation entre trafic disponible, trafic envoyé, et d'autres processus externes.)
 
-[ext[AUSKUUUUR|https://youtu.be/9UJkq95DtYo?t=15m30s]] (Veuillez m'aider à remplir, j'ai rien compris aux diapos)
+Les modèles de services sont différents niveaux de qualité de connexion qu'un opérateur/FAI  peut offrir à ses clients.
+
+Par la connaissance préàlable de la latence, de la taille des buffers et de la bande passante, il est possible d'offrir des garranties en matière de QoS tout en maximisant l'utilisation des lignes.
+
+Exemple:
+[img[https://puu.sh/C89fd/5aa10db32a.jpg]]
+Traitement d'un flux de données du client vers son destinataire, colorisé.
+
+Cette courbe affreuse représente:
+
+* En bleu le flux de données émit/demandé par le client
+* En rouge ce que le FAI lui offre.
+
+Les données sont bufferisées et délayées, permettant au FAI de lisser son traffic et de satisfaire tout le monde, car il garrantis &quot;moins&quot; que son mieux.
+Appelez moi si vous avez besoin d'une traduction en FR.
+
+Explication des différents niveaux de services :
+[img[https://puu.sh/C89CX/8ad6c26da0.jpg]]
+(pensez 1ere, 2nde, 3eme classe comme en avion)
+
+Ici nous voyons différents niveaux de services offert par un FAI.
+
+Les clients riches peuvent s'offrir des connexions à faible latence et faible bufferisation (la bufferisation, terme ni français ni anglais, signifie la mise en tampon des données avant transmission. Ici, une faible bufferisation signifie une montée en débit plus rapide)
+
 
 !! Solution QOS Stateless et Stateful
 
