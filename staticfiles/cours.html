@@ -8860,7 +8860,7 @@ Error message and password prompt
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[Qualité de service]]</pre>
+# [[Questions récurrentes pour réseau haut débits]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -8886,7 +8886,7 @@ Error message and password prompt
 <div created="20181002173753109" modified="20181002173753844" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
-<div created="20181002173649754" modified="20181126212847165" title="$:/state/tab/sidebar--1835078512">
+<div created="20181002173649754" modified="20181127184137415" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div list="Bienvenue" title="$:/StoryList">
@@ -10322,7 +10322,7 @@ Les solutions stateful maintiennent un état du trafic. Donc, au contraire du st
 
 Integrated Services (IntServ) apporte une solution stateful de QOS. Cela consiste à réserver des ressources qui seront maintenues par les routeurs du réseau.</pre>
 </div>
-<div created="20181105191900584" modified="20181122175435266" tags="haut-debit" title="Questions récurrentes pour réseau haut débits">
+<div created="20181105191900584" modified="20181127182757466" tags="haut-debit" title="Questions récurrentes pour réseau haut débits">
 <pre>''Quelle est la technologie qui fait que le débit brut n’est plus un problème dans les réseaux de cœurs en fibre optique des opérateurs ? Expliquer le principe.''
 
 WDM : Multiplexage à longueur d’onde : Utiliser plusieurs couleurs  pour les signaux afin de ne pas mélanger.
@@ -10349,7 +10349,7 @@ La somme des gains et des pertes (atténuations) ; Pr doit être supérieure à
 
 ''Qu’apporte 6LowPan à l’Internet des objets ?''
 
-C’est une méthode qui permet de compresser les entêtes des @IPv6 afin de permettre aux objets à faibles ressources de se connecter à Internet.
+C’est une méthode qui permet de compresser les entêtes des @IPv6 afin de permettre aux objets à faibles ressources de se connecter à Internet. Cette méthode permet aussi de réduire significativement la consommation électrique.
 
 ''Expliquer les problèmes posés par un système PDH ? ''
 
@@ -10374,11 +10374,13 @@ Son apport à Internet : En découplant l’évolution du réseau par rapport 
 
 ''Quel est le principal avantage d’un processus AIMD( Additive Increase, Multiplicative Decrease) par rapport à un processus AIAD (Additive Increase, Additive Decrease)  pour la gestion de la fenêtre de congestion de TCP ?''
 
+AIMD permet de libérer plus rapidement de la bande passante que AIAD car lorsque une congestion se produit, le débit est divisé au lieu d'être soustrait. Cette caractéristique permet de faire converger le débit plus rapidement vers une valeur équitable pour chaque utilisateur et de favoriser l'arrivée de nouveau utilisateur.
+
 AIMD préserve la proportionnalité entre les flux :   = 
 
-''La vitesse d’accroissement de la fenêtre de congestion de TCP, ainsi que la forte baisse en cas de congestion limitent le débit de TCP dans les réseaux à très haut débit. Pourquoi ne peut-on pas simplement accroitre plus rapidement la fenêtre  lorsqu’il n’y a pas de pertes et limiter la baisse en cas de la congestion ? ''
+''La vitesse d’accroissement de la fenêtre de congestion de TCP, ainsi que la forte baisse en cas de congestion limitent le débit de TCP dans les réseaux à très haut débit. Pourquoi ne peut-on pas simplement accroître plus rapidement la fenêtre  lorsqu’il n’y a pas de pertes et limiter la baisse en cas de la congestion ? ''
 
-???????
+??????? .(0.0). wut?
 
 ''Quelles sont les différences entre un routeur de 1er et de 2e  génération ? Quels étaient les goulots d’étranglement dans la 1ère génération ? Pourquoi la 2e génération permet de router plus rapidement ? ''
 
@@ -10389,8 +10391,8 @@ AIMD préserve la proportionnalité entre les flux :   =
 
 ''Quels inconvénients les commutateurs multi-étages présentent-ils par rapport au cross-bar ? Représentez un commutateur multi-étage 8x8 avec des éléments 2x2.''
 
-* Probabilité de blocage car il y’a moins de points d’interconnexion.
-* Il se situe entre la connexité minimale des réseaux en bus et la connexité maximale des réseaux de commutation matricielle (cross-bar). Certains chemins entre des paires de noeuds auront donc des parties communes. Il peut donc y avoir conflit et attente.
+* Probabilité de blocage car il y a moins de points d’interconnexion.
+* Il se situe entre la connexité minimale des réseaux en bus et la connexité maximale des réseaux de commutation matricielle (cross-bar). Certains chemins entre des paires de nœuds auront donc des parties communes. Il peut donc y avoir conflit et attente.
 
 ''Expliquer les avantages d’avoir des paquets de petites tailles fixes par rapport à la grande taille variable des paquets IP.''
 
@@ -10459,7 +10461,9 @@ Un routeur DiffServ de bordure va effectuer la demande de connexion alors que le
 
 ''Quelles sont les principales différences entre le PHB EF et le PHB AF ? Quel comportement, ou quelle méthode d’accès, essayent-ils, chacun, d’émuler ? Expliquez.''
 
-''Comment un opérateur, avec la connaissance du trafic utilisateur et de son modèle de service, peut-il décider si une demande particulière peut etre satisfaite ou non ? Faites un schéma explicatif précis.''
+''Comment un opérateur, avec la connaissance du trafic utilisateur et de son modèle de service, peut-il décider si une demande particulière peut être satisfaite ou non ? Faites un schéma explicatif précis.''
+
+Si la courbe du trafic utilisateur est comprise entre enveloppe E(T), la courbe du dessus et la courbe de service S(T), en dessous alors l'opérateur est en mesure de garantir une qualité de service pour l'utilisateur.
 
 ''Sur le schéma précédent, si la demande ne peut pas être satisfaite, quelles sont les différentes possibilités pour l’opérateur ?''
 
@@ -10469,15 +10473,22 @@ Pour utiliser plus efficacement ces jetons, on peut jouer avec les autres param�
 
 ''Que signifie « RED casse la synchronisation des flux TCP » ? Faire un schéma. ''
 
+RED siginifie Random Early Detection. On dit que RED casse la synchronisation des flux TCP car par défaut les flux TCP on tendance à se synchroniser car ils exécutent tous le même algorithme. Leurs débits augmente et baisse de la même manière au cours du temps en fonction de la congestion. RED simule aléatoirement une congestion pour certain flux TCP qui sont alors obligés de diminuer leur débit, RED à donc stoppé la synchronisation.
+
 ''Quel est néanmoins le facteur d’économie en nombre de points d’interconnexion par rapport à un crossbar si on considère un commutateur 1x1 réalisé avec des éléments 2x2 ?''
 
 ''Dans un réseau ATM, qui met en place des VP permanents ? Dans quel but ?''
 
+Les VP permanents sont mis en place par le gérant de l'infrastructure réseau (Le plus souvent le fournisseur d'accès internet). Les VP sont mis en place pour pouvoir gérer le l'infrastructure et le réseau de manière optimal et mettre une certaine qualité de service.
+
 ''Pourquoi les opérateur ont-ils adopté si vite SONET/SDH et pourquoi le gardent ils toujours ?''
 
-SONET/SDH est un protocole résiliant, fiable et qui exploite les réseaux téléphoniques historiques. Ainsi, il est peu cher à mettre en oeuvre mais surtout il est très résistant aux pannes, ce qui fait que le réseau marche très bien de manière générale.
+SONET/SDH est un protocole résiliant, fiable et qui exploite les réseaux téléphoniques historiques. Ainsi, il est peu cher à mettre en œuvre mais surtout il permet de résoudre très rapidement les pannes (environ 50 ms), ce qui fait que le réseau marche très bien de manière générale.
 
 ''Quelle est la définition d’un circuit pour les télécoms ? Pourquoi la notion de circuit permet-elle de simplifier un certain nombre de paramètres de fonctionnement d’un réseau ?''
+
+Pour les télécoms un circuit est un chemin sur le réseau. Les données pénétrant dans ce circuit prendront toujours le même itinéraire de la source des données jusqu'à la destination.
+Cette notion de circuit simplifie le fonctionnement ds réseau en augmentant la flexibilité et la résilience. 
 
 ''Quels sont les techniques les plus importantes permettant de passer de la 3G à la 4G ?
  Expliquer rapidement leurs principes''
@@ -10522,9 +10533,32 @@ On peut utiliser également la latence de la réponse des paquets comme critère
 
 ''Citez 3 avantages que les réseaux actifs pourraient apporter. On pourra différencier selon l’utilisateur ou l’opérateur, donner des exemples.''
 
+Effectuer des traitements complexes sur les paquets au niveau des routeurs.
+Transformer les routeurs en serveur de contenu.
+Rendre les routeurs programmable.
+
 [img[cours_img/schema_exoHD_1.png]]
 
 ''Dans la figure ci-dessous, donnez la valeur en secondes ou en heures entre 2 pics et les valeurs de cwnd en nombre de paquets. Paquets de 600 octets, RTT de 75ms.''
+
+CALCUL A REFAIRE
+
+&quot;&quot;&quot;
+RTT = 75ms = 0.075 s
+Tp = 600 o = 4800 bit
+D = 10 Gb/s = 10^9 bit/s &lt;---- (c'est 10^10)
+cwnd = D / Tp = 10^9 / 4800 ~= 208 333 paquet
+TTP = Tp / D = 4800 / 10^9 = 4.8 x 10^-6
+Temps Total Secondes = (TTP + RTT) x cwnd =  (4.8 x 10^-6 + 0.075) x 208333 = 15625.975 s
+Temps Total Minutes = 15625.975 / 60 ~= 260 minutes
+Temps Total Heures = 260 / 60 ~= 4.3 h ~= 4h18min
+&quot;&quot;&quot;
+
+&quot;&quot;&quot;
+Tp (Taille paquet)
+D (Débit)
+TTP (Temps transfert paquet)
+&quot;&quot;&quot;
 
 ''On considère une connexion TCP qui débute et un débit de 10 Gbps. Donner l’instant t où un émetteur TCP aura un débit minimum de D= 2Gbps. AN: RTT = 55ms, taille des paquets S=4096 octets, seuil initial slow-start/congestion avoidance=128. On supposera qu’il n’y a pas d'erreurs et que le temps de traitement des paquets est négligeable.''
 
@@ -10532,17 +10566,23 @@ On peut utiliser également la latence de la réponse des paquets comme critère
 
 [img[cours_img/schema_exoHD_2.png]]
 
-''Pour le token Bucket, quel est l’avantage d’avoir un paramètre b élevé(celui qui définit la taille du bucket) ?''
+''Pour le token Bucket, quel est l’avantage d’avoir un paramètre b élevé(celui qui définit la profondeur du bucket) ?''
+
+Plus le paramètre b est élevé plus la quantité de donnée que l'on peut envoyer à la suite (sans attendre la génération de nouveau tokens) est élevée.
 
 ''Soit un Token Bucket définie par (B=3Mo, R= 30.10^6 jeton/s, C= 50Mpbs), combien de paquets de 2048 octets peut on envoyer en rafale si le Token Bucket est initialement plein ? Si on considère que l’on commence à t0 à envoyer les paquets, à quel instant t1 aura t-on envoyé n=5000 paquets? Normalement les jetons en excès par rapport à la taille du seau (le paramètre b) sont perdus. Proposez quelques méthodes pour utiliser plus efficacement ces jetons.''
 
-''Pourquoi y a t-il une région où les 2 courbes se chevauchent? Quelles sont les motivationns derrière ce chevauchement?''
+''Pourquoi y a t-il une région où les 2 courbes se chevauchent? Quelles sont les motivations derrière ce chevauchement?''
 
 [img[cours_img/schema_exoHD_3.png]]
 
-''Dans la figure suivante, qu’a t-on voulu montrer: la courbe de HSTCP est celle du gaut et celle de TCP est celle du bas? Identifiez le problème et comment l’expliquez vous ?''
+''Dans la figure suivante, qu’a t-on voulu montrer: la courbe de HSTCP est celle du haut et celle de TCP est celle du bas? Identifiez le problème et comment l’expliquez vous ?''
 
-[img[cours_img/schema_exoHD_4.png]]</pre>
+[img[cours_img/schema_exoHD_4.png]]
+
+Le protocole TCP à tendance à stagner à des débit faible car une baisse de débit provoqué par la congestion prend beaucoup de temps a compenser.
+Le protocole HSTCP quant à lui à un comportement plus agressif permet une remonté plus rapide du débit.
+Lorsque les deux protocoles cohabitent HSTCP surpasse de loin TCP grâce à sa vitesse. HTSCP prend alors la majorité de la bande passante au détriment de TCP. </pre>
 </div>
 <div created="20181105193032247" modified="20181105193145328" tags="sécurité" title="Questions récurrentes pour sécurité informatique">
 <pre>''Lors de la définition d’une politique de sécurité, qu’est-ce qu’un leurre ? Que signifie la valeur restricted lors de l’accès à une information?''
