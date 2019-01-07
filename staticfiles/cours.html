@@ -281,6 +281,8 @@ Error message and password prompt
 
 <li>Risque</li>
 
+<li>Routage dans un réseau 100% sans-fils</li>
+
 <li>Routeur et réseaux haut-débit</li>
 
 <li>Sécurité Informatique</li>
@@ -8891,7 +8893,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20181127184137415" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue [[Réseau émergent sans fil et applications]] [[Accès au support dans les réseaux sans-fils]] [[Éléments de transmission physique]]" title="$:/StoryList">
+<div list="Bienvenue [[Réseau émergent sans fil et applications]] [[Routage dans un réseau 100% sans-fils]] [[Accès au support dans les réseaux sans-fils]] [[Éléments de transmission physique]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9069,7 +9071,7 @@ Error message and password prompt
 <div created="20181003174610450" modified="20181003174843968" tags="haut-debit" title="6LowPan">
 <pre>6LowPan est un protocole qui adapte IPv6 pour les petits objets. Un des problèmes d'IPv6 est la taille de l'en-tête : 40 bytes. Pour l'optimiser, on compresse l'en-tête en jetant une partie de l'adresse IPv6 qui sera constante : la partie qui définit le réseau. Un routeur entre Internet et le réseau local s'occupe de transformer les paquets en paquets IPv6 valide.</pre>
 </div>
-<div created="20190107174709672" modified="20190107181338317" tags="iot" title="Accès au support dans les réseaux sans-fils">
+<div created="20190107174709672" modified="20190107182412351" tags="iot" title="Accès au support dans les réseaux sans-fils">
 <pre>!! Technologies de gestion de support générales pour sans-fils
 
 Le multiplexage par temps a été la première technique de partage. La technologie s'appelle TDMA. Plus récemment, on a eu le multiplexage par code où tout le monde peut parler en même temps.
@@ -9091,7 +9093,11 @@ La technologie 802.15.4 est plus adapté pour les petits objets sans-fils. Elle 
 
 En pair-à-pair, le partage du support est similaire au WiFi, avec les technologies CSMA/CA. Il y a néanmoins quelques différences : en WiFi, on attend que le support soit libre en l'écoutant alors qu'en 802.15.4, on vérifie le support en intervalle. L'intervalle est aléatoire et est appelé la //&quot;backoff period&quot;//. Cette période incrément de plus en plus au fur et à mesure des échecs jusqu'à un certain nombre d'essai. Si ce nombre d'essai est dépassé, la transmission est échouée. La raison de cette différence est la consommation d'énergie, la densité de déploiement (moins dense en 802.15.4 qu'en WiFi) et la différence de l'architecture du réseau (pair-à-pair contre station de base).
 
-En mode beacon, on utilise du slotted CSMA/CA. Les beacons sont utilisés pour synchroniser les appareils connectés aux beacons. Ainsi, ils ont les mêmes slots.</pre>
+En mode beacon, on utilise du slotted CSMA/CA. Les beacons sont utilisés pour synchroniser les appareils connectés aux beacons. Ainsi, ils ont les mêmes slots en même temps. Pour attribuer qui utilise ces slots, on a tout d'abord utilisé le système ALOHA qui est l'anarchie complète. Il est prouvé que l'efficacité de ce système est de 18%. Le slotted ALOHA restraint le système ALOHA en obligeant les appareils à ne commencer à diffuser qu'au début d'un slot. En 802.15.4, on a un accès hybride : une partie est réservée et ne peut être utilisée que si un appareil a fait une réservation au préalable et une autre partie est libre d'accès par n'importe quel appareil. La partie réservée est très utile dans des applications temps-réel où on a besoin de garantie de vitesse de transmission.
+
+En 802.15.4, en unicast, il y a les ACK qui garantissent l'intégrité du message. L'envoyeur peut tenter d'envoyer le message jusqu'à 3 fois.
+
+802.15.4 est une technologie loin d'être parfaite pour les objets connectés : la transmission consomme beaucoup d'énergie et il y a un problème de passive listening : recevoir un paquet qui n'était pas destiné pour l'appareil en question peut consommer autant d'énergie que d'en envoyer un.</pre>
 </div>
 <div created="20181009135923638" modified="20181009140257042" tags="sécurité" title="Algorithme de chiffrement">
 <pre>Un algorithme de chiffrement doit obéir à des principes généraux : 
@@ -10637,10 +10643,11 @@ Lorsque les deux protocoles cohabitent HSTCP surpasse de loin TCP grâce à sa v
 
 ''Signatures &amp; Certificats : Commet sont utilisés les mécanismes de signature et de certificat en Java ?''</pre>
 </div>
-<div created="20181118092355939" modified="20190107174703305" tags="iot" title="Réseau émergent sans fil et applications">
+<div created="20181118092355939" modified="20190107182500215" tags="iot" title="Réseau émergent sans fil et applications">
 <pre>* [[Introduction]]
 * [[Éléments de transmission physique]]
-* [[Accès au support dans les réseaux sans-fils]]</pre>
+* [[Accès au support dans les réseaux sans-fils]]
+* [[Routage dans un réseau 100% sans-fils]]</pre>
 </div>
 <div created="20181003184741144" modified="20181004205848745" tags="haut-debit" title="Réseau en circuit">
 <pre>Avant le réseau en paquet que l'on utilise aujourd'hui pour Internet, il y avait le réseau téléphonique basé sur les réseaux en circuit. Si on voulait communiquer avec quelqu'un par téléphone, on réservait un circuit de bout en bout afin de faire un canal de communication continu. Ainsi, la ressource était réservé tout au long de la communication jusqu'à que quelqu'un raccroche.
@@ -10661,6 +10668,58 @@ Lors du passage des lignes analogiques (électriques) au lignes téléphoniques 
 <pre>Un risque provient d'une [[source de menace|Source de menace]] qui peut exercer une [[menace|Menace]] sur une [[vulnérabilité|Vulnérabilité]] d'un [[bien support|Bien support]]. Ces menaces menacent de trahir les [[besoins de sécurités|Besoin de sécurité]] des [[biens essentiels|Bien essentiel]]. Cette trahison de ces besoins de sécurités provoquent des [[conséquences ou impact|Impact]].
 
 Afin de voir l'échelle du risque, on doit faire une [[appréciation du risque|Appréciation du risque]].</pre>
+</div>
+<div created="20190107182509032" modified="20190107190305021" tags="iot" title="Routage dans un réseau 100% sans-fils">
+<pre>Le routage conventionnel dans un réseau filaire n'est pas appliquable dans un réseau sans-fil. En effet, le nombre de transmission est un facteur important dans les réseaux sans-fils en raison des collisions possibles.
+
+Il existe deux types d'approches :
+*les approches proactives : OLSR.
+*les approches réactives : AODV et DSR.
+
+!! Dynamic Source Routing (DSR)
+Il s'agit d'une demande de route (discovery) en envoyant un broadcast qui se propage dans le réseau. A chaque saut, on rajoute dans le paquet l'hôte qui a reçu le message, pour constituer la route emprunté. Si l'hôte n'est pas plusieurs fois dans la route, il transmet le paquet en broadcast. Une fois l'hôté visé atteint, il renvoie une réponse avec la route optimale qui est inscrite dans le paquet qu'il vient de recevoir. Un des avantages du DSR est que les routes sont entretenues par les noeuds concernés par cette route.
+
+Grâce au caching, on peut optimiser ce protocole. Chaque noeud garde en mémoire les nouvelles routes qu'il peut obtenir par n'importe quel moyen. Néanmoins, cette approche pose problème quand le nombre d'hôtes augmente car la taille des paquets augmente mécaniquement. Il y a également un grand risque de collisions entre hôtes adjacents pendant le discovery.
+
+!! Ad Hoc On-Demand Distance Vector Routing (AODV)
+AODV essaye d'améliorer DSR en évitant de mettre les routes dans les paquets. A la place, les noeuds maintiennent en mémoire eux-même la table de routage.
+
+Le principe est similaire à DSR : on envoie une Route Request (RREQ) qui est broadcasté de la même manière. Quand un noeud rebroadcast une Route Request, il retient d'où venait la Route Request pour garder en connaissance où envoyer le paquet de retour à la source. Quand la destination reçoit son paquet RREQ, il répond en envoyant une Route Reply (RREP). La Route Reply prend le même chemin que le RREQ en sens inverse.
+
+La table de routage est invalidé au bout d'un temps. AODV améliore le DSR en encourageant les noeuds à se renseigner sur l'état du réseau. Par exemple, les noeuds voisins s'envoient des messages &quot;hello&quot; de temps en temps pour s'assurer que le voisin est toujours disponible. Si un voisin est indisponible, tout les autres voisins en sont informés.
+
+!! Optimized Link State Routing (OLSR)
+Le principe d'OLSR est de constituer un arbre qui couvre tout le réseau de manière optimisé. Cet arbre est constitué de manière autonome grâce à un algorithme de décision.
+
+Pour cela, on détermine pour chaque noeud leurs voisins directs qui couvrent tout les noeuds à 2 sauts du noeud concerné.
+
+Dans un premier temps, on prend comme MPR (MultiPoint Relaying) les voisins sélectionnés plus haut qui couvrent les noeuds isolés (les noeuds à 2 sauts relié qu'à un seul voisin direct).
+
+Dans un second temps, on sélectionne comme MPR les noeuds voisins directs qui couvrent le plus de noeuds à 2 sauts possible jusqu'à couvrir l'ensemble des voisins à 2 sauts.
+
+Cet algorithme trouve une bonne solution qui n'est malgrès tout pas forcément optimale. C'est néanmoins un algorithme rapide à exécuter, ce qui est un bon compromis.
+
+!! Techniques de routages pour réseaux de capteurs
+Le déploiement de noeuds peut être manuel ou aléatoire. Ces capteurs peuvent avoir des contraintes variés.
+
+Une manière de router les données de capteurs en capteurs pour atteindre un puits de collecte de données est de prendre en compte les positions géographiques des capteurs : on appelle cela le routage géographique. L'algorithme le plus simple est d'utiliser la distance euclidienne et de prendre le voisin proche le plus proche en terme de distance euclidienne de la destination. Ainsi, chaque saut approche le paquet de plus en plus vers la destination. L'avantage principal de cette technique est que l'on évite par construction les boucles. Néanmoins, cet algorithme échoue quand il atteint un cul de sac (ou void).
+
+On peut optimiser cet algorithme en prenant en compte la distance parcourue en un saut. En effet, il est peut-être préférable de faire plus de transmissions de meilleures qualités que peu de transmissions qui sont de basses qualités.
+
+Dans le cas où les données ont forcément qu'un seul destinataire (un puits par exemple), on peut optimiser le routage en constituant une hiérarchie de capteurs. On appelle ce type de réseau les réseaux LEACH. Le principe de LEACH est qu'on divise les capteurs en clusters. certains capteurs peuvent avoir un rôle particulier : le rôle de Cluster head. Dans chaque cluster, il n'y a qu'un seul cluster head. Son rôle est de transmettre les données des noeuds de son cluster et des autres clusters vers la station de base. Pour des raisons de consommation d'énergies, le rôle de Cluster head n'est pas gardé en permanence par le même appareil du cluster. Ce rôle est alterné par chaque appareil du cluster.
+
+Il y a deux étapes dans un réseau LEACH :
+* la phase Set-Up : les cluster heads sont choisis.
+* la phase Steady : les cluster heads sont maintenus et les données sont transmises.
+Ces deux étapes s'enchaînent de manière cyclique à chaque changement du cluster head.
+
+Les avantages de LEACH sont prouvés : la durée de vie avant la mort du premier noeud est augmentée de 30% et la durée de vie avant la moitié des noeuds morts est augmentée de 20%.
+
+!! Internet des Objets
+
+6LowPan
+
+RPL : Routing Protocol for Low Power and Lossy Networks</pre>
 </div>
 <div created="20181018125129358" modified="20181018151031621" tags="haut-debit" title="Routeur et réseaux haut-débit" type=" ">
 <pre>Pour que les paquets arrivent à la bonne destination, le réseau Internet est composé de routeurs. Ces routeurs connectent les sous-réseaux des bordures entre eux. De nos jours, Internet est composé de réseaux de routeurs qui relient les sous-réseaux privés. Les réseaux de routeurs publics sont quand à eux relié au coeur du réseau grâce à des interconnexions [[SONET/SDH]]. Dans l'environnement, on trouve les routeurs dans les points de présences des opérateurs. Un point de présence peut contenir plusieurs routeurs selon l'importance de ce point.
