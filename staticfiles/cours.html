@@ -175,6 +175,8 @@ Error message and password prompt
 
 <li>6LowPan</li>
 
+<li>Accès au support dans les réseaux sans-fils</li>
+
 <li>Algorithme de chiffrement</li>
 
 <li>Anglais</li>
@@ -8889,7 +8891,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20181127184137415" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue" title="$:/StoryList">
+<div list="Bienvenue [[Réseau émergent sans fil et applications]] [[Accès au support dans les réseaux sans-fils]] [[Éléments de transmission physique]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -8946,7 +8948,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20181002085000811" modified="20181124124601694" title="$:/temp/search">
+<div created="20181002085000811" modified="20190107173321444" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20181002173759197" modified="20181002173800281" title="$:/theme">
@@ -9067,6 +9069,30 @@ Error message and password prompt
 <div created="20181003174610450" modified="20181003174843968" tags="haut-debit" title="6LowPan">
 <pre>6LowPan est un protocole qui adapte IPv6 pour les petits objets. Un des problèmes d'IPv6 est la taille de l'en-tête : 40 bytes. Pour l'optimiser, on compresse l'en-tête en jetant une partie de l'adresse IPv6 qui sera constante : la partie qui définit le réseau. Un routeur entre Internet et le réseau local s'occupe de transformer les paquets en paquets IPv6 valide.</pre>
 </div>
+<div created="20190107174709672" modified="20190107181338317" tags="iot" title="Accès au support dans les réseaux sans-fils">
+<pre>!! Technologies de gestion de support générales pour sans-fils
+
+Le multiplexage par temps a été la première technique de partage. La technologie s'appelle TDMA. Plus récemment, on a eu le multiplexage par code où tout le monde peut parler en même temps.
+
+Pour le bluetooth, on a un système maître/esclave similaire au multiplexage par temps mais optimisé (le maître peut décider comment répartir la bande passante entre tout ses appareils esclaves).
+
+Pour le WiFi, nous avons une méthode différente : le CSMA/CA (Collision Avoidance). Le principe fondamental du WiFi est que pour éviter une collision, il faut reporter la transmission jusqu'à ce que le medium devienne libre. Pour cela, chaque appareil attend un certains espace interframe (Interframe Space ou IFS). Il y a 3 types d'espace interframe, du plus rapide au plus lent pour différentes opérations :
+* SIFS : Short Interframe Space. Il s'agit du temps d'attente pour les messages de hautes priorités du protocole 802.11. Par exemple, les messages d'ACK sont envoyés après un temps SIFS.
+* PIFS : PCF Interframe Space. Il s'agit du temps d'attente pour des messages de moyennes priorités. Ce sont encore des messages qui appartiennent au protocole 802.11. Le temps PIFS est plus long qu'un temps SIFS.
+* DIFS : DCF Interframe Space. Il s'agit du temps d'attente avant d'envoyer des messages de faibles priorités. La plupart des données que les applications utilisateurs transmettent utilisent cet Interframe Space.
+
+Si le médium est occupé après le temps, l'appareil attend que la transmission soit achevée puis re-attend un temps qui correspond à la priorité de son message puis re-teste la disponiblité du medium. Ainsi, mécaniquement, les messages qui ont une plus haute priorité seront envoyés plus rapidement que les messages à plus faible priorité car le médium sera occupé plus facilement par les messages de hautes priorités à la décision d'une nouvelle transmission.
+
+Ces technologies ne sont pas utiles pour les réseaux de petits appareils, de par la disposition du réseau et de par les restrictions techniques de ces petits appareils.
+
+!! Technologies de gestion de support pour petits objets sans-fils
+
+La technologie 802.15.4 est plus adapté pour les petits objets sans-fils. Elle définit un mode coordinateur (non-utilisé en TP) ainsi que d'un mode pair-à-pair.
+
+En pair-à-pair, le partage du support est similaire au WiFi, avec les technologies CSMA/CA. Il y a néanmoins quelques différences : en WiFi, on attend que le support soit libre en l'écoutant alors qu'en 802.15.4, on vérifie le support en intervalle. L'intervalle est aléatoire et est appelé la //&quot;backoff period&quot;//. Cette période incrément de plus en plus au fur et à mesure des échecs jusqu'à un certain nombre d'essai. Si ce nombre d'essai est dépassé, la transmission est échouée. La raison de cette différence est la consommation d'énergie, la densité de déploiement (moins dense en 802.15.4 qu'en WiFi) et la différence de l'architecture du réseau (pair-à-pair contre station de base).
+
+En mode beacon, on utilise du slotted CSMA/CA. Les beacons sont utilisés pour synchroniser les appareils connectés aux beacons. Ainsi, ils ont les mêmes slots.</pre>
+</div>
 <div created="20181009135923638" modified="20181009140257042" tags="sécurité" title="Algorithme de chiffrement">
 <pre>Un algorithme de chiffrement doit obéir à des principes généraux : 
 
@@ -9169,7 +9195,7 @@ Ils sont divisés dans 3 catégories, où il y a 7 sous-catégories :
 * Communication (Organisation)
 * Locaux (Locaux)</pre>
 </div>
-<div created="20181002085653327" modified="20181122140458555" tags="" title="Bienvenue">
+<div created="20181002085653327" modified="20190107172951379" tags="" title="Bienvenue">
 <pre>Bienvenue sur ce [[TiddlyWiki|https://tiddlywiki.com/]] pour les cours de M2 fait par Noé. Ici, je prend des notes sur des particularités et des choses que je pense importante de chaque cours que j'ai eu en M2. Cela pourrait te servir pour tes révisions !
 
 Si vous voulez contribuer, vous pouvez faire une copie de ce wiki en local. Ensuite, vous pouvez modifier des articles ou ajouter de nouveaux articles et enregistrer les modifications. Une fois les modifications faites, cliquez sur la flèche en haut de l'article et cliquez sur &quot;export tiddler&quot;. Sélectionnez le format .json et envoyez-moi le fichier sur Discord par exemple.
@@ -9623,7 +9649,7 @@ L’authentification ne nécessite pas de stocker les données personnelles sur 
 La RGPD impose le poste d'un DPO (Data Protection Officer) qui est censé cartographier l'ensemble des traitements de données personnelles réalisés par l'entreprise. Tout est référencé dans le DPIA (Data Protection Impact Assessment) qui est une étude de risque visant sur les données personnelles uniquement. Le DPIA n'est pas obligatoire pour tout les traitements mais uniquement pour des  traitements spécifiques qui présentent &quot;un risque élevé pour les droits et libertés des personnes physiques&quot;.
 </pre>
 </div>
-<div created="20181118092547680" modified="20181118092702344" tags="iot" title="Éléments de transmission physique">
+<div created="20181118092547680" modified="20190107174340606" tags="iot" title="Éléments de transmission physique">
 <pre>Lors de communications sans-fils, si deux émetteurs émettent à la même fréquence, il y aura des interférences. Les émetteurs qui émettent à la même fréquence doivent se placer suffisamment loin de l'un des autres, au delà de la portée radio. La portée radio est le point où le signal est moins important que le bruit, où le rapport signal à bruit n'est plus suffisant pour décoder le signal.
 
 Rapport signal à bruit de 9db = 10 log,,10,,(SNR). Signal proche de 10 fois le bruit pour pouvoir décoder la transmission.
@@ -9649,6 +9675,8 @@ Si un signal quelconque est appliqué à l'entrée d'un filtre passe-bas ayant u
 Dmax = 2W log,,2,,(V) en bit/s.
 
 Théorème de Shannon-Hartley : C = W log,,2,,(1+S/N) avec S et N en watts, W en Hz et C en bits/s.
+
+Quand on essaye de prendre en compte des éventuels obstacles qui pourraient bloquer les ondes d'un appareil émetteur, il y a plus que les objets directs en ligne directe qui peuvent affecter la transmission. On dessine une sorte de zone en forme d'ovale entre l'appareil émetteur et récepteur avec les deux bouts de l'ovales étant les appareils : il s'agit de la zone de Fresnel. Les obstacles présents dans cette zone peuvent empêcher la transmission des données par des atténuations.
 
 !!! [[Modulation]]
 
@@ -9679,7 +9707,13 @@ Le multiplexage consiste à partager le support : autoriser plusieurs modulation
 
 Spread spectrum (étalement de spectre) : on va étaler le signal sur une bande passante plus large. On peut être plus résistant aux interférences et aux erreurs.
 
-* Direct Sequence Spread Spectrum (DSSS) : transformer les bits de données en une séquence de bits de données.</pre>
+* Direct Sequence Spread Spectrum (DSSS) : transformer les bits de données en une séquence de bits de données.
+
+* Frequency Hoping Spread Spectrum (FHSS) : Le signal est transmis en sautant de bande de fréquence en bande de fréquence de manière pseudo-aléatoire. C'est une méthode d'étalement de spectre. Cette technique peut être utilisé pour chiffrer les communications mais surtout pour rendre les communications plus robuste (on ne peut pas brouiller une communication en particulier en visant une bande de fréquence particulière). Le FHSS est dit lent quand le temps de changement de canal est plus lent que le temps de transmission d'un symbole. Il est dit rapide quand le temps de changement de canal est plus rapide que le temps de transmission d'un symbole. Le WiFi applique cette technique. En effet, dans le WiFi, il y a 79 canaux de 1 Mhz. On change de canal tous les 400ms. En théorie, il est possible d'avoir 15 réseaux différents au même endroit.
+
+* Chirp Spread Spectrum (CSS) : une autre technique d'étalement de spectre. C'est le signal qui varie en fréquence en fonction du temps. Cette technique est très utile dans des technologies qui ne nécessitent pas énormément de débits et peu d'énergies.
+
+Aujourd'hui, on a très peu de sauts technologiques dans le sans-fil : les progrès sont la plupart du temps des optmisations des techniques déjà utilisées.</pre>
 </div>
 <div created="20181002083327707" modified="20181002090633639" tags="ejb" title="Entity Beans">
 <pre>Un entity bean gère une connexion à la base de donnée de manière transparente : il s'agit d'une réflexion de la base de donnée, donc si on modifie un champs de l'objet, le changement va se refléter à la base de donnée.
@@ -10603,9 +10637,10 @@ Lorsque les deux protocoles cohabitent HSTCP surpasse de loin TCP grâce à sa v
 
 ''Signatures &amp; Certificats : Commet sont utilisés les mécanismes de signature et de certificat en Java ?''</pre>
 </div>
-<div created="20181118092355939" modified="20181118092543794" tags="iot" title="Réseau émergent sans fil et applications">
+<div created="20181118092355939" modified="20190107174703305" tags="iot" title="Réseau émergent sans fil et applications">
 <pre>* [[Introduction]]
-* [[Éléments de transmission physique]] </pre>
+* [[Éléments de transmission physique]]
+* [[Accès au support dans les réseaux sans-fils]]</pre>
 </div>
 <div created="20181003184741144" modified="20181004205848745" tags="haut-debit" title="Réseau en circuit">
 <pre>Avant le réseau en paquet que l'on utilise aujourd'hui pour Internet, il y avait le réseau téléphonique basé sur les réseaux en circuit. Si on voulait communiquer avec quelqu'un par téléphone, on réservait un circuit de bout en bout afin de faire un canal de communication continu. Ainsi, la ressource était réservé tout au long de la communication jusqu'à que quelqu'un raccroche.
