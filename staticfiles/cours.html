@@ -8898,10 +8898,10 @@ Error message and password prompt
 <div created="20181002173753109" modified="20181002173753844" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
-<div created="20181002173649754" modified="20181127184137415" title="$:/state/tab/sidebar--1835078512">
+<div created="20181002173649754" modified="20190108103311977" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue [[Réseau hauts débits et Qualité de service]] [[Questions récurrentes pour réseau haut débits]] [[Réseau émergent sans fil et applications]] [[Corrections annales RESA]] [[Correction RESA 2018]] [[Correction RESA 2015]]" title="$:/StoryList">
+<div list="Bienvenue [[Réseau émergent sans fil et applications]] [[Routage dans un réseau 100% sans-fils]] [[Accès au support dans les réseaux sans-fils]] [[Éléments de transmission physique]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -8958,8 +8958,8 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20181002085000811" modified="20190107173321444" title="$:/temp/search">
-<pre></pre>
+<div created="20181002085000811" modified="20190108104541085" title="$:/temp/search">
+<pre>Bienvenue</pre>
 </div>
 <div created="20181002173759197" modified="20181002173800281" title="$:/theme">
 <pre>$:/themes/tiddlywiki/vanilla</pre>
@@ -9079,7 +9079,7 @@ Error message and password prompt
 <div created="20181003174610450" modified="20181003174843968" tags="haut-debit" title="6LowPan">
 <pre>6LowPan est un protocole qui adapte IPv6 pour les petits objets. Un des problèmes d'IPv6 est la taille de l'en-tête : 40 bytes. Pour l'optimiser, on compresse l'en-tête en jetant une partie de l'adresse IPv6 qui sera constante : la partie qui définit le réseau. Un routeur entre Internet et le réseau local s'occupe de transformer les paquets en paquets IPv6 valide.</pre>
 </div>
-<div created="20190107174709672" modified="20190107182412351" tags="iot" title="Accès au support dans les réseaux sans-fils">
+<div created="20190107174709672" modified="20190108104611626" tags="iot" title="Accès au support dans les réseaux sans-fils">
 <pre>!! Technologies de gestion de support générales pour sans-fils
 
 Le multiplexage par temps a été la première technique de partage. La technologie s'appelle TDMA. Plus récemment, on a eu le multiplexage par code où tout le monde peut parler en même temps.
@@ -9087,6 +9087,7 @@ Le multiplexage par temps a été la première technique de partage. La technolo
 Pour le bluetooth, on a un système maître/esclave similaire au multiplexage par temps mais optimisé (le maître peut décider comment répartir la bande passante entre tout ses appareils esclaves).
 
 Pour le WiFi, nous avons une méthode différente : le CSMA/CA (Collision Avoidance). Le principe fondamental du WiFi est que pour éviter une collision, il faut reporter la transmission jusqu'à ce que le medium devienne libre. Pour cela, chaque appareil attend un certains espace interframe (Interframe Space ou IFS). Il y a 3 types d'espace interframe, du plus rapide au plus lent pour différentes opérations :
+
 * SIFS : Short Interframe Space. Il s'agit du temps d'attente pour les messages de hautes priorités du protocole 802.11. Par exemple, les messages d'ACK sont envoyés après un temps SIFS.
 * PIFS : PCF Interframe Space. Il s'agit du temps d'attente pour des messages de moyennes priorités. Ce sont encore des messages qui appartiennent au protocole 802.11. Le temps PIFS est plus long qu'un temps SIFS.
 * DIFS : DCF Interframe Space. Il s'agit du temps d'attente avant d'envoyer des messages de faibles priorités. La plupart des données que les applications utilisateurs transmettent utilisent cet Interframe Space.
@@ -10695,10 +10696,11 @@ Lors du passage des lignes analogiques (électriques) au lignes téléphoniques 
 
 Afin de voir l'échelle du risque, on doit faire une [[appréciation du risque|Appréciation du risque]].</pre>
 </div>
-<div created="20190107182509032" modified="20190107190305021" tags="iot" title="Routage dans un réseau 100% sans-fils">
+<div created="20190107182509032" modified="20190108104629293" tags="iot" title="Routage dans un réseau 100% sans-fils">
 <pre>Le routage conventionnel dans un réseau filaire n'est pas appliquable dans un réseau sans-fil. En effet, le nombre de transmission est un facteur important dans les réseaux sans-fils en raison des collisions possibles.
 
 Il existe deux types d'approches :
+
 *les approches proactives : OLSR.
 *les approches réactives : AODV et DSR.
 
@@ -10735,6 +10737,7 @@ On peut optimiser cet algorithme en prenant en compte la distance parcourue en u
 Dans le cas où les données ont forcément qu'un seul destinataire (un puits par exemple), on peut optimiser le routage en constituant une hiérarchie de capteurs. On appelle ce type de réseau les réseaux LEACH. Le principe de LEACH est qu'on divise les capteurs en clusters. certains capteurs peuvent avoir un rôle particulier : le rôle de Cluster head. Dans chaque cluster, il n'y a qu'un seul cluster head. Son rôle est de transmettre les données des noeuds de son cluster et des autres clusters vers la station de base. Pour des raisons de consommation d'énergies, le rôle de Cluster head n'est pas gardé en permanence par le même appareil du cluster. Ce rôle est alterné par chaque appareil du cluster.
 
 Il y a deux étapes dans un réseau LEACH :
+
 * la phase Set-Up : les cluster heads sont choisis.
 * la phase Steady : les cluster heads sont maintenus et les données sont transmises.
 Ces deux étapes s'enchaînent de manière cyclique à chaque changement du cluster head.
