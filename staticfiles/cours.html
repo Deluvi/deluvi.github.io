@@ -217,6 +217,8 @@ Error message and password prompt
 
 <li>Correction TDEX05</li>
 
+<li>Corrections annales Multi-agent</li>
+
 <li>Corrections annales RESA</li>
 
 <li>Différentiation de service sur Internet</li>
@@ -266,6 +268,8 @@ Error message and password prompt
 <li>Message-Driven Beans</li>
 
 <li>MIMO</li>
+
+<li>Multi-agent</li>
 
 <li>PDH</li>
 
@@ -8889,7 +8893,7 @@ Error message and password prompt
 <div created="20181002083656210" modified="20181002083705027" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div created="20181008164651333" modified="20181009090555469" title="$:/state/sidebar">
+<div created="20181008164651333" modified="20190108174720821" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20181002173755313" modified="20181002173804864" title="$:/state/tab--1963855381">
@@ -8901,7 +8905,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20190108103311977" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue [[Réseau émergent sans fil et applications]] [[Routage dans un réseau 100% sans-fils]] [[Accès au support dans les réseaux sans-fils]] [[Éléments de transmission physique]]" title="$:/StoryList">
+<div list="Bienvenue [[Réseau émergent sans fil et applications]] [[Corrections annales RESA]] Multi-agent [[Corrections annales Multi-agent]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -8958,8 +8962,8 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20181002085000811" modified="20190108104541085" title="$:/temp/search">
-<pre>Bienvenue</pre>
+<div created="20181002085000811" modified="20190108174019476" title="$:/temp/search">
+<pre></pre>
 </div>
 <div created="20181002173759197" modified="20181002173800281" title="$:/theme">
 <pre>$:/themes/tiddlywiki/vanilla</pre>
@@ -9210,7 +9214,7 @@ Ils sont divisés dans 3 catégories, où il y a 7 sous-catégories :
 * Communication (Organisation)
 * Locaux (Locaux)</pre>
 </div>
-<div created="20181002085653327" modified="20190107172951379" tags="" title="Bienvenue">
+<div created="20181002085653327" modified="20190108174037108" tags="" title="Bienvenue">
 <pre>Bienvenue sur ce [[TiddlyWiki|https://tiddlywiki.com/]] pour les cours de M2 fait par Noé. Ici, je prend des notes sur des particularités et des choses que je pense importante de chaque cours que j'ai eu en M2. Cela pourrait te servir pour tes révisions !
 
 Si vous voulez contribuer, vous pouvez faire une copie de ce wiki en local. Ensuite, vous pouvez modifier des articles ou ajouter de nouveaux articles et enregistrer les modifications. Une fois les modifications faites, cliquez sur la flèche en haut de l'article et cliquez sur &quot;export tiddler&quot;. Sélectionnez le format .json et envoyez-moi le fichier sur Discord par exemple.
@@ -9222,6 +9226,7 @@ Listes de pages principales pour chaque cours :
 * [[Sécurité Informatique]]
 * [[Anglais]]
 * [[Réseau émergent sans fil et applications]]
+* [[Multi-agent]]
 
 Contributeurs :
 
@@ -9490,7 +9495,7 @@ On remarque que comme il n'y a qu'un seul réseau interne, le réseau tout entie
 <div created="20190108103027834" modified="20190108103056871" tags="iot" title="Correction RESA 2015">
 <pre>[img[https://i.imgur.com/FpsMmmy.jpg]]</pre>
 </div>
-<div created="20190108103102537" modified="20190108103256025" tags="iot" title="Correction RESA 2018">
+<div created="20190108103102537" modified="20190108174718512" tags="iot" title="Correction RESA 2018">
 <pre>[img[https://i.imgur.com/0PW6Sw1.jpg]]
 [img[https://i.imgur.com/UhVOcf6.jpg]]
 [img[https://i.imgur.com/Jxc1p5U.jpg?1]]
@@ -9565,6 +9570,61 @@ Risque complet :
 * Impact : diffusion d'un secret présent dans le mail
 
 Traduction : le directeur se connecte sur un réseau public dans une salle d'attente. Il veut envoyer un courrier électronique confidentiel qui contient un secret. Ce réseau public est écouté par un pirate qui intercepte les communications. Comme le transfert des mails n'est pas sécurisé, le pirate intercepte le mail et peut lire son contenu. Le pirate viole le besoin de confidentialité du contenu du mail. Son impact est la fuite d'un secret industriel et la perte financière lors de la diffusion de ce secret.</pre>
+</div>
+<div created="20190108174111324" modified="20190108174731176" tags="multi-agent" title="Corrections annales Multi-agent">
+<pre>!! 2012
+
+''Q2: Quelles sont les différents types de problèmes qui se posent lors de l'utilisation de KQML et de ACL-FIPA pour la spécification des conversation/protocoles dans un SMA?''
+
+Les diagrammes KQML font preuve de beaucoup d'ambiguïté en ce qui concerne les communications entre agents. Egalement, les protocoles et les primitives KQML n'ont pas de sémantique formelle.
+ACL-FIPA est le successeur de KQML et dispose d'une syntaxe similaire. (hérite des mêmes problèmes?)
+
+!! 2015
+
+''Q2: Quels sont les différents modes d'interaction/coordination dans un système multi agent?''
+
+* L'interaction via l'environnement, elle permet de s'abstraire de la communication entre agent en effectuant la prise de décision sur l'état de l'environnement (ressources partagées)
+* La communication langagière, elle suppose que chaque agent est doué de capacitées cognitives lui permettant de comprendre les intentions via les messages d'un autre agent, et d'en déduire un comportement à adopter.
+* La coordination par planification consiste à l'ordonnancement d'un ensemble d'action afin d'atteindre un objectif donné.
+*La coordination par protocoles, elle consiste à établir un protocole dictant à l'agent comment il doit interagir avec ses pairs, cette coordination comporte les notions de rôles, d'états, et de conversations, chacunes contraignant l'agent à agir de manière précise.
+
+!! 2016
+
+''Q1: Comment peut on distinguer un système multi agent d'un système distribué?''
+
+D'abord, un système multi agent n'est pas pro-actif, et toute communication  est asynchrone, non controlée et donc non bloquante. Dans un système multi agents, chaque agent garde le contrôle de son exécution et peut donc prendre ses propres décisions en fonction du contexte. Au contraire, dans un système distribué, chaque coeur de calcul se contente d'exécuter sa tâche (calcul distribué), sans se soucier du contexte et ne prend aucune décision de sa propre initiative.
+
+''Q2: Quels sont les avantages et inconvénients de l'utilisation des protocoles d'interaction dans les SMA?''
+
+L'inconvénient des protocoles d'interaction est la réduction de l'autonomie des agents.
+Son avantage est une communication plus facile, car elle suit le protocole.
+
+''Q3: Dans un protocole de négociation, par exemple le protocole d'enchere au poisson, les participants peuvent êtres dotés de stratégies pour qu'ils soient capables de &quot;raisonner&quot;. En fonction de quels paramètres ces stratégies peuvent êtres définies? Donner quelques exemples de stratégies.''
+
+Il existe deux catégories de stratégies pour un agent (on parle de kits stratégiques), qui sont mutuellement exclusifs.
+La premiere, la stratégie de &quot;But stratégique&quot;, est définie sur les croyances stratégiques du protocoles et des autres agents. Elle peut consister par exemple, dans le cadre de l'enchere au poissson, de vendre au plus vite ou au plus tard, acheter au plus vite ou au plus tard…
+
+La deuxieme, la stratégie de &quot;But fonctionnel&quot;, est définie en fonction des croyances de base de l'environnement et de l'objet.
+Elle peut consister par exemple à vendre le plus cher possible,  acheter le moins cher possible…
+
+
+!! 2017
+
+''Q1: Pourquoi a-t-on besoin d'une ingénierie de protocoles d'interaction dans un système multi agent et en quoi ça consiste?''
+
+L'ingénierie des protocoles est utilisée car elle permet l'établissement d'un protocole multi agent respectant un cahier des charges, et donc des propriétés spécifiques. Il permet donc de mettre d'accord les agents sur un plan de communication dans le but de les rendre efficaces.
+
+L'ingénierie des protocoles consiste en plusieurs étapes pour sa mise en oeuvre:
+* La modélisation (de toutes les conversations possibles)
+* La validation (des propriétés du cahier des charges)
+* La conception (de l'architecture du SMA)
+* L'implémentation (du code)
+
+''Q3: Expliquer comment on peut augmenter le degré d'autonomie des agents participant à un protocole d'interaction ou de négociation. Donner des exemples.''
+
+Afin d'augmenter l'autonomie d'un agent il est possible de le doter d'un kit stratégique, qui lui permettra de prendre des décisions suivant le contexte de la situation (voir exemples dans la réponse Q3 2016)
+
+[img[https://i.imgur.com/5WgdcAe.png]]</pre>
 </div>
 <div created="20190108102802930" modified="20190108102840714" tags="iot" title="Corrections annales RESA">
 <pre>* [[Correction RESA 2014]]
@@ -10245,6 +10305,9 @@ Il y a [[une équation sur Wikipédia|https://en.wikipedia.org/wiki/Link_budget#
 </div>
 <div created="20181003175124607" modified="20181003175136298" tags="haut-debit" title="MIMO">
 <pre>Dans les intérieurs, les ondes sont réfléchis par les murs et le mobilier, ce qui peut causer des interférences : ce sont des trajets multiples. Les équipements MIMO (Multiple Antenna Systems) exploitent ces trajets multiples.</pre>
+</div>
+<div created="20190108174044675" modified="20190108174059812" tags="multi-agent" title="Multi-agent">
+<pre>* [[Corrections annales Multi-agent]]</pre>
 </div>
 <div created="20181004202200426" modified="20181005092359724" tags="haut-debit" title="PDH">
 <pre>Pour faire communiquer les réseaux analogues électriques avec les nouveaux réseaux digitaux optiques, une première solution fut adoptée, la Piesosynchronous Digital Hierarchy (PDH). Il consiste en un multiplexage des ondes des réseaux analogiques et leur conversion en signaux digitaux (bits) et à leur positionnement hiérarchique dans le temps (Multiplexage à répartition dans le temps). Chaque canal de communication est répartis à intervalles régulier dans la trame. En revanche, chaque désynchronisation se répercute en un remplissage par des bits de bourrage (padding) afin de ne pas interrompre le flux digital, ce qui a pour conséquence une hausse de la bande passante nécessaire.
