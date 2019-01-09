@@ -9571,7 +9571,7 @@ Risque complet :
 
 Traduction : le directeur se connecte sur un réseau public dans une salle d'attente. Il veut envoyer un courrier électronique confidentiel qui contient un secret. Ce réseau public est écouté par un pirate qui intercepte les communications. Comme le transfert des mails n'est pas sécurisé, le pirate intercepte le mail et peut lire son contenu. Le pirate viole le besoin de confidentialité du contenu du mail. Son impact est la fuite d'un secret industriel et la perte financière lors de la diffusion de ce secret.</pre>
 </div>
-<div created="20190108174111324" modified="20190109102138518" tags="multi-agent" title="Corrections annales Multi-agent">
+<div created="20190108174111324" modified="20190109102404505" tags="multi-agent" title="Corrections annales Multi-agent">
 <pre>!! 2012
 
 ''Q2: Quelles sont les différents types de problèmes qui se posent lors de l'utilisation de KQML et de ACL-FIPA pour la spécification des conversation/protocoles dans un SMA?''
@@ -9624,13 +9624,19 @@ Elle peut consister par exemple à vendre le plus cher possible,  acheter le moi
 
 * to_participate doit être exécuté depuis l'état initial une seule fois, seulement si un un to_announce a été exécuté.
 * to_bid ne peut être exécuté qu'après:
-réception d'un to_accept
-après une précédente occurrence de to_bid
-et seulement si le prix de vente n'excède pas le budget (pas modélisé dans le RdP)
-to_withdraw doit être exécuté après
-avoir reçu un to_accept ou exécuté un to_bid, et si le prix dépasse le budget.
-après avoir reçu un to_refuse
+** réception d'un to_accept
+** après une précédente occurrence de to_bid et seulement si le prix de vente n'excède pas le budget (pas modélisé dans le RdP)
+* to_withdraw doit être exécuté après
+** avoir reçu un to_accept ou exécuté un to_bid, et si le prix dépasse le budget.
+** après avoir reçu un to_refuse
 
+''Donner une spécification par Réseaux de Petri (RdP) ou par automates d’un système composé d’un Vendeur et deux Acheteurs potentiels. Expliciter et vérifier les propriétés génériques''
+
+[img[https://i.imgur.com/5WgdcAe.png]]
+
+''Donner une spécification par RdP du comportement d’un modérateur de ce protocole. Expliciter et vérifier ses propriétés.''
+
+[img[https://i.imgur.com/EyRpKdC.png]]
 
 !! 2017
 
@@ -9646,9 +9652,7 @@ L'ingénierie des protocoles consiste en plusieurs étapes pour sa mise en oeuvr
 
 ''Q3: Expliquer comment on peut augmenter le degré d'autonomie des agents participant à un protocole d'interaction ou de négociation. Donner des exemples.''
 
-Afin d'augmenter l'autonomie d'un agent il est possible de le doter d'un kit stratégique, qui lui permettra de prendre des décisions suivant le contexte de la situation (voir exemples dans la réponse Q3 2016)
-
-[img[https://i.imgur.com/5WgdcAe.png]]</pre>
+Afin d'augmenter l'autonomie d'un agent il est possible de le doter d'un kit stratégique, qui lui permettra de prendre des décisions suivant le contexte de la situation (voir exemples dans la réponse Q3 2016)</pre>
 </div>
 <div created="20190108102802930" modified="20190108102840714" tags="iot" title="Corrections annales RESA">
 <pre>* [[Correction RESA 2014]]
