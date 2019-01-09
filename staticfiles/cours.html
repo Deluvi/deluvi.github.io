@@ -8905,7 +8905,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20190108103311977" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue [[Réseau émergent sans fil et applications]] [[Corrections annales RESA]] Multi-agent [[Corrections annales Multi-agent]]" title="$:/StoryList">
+<div list="Bienvenue Multi-agent [[Corrections annales Multi-agent]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9571,7 +9571,7 @@ Risque complet :
 
 Traduction : le directeur se connecte sur un réseau public dans une salle d'attente. Il veut envoyer un courrier électronique confidentiel qui contient un secret. Ce réseau public est écouté par un pirate qui intercepte les communications. Comme le transfert des mails n'est pas sécurisé, le pirate intercepte le mail et peut lire son contenu. Le pirate viole le besoin de confidentialité du contenu du mail. Son impact est la fuite d'un secret industriel et la perte financière lors de la diffusion de ce secret.</pre>
 </div>
-<div created="20190108174111324" modified="20190108174731176" tags="multi-agent" title="Corrections annales Multi-agent">
+<div created="20190108174111324" modified="20190109102138518" tags="multi-agent" title="Corrections annales Multi-agent">
 <pre>!! 2012
 
 ''Q2: Quelles sont les différents types de problèmes qui se posent lors de l'utilisation de KQML et de ACL-FIPA pour la spécification des conversation/protocoles dans un SMA?''
@@ -9606,6 +9606,30 @@ La premiere, la stratégie de &quot;But stratégique&quot;, est définie sur les
 
 La deuxieme, la stratégie de &quot;But fonctionnel&quot;, est définie en fonction des croyances de base de l'environnement et de l'objet.
 Elle peut consister par exemple à vendre le plus cher possible,  acheter le moins cher possible…
+
+''Q4: Un protocole d’enchère ascendante ouvert''
+
+''Expliciter toutes les propriétés spécifiques de ce protocole''
+
+''Vendeur:''
+
+* to_announce: doit être exécuté soit:
+** Depuis l'état initial
+** Depuis son occurrence SI aucun ou plusieurs to_bid ont été effectués.
+* to_attribute doit être exécuté au plus 1 seule fois, depuis la dernière occurrence de to_announce, à la condition que 1 et 1 seul to_bid ait été exécuté et que le prix soit supérieur ou égal au prix de réserve.
+* to_inform doit être exécuté au plus 1 seule fois, depuis la dernière occurrence de to_announce, à la condition que 1 et 1 seul to bid ait été exécuté, et que le prix est inférieur au prix de réserve.
+* to_accept OU to_refuse doivent êtres exécutés après toute réception d'un to_participate.
+
+''Acheteur:''
+
+* to_participate doit être exécuté depuis l'état initial une seule fois, seulement si un un to_announce a été exécuté.
+* to_bid ne peut être exécuté qu'après:
+réception d'un to_accept
+après une précédente occurrence de to_bid
+et seulement si le prix de vente n'excède pas le budget (pas modélisé dans le RdP)
+to_withdraw doit être exécuté après
+avoir reçu un to_accept ou exécuté un to_bid, et si le prix dépasse le budget.
+après avoir reçu un to_refuse
 
 
 !! 2017
@@ -10306,7 +10330,7 @@ Il y a [[une équation sur Wikipédia|https://en.wikipedia.org/wiki/Link_budget#
 <div created="20181003175124607" modified="20181003175136298" tags="haut-debit" title="MIMO">
 <pre>Dans les intérieurs, les ondes sont réfléchis par les murs et le mobilier, ce qui peut causer des interférences : ce sont des trajets multiples. Les équipements MIMO (Multiple Antenna Systems) exploitent ces trajets multiples.</pre>
 </div>
-<div created="20190108174044675" modified="20190108174059812" tags="multi-agent" title="Multi-agent">
+<div created="20190108174044675" modified="20190109101949221" tags="multi-agent" title="Multi-agent">
 <pre>* [[Corrections annales Multi-agent]]</pre>
 </div>
 <div created="20181004202200426" modified="20181005092359724" tags="haut-debit" title="PDH">
