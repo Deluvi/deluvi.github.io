@@ -179,6 +179,8 @@ Error message and password prompt
 
 <li>Algorithme de chiffrement</li>
 
+<li>Android</li>
+
 <li>Anglais</li>
 
 <li>Appréciation du risque</li>
@@ -204,6 +206,8 @@ Error message and password prompt
 <li>Communication entre Beans</li>
 
 <li>Compound TCP</li>
+
+<li>Correction annales Android</li>
 
 <li>Correction étude de cas société JVD</li>
 
@@ -9130,6 +9134,9 @@ En 802.15.4, en unicast, il y a les ACK qui garantissent l'intégrité du messag
 
 Les attaques vont du plus difficile au plus facile.</pre>
 </div>
+<div created="20190109180314534" modified="20190109180323175" tags="android" title="Android">
+<pre>* [[Correction annales Android]]</pre>
+</div>
 <div created="20181021114306975" modified="20181021114323765" tags="anglais" title="Anglais">
 <pre>* [[Vocabulaire M1]]
 * [[Vocabulaire M2]]</pre>
@@ -9214,7 +9221,7 @@ Ils sont divisés dans 3 catégories, où il y a 7 sous-catégories :
 * Communication (Organisation)
 * Locaux (Locaux)</pre>
 </div>
-<div created="20181002085653327" modified="20190108174037108" tags="" title="Bienvenue">
+<div created="20181002085653327" modified="20190109180304950" tags="" title="Bienvenue">
 <pre>Bienvenue sur ce [[TiddlyWiki|https://tiddlywiki.com/]] pour les cours de M2 fait par Noé. Ici, je prend des notes sur des particularités et des choses que je pense importante de chaque cours que j'ai eu en M2. Cela pourrait te servir pour tes révisions !
 
 Si vous voulez contribuer, vous pouvez faire une copie de ce wiki en local. Ensuite, vous pouvez modifier des articles ou ajouter de nouveaux articles et enregistrer les modifications. Une fois les modifications faites, cliquez sur la flèche en haut de l'article et cliquez sur &quot;export tiddler&quot;. Sélectionnez le format .json et envoyez-moi le fichier sur Discord par exemple.
@@ -9227,6 +9234,7 @@ Listes de pages principales pour chaque cours :
 * [[Anglais]]
 * [[Réseau émergent sans fil et applications]]
 * [[Multi-agent]]
+* [[Android]]
 
 Contributeurs :
 
@@ -9280,6 +9288,98 @@ Le serveur peut effectuer des vérifications pour nous pour vérifier si certain
 <pre>Tout les protocoles TCP à présent n'ont pris en compte que la perte de paquet pour identifier la congestion d'un réseau. Si on y réfléchit, on dispose également du RTT de chaque paquet comme indicateur de congestion. Ainsi, si on constate un accroissement du RTT, on peut en déduire que le réseau devient congestionné. Ce concept a été étudié dans TCP Vegas. On a vite constaté que le débit obtenu était plus lent : le RTT n'est pas forcément le meilleur indicateur de congestion car plusieurs facteurs peuvent affecter le RTT.
 
 Compound TCP combine à la fois le facteur perte de paquet et le facteur délai pour faire un contrôle de la congestion. Microsoft est le détenteur de ce protocole et il l'a implémenté sur Windows. On ne dispose que de peu d'information vu que Windows n'est pas open-source. On sait néanmoins qu'il faut en théorie l'activer manuellement et qu'il n'est pas par défaut.</pre>
+</div>
+<div created="20190109180331816" modified="20190109181124310" tags="android" title="Correction annales Android">
+<pre>!! 2016-2017
+
+''De quelle classe de l’API doit-on hériter pour mémoriser des données globales à toute une application?''
+
+classe Activity pour utiliser sharedPreferences (mémoriser des données globales) : utilisation de couples “clé/valeur”. (pour partager les données on utilise un singleton)
+
+''Pensez-vous pouvoir ajouter/enlever dynamiquement (c-a-d. par programmation) des ressources à une application ? Argumentez.''
+
+Non si on parle des ressources de l’application en interne ; oui si on a eu l’autorisation de l’utilisateur si on parle des ressources externes du telephone
+
+[[Explication Stack Overflow magique|https://stackoverflow.com/questions/33987678/programmatically-change-the-value-of-a-color-resource-obtained-from-api-response/33992017#33992017]]
+
+''Comment s’appelle le programme d’analyse statique de code? et celui d’obfuscation ? Expliquez l’intérêt de chacun d’eux et leur articulation vis-à-vis du travail déjà conséquent du compilateur.''
+
+analyseur statique de code (Lint), obfuscateur (ProGuard)
+
+When using Android Studio, configured lint and IDE inspections run whenever you build your app. However, you can manually run inspections or run lint from the command line. 
+
+''Exploitez astucieusement vos connaissances sur les qualificateurs de ressources Android pour écrire conditionMysterel et conditionMystere2. Expliquez entièrement votre solution.''
+
+Locale.getDefault().getLanguages()
+
+''Illustrer l’appel de cette instruction dans les 4 situations possibles, selon que vous soyez dans une (1) Activity, un (2) Service, un (3) BroadcastReceiver ou un (4) ContentProvider. ''
+
+# Activity : this
+# Service : getApplicationContext()
+# BroadcastReceiver : contexte récupéré en paramètre
+# ContentProvider : getApplicationContext()
+
+'' Le rôle d’un Adapter est de dupliquer cet item autant de fois qu’il y a d’éléments à afficher. L’arbre de vues produit au final va donc nécessairement contenir des id redondants. Comment expliquer alors que findViewByld () utilisé au sein de l’Adapter fonctionne correctement? ''
+
+l’inflater permet de récupérer le layout et donc le niveau dans l’arborescence à partir duquel on veut naviger. Ensuite, on utilise view.findViewByID(id) pour récupérer le 1er élément qui possède cet id.
+
+''On considère une collection Java de simples chaines de caractères (ArrayList), d’au plus 256 éléments. On souhaiterai les afficher via my_item.xml mais avec un effet degradé en arrière plan, allant du rouge le plus éclatant jusqu’au plus léger. Donner le code complet de votre classe Adapter.''
+
+
+```
+public View getView(int position, View listView, ViewGroup p) {
+
+   LayoutInflater l = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+   if (listView == null) {
+       listView = l.inflate(R.layout.my_item.xml, null);
+   }
+
+   Task task = this.getItem(position);
+
+    task.setBackgroundColor(Color.rgb(255-position,0,0));
+
+   return listView;
+}
+```
+
+''Donner le code des éléments essentiels de votre architecture, commune aux quatres applications.''
+
+```
+public class test extends ContentProvider {
+
+public static final Uri CONTENT_URI = Uri.parse(“content://fr.univ-pau.GameX/score”);
+public MySQLiteHelper m;
+
+   @Override
+public boolean onCreate() {
+   m = new MySQLiteHelper(this, &quot;coucou.db&quot;, null, 1);
+   return false;
+}
+
+
+   @Override
+   public Cursor query(Uri uri, String[] strings, String s, String[] strings1, String s1) {
+
+    m = myHelper.getReadableDatabase();
+    m.rawQuery(“SELECT …”); //ya aussi m.query(voir diapo Interrogation de la base 17 j’crois)
+
+       return null;
+   }
+
+   @Override
+   public Uri insert(Uri uri, ContentValues contentValues) {
+      m = myHelper.getWritableDatabase();
+      m.insert(...); 
+       return null;
+   }
+
+   @Override
+   public int update(Uri uri, ContentValues contentValues, String s, String[] strings) {
+       return 0;
+   }
+}
+```</pre>
 </div>
 <div created="20181009081455904" modified="20181009132356146" tags="sécurité" title="Correction étude de cas société JVD">
 <pre>!!! Question 1
@@ -9571,7 +9671,7 @@ Risque complet :
 
 Traduction : le directeur se connecte sur un réseau public dans une salle d'attente. Il veut envoyer un courrier électronique confidentiel qui contient un secret. Ce réseau public est écouté par un pirate qui intercepte les communications. Comme le transfert des mails n'est pas sécurisé, le pirate intercepte le mail et peut lire son contenu. Le pirate viole le besoin de confidentialité du contenu du mail. Son impact est la fuite d'un secret industriel et la perte financière lors de la diffusion de ce secret.</pre>
 </div>
-<div created="20190108174111324" modified="20190109102404505" tags="multi-agent" title="Corrections annales Multi-agent">
+<div created="20190108174111324" modified="20190109181359891" tags="multi-agent" title="Corrections annales Multi-agent">
 <pre>!! 2012
 
 ''Q2: Quelles sont les différents types de problèmes qui se posent lors de l'utilisation de KQML et de ACL-FIPA pour la spécification des conversation/protocoles dans un SMA?''
@@ -9632,11 +9732,11 @@ Elle peut consister par exemple à vendre le plus cher possible,  acheter le moi
 
 ''Donner une spécification par Réseaux de Petri (RdP) ou par automates d’un système composé d’un Vendeur et deux Acheteurs potentiels. Expliciter et vérifier les propriétés génériques''
 
-[img[https://i.imgur.com/5WgdcAe.png]]
+[img[https://i.imgur.com/cDTmulC.jpg]]
 
 ''Donner une spécification par RdP du comportement d’un modérateur de ce protocole. Expliciter et vérifier ses propriétés.''
 
-[img[https://i.imgur.com/EyRpKdC.png]]
+[img[https://i.imgur.com/8OJmi0W.jpg]]
 
 !! 2017
 
