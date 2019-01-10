@@ -8909,7 +8909,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20190108103311977" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue Multi-agent [[Corrections annales Multi-agent]]" title="$:/StoryList">
+<div list="[[Éléments de transmission physique]] Bienvenue [[Réseau émergent sans fil et applications]] [[Corrections annales RESA]] [[Correction RESA 2015]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -8966,8 +8966,8 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20181002085000811" modified="20190108174019476" title="$:/temp/search">
-<pre></pre>
+<div created="20181002085000811" modified="20190110104157924" title="$:/temp/search">
+<pre>FHSS</pre>
 </div>
 <div created="20181002173759197" modified="20181002173800281" title="$:/theme">
 <pre>$:/themes/tiddlywiki/vanilla</pre>
@@ -9592,8 +9592,41 @@ On remarque que comme il n'y a qu'un seul réseau interne, le réseau tout entie
 <div created="20190108102846871" modified="20190108103020208" tags="iot" title="Correction RESA 2014">
 <pre>[img[https://i.imgur.com/238JV1M.jpg]]</pre>
 </div>
-<div created="20190108103027834" modified="20190108103056871" tags="iot" title="Correction RESA 2015">
-<pre>[img[https://i.imgur.com/FpsMmmy.jpg]]</pre>
+<div created="20190108103027834" modified="20190110111358735" tags="iot" title="Correction RESA 2015">
+<pre>''Kevin :''
+
+[img[https://i.imgur.com/FpsMmmy.jpg]]
+
+''Noé :''
+
+''1.'' IPv6 permet d'identifier un appareil en particulier grâce à la grande plage d'adressage disponible, ce qui n'était pas possible avec IPv4. IPv6 nécessite néanmoins des en-têtes de paquets plus volumineux à cause de la taille de l'adresse de l'envoyeur et du destinataire par exemple. 6LowPan est une solution envisageable. Le principe essentiel de 6LowPan est la passerelle à l'entrée d'un réseau d'objets connectés. Cette passerelle compresse les en-têtes des paquets IPv6 en retirant les informations superflues comme la partie réseau de l'adresse de destination qui est connue.
+
+''2.'' Dans cette superframe, nous constatons qu'au sein d'une super-trame, il y a une période d'activité et une période d'inactivité. Cette période d'inactivité permet aux appareils de pouvoir se mettre en veille jusqu'au début de la prochaine super-trame afin d'économiser de l'énergie, une ressource essentielle pour les objets communiquants. De plus, nous pouvons observer dans la période d'activité deux sous-périodes :
+
+* la période CAP (Contention Access Period) qui est une sous-période où chaque appareil du réseau peut tenter de transmettre des informations. Cette sous-période est adaptée pour les appareils non critiques.
+* la période CFP (Contention Free Period) qui est une sous-période qui peut être réservé par un ou plusieurs appareils. Cette période est donc une période de transmission garantie pour l'appareil qui en réserve une partie.
+
+Ainsi, on constate que dans 802.15.4, la super-trame en elle-même est adaptée aux objets communicants à faibles ressources critiques ou non.
+
+''3.'' L'étalement de spectre consiste à transmettre des données en exploitant une plus grande partie d'un signal. Cela permet d'obtenir une meilleure vitesse de transmission mais surtout une meilleure robustesse. En effet, des perturbations d'une partie du signal donnée n'affectera pas toute la transmission de données mais seulement une partie.
+
+''4.'' FHSS (Frequence Hoping Spread Spectrum) consiste à faire varier la fréquence en effectuant des sauts semi-aléatoires à des instants donnés. Cette technique permet d'être moins dépendant d'une fréquence de transmission en la modifiant de temps en temps.
+
+DSSS (Direct Sequence Spread Spectrum) consiste à étaler la transmission de bits. On établit une séquence de bits : cette séquence, lorsque transmise, se traduira par un 0 ou un 1 selon que l'on donne cette séquence ou son opposé. Cette technique permet d'assurer une meilleure robustesse au détriment de la vitesse de transfert.
+
+CDMA consiste à effectuer un multiplexage par code. On associe à un certains code une séquence de bits. Lorsqu'on reçoit le récepteur reçoit un code particulier, il le traduit par la séquence de bits associé. Cela permet une meilleure rapidité de transfert au détriment de la robustesse. En effet, plus les codes sont complexes, plus on peut transférer de bits en un seul code mais plus les codes sont sensibles aux alterations.
+
+Ces trois techniques sont différentes les unes des autres : FHSS agit sur la fréquence de transmission, DSSS agit sur la traduction d'une séquence de bits en une séquence de bits plus petite mais plus sûre alors que CDMA encode plus de bits en un code du signal.
+
+''5.''
+
+''6.'' Il s'agit d'une combinaison de MFSK pour la modulation et de FHSS pour l'étalement de spectre. On constate FHSS car on constate verticalement qu'il y a 4 ensembles de 4 fréquences différentes. On alterne dans ces 4 ensembles de fréquences périodiquement de manière pseudo-aléatoires. En vérité, la séquence PN est suivie : au début, le premier ensemble de fréquence est choisis, puis le quatrième, puis le deuxième, puis le troisième, etc.
+
+MFSK, quand à lui, nous permet de choisir quelle fréquence choisir dans l'ensemble. La première série de bits est 01, donc la deuxième fréquence de l'ensemble est choisie. Puis il s'agit de la série 11, donc la quatrième fréquence de l'ensemble est choisie, etc.
+
+''7.'' Le problème principal de DSR est que la route d'un paquet est inscrite dans le paquet en lui-même. Cela peut poser un problème quand le réseau est grand et que la route est par conséquente grande aussi, ce qui agrandit la taille des paquets de manière linéaire au fur et à mesure que le réseau grandit.
+
+AODV résout ce problème en faisant stocker les routes dans les noeuds sous la forme de tables de routages. Lorsque la réponse du DISCOVERY du noeud de destination revient à l'envoyeur, les noeuds intermédiaires sauvegardent d'où venait le paquet de routeur afin d'établir la route de bout en bout. Ainsi, les paquets n'ont plus à contenir la route, ce qui est résout le problème principal de DSR.</pre>
 </div>
 <div created="20190108103102537" modified="20190108174718512" tags="iot" title="Correction RESA 2018">
 <pre>[img[https://i.imgur.com/0PW6Sw1.jpg]]
