@@ -9592,7 +9592,7 @@ On remarque que comme il n'y a qu'un seul réseau interne, le réseau tout entie
 <div created="20190108102846871" modified="20190108103020208" tags="iot" title="Correction RESA 2014">
 <pre>[img[https://i.imgur.com/238JV1M.jpg]]</pre>
 </div>
-<div created="20190108103027834" modified="20190110111358735" tags="iot" title="Correction RESA 2015">
+<div created="20190108103027834" modified="20190110112516266" tags="iot" title="Correction RESA 2015">
 <pre>''Kevin :''
 
 [img[https://i.imgur.com/FpsMmmy.jpg]]
@@ -9626,7 +9626,15 @@ MFSK, quand à lui, nous permet de choisir quelle fréquence choisir dans l'ense
 
 ''7.'' Le problème principal de DSR est que la route d'un paquet est inscrite dans le paquet en lui-même. Cela peut poser un problème quand le réseau est grand et que la route est par conséquente grande aussi, ce qui agrandit la taille des paquets de manière linéaire au fur et à mesure que le réseau grandit.
 
-AODV résout ce problème en faisant stocker les routes dans les noeuds sous la forme de tables de routages. Lorsque la réponse du DISCOVERY du noeud de destination revient à l'envoyeur, les noeuds intermédiaires sauvegardent d'où venait le paquet de routeur afin d'établir la route de bout en bout. Ainsi, les paquets n'ont plus à contenir la route, ce qui est résout le problème principal de DSR.</pre>
+AODV résout ce problème en faisant stocker les routes dans les noeuds sous la forme de tables de routages. Lorsque la réponse du DISCOVERY du noeud de destination revient à l'envoyeur, les noeuds intermédiaires sauvegardent d'où venait le paquet de routeur afin d'établir la route de bout en bout. Ainsi, les paquets n'ont plus à contenir la route, ce qui est résout le problème principal de DSR.
+
+Les flèches pleines représentent le reverse path effectué par les noeuds. Les flèches en pointillées représentent les nouvelles tentatives en broadcast de former la route.
+
+''8.'' L'intérêt d'avoir un routage hiérarchique comme cela est d'économiser de l'énergie : au lieu de donner la possibilité à tout les noeuds de transmettre des données, ce qui nécessite de l'énergie afin d'écouter les messages sur le réseau, il est possible de mutualiser les coûts en énergie en attribuant le rôle de cluster-head à un seul noeud du cluster.
+
+''9.'' Les noeuds cluster-head consomerront plus d'énergie que les autres, ce seront donc les premiers à faillir, ce qui entraîne donc des problèmes de connectivités du cluster vers la station de base. On peut résoudre ce problème en échangeant le rôle de cluster head entre tous les noeuds du cluster.
+
+L'intérêt de tirer une probabilité d'être cluster head est de</pre>
 </div>
 <div created="20190108103102537" modified="20190108174718512" tags="iot" title="Correction RESA 2018">
 <pre>[img[https://i.imgur.com/0PW6Sw1.jpg]]
