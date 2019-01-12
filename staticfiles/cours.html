@@ -8909,7 +8909,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20190108103311977" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue Android [[Correction annales Android]]" title="$:/StoryList">
+<div list="Bienvenue Multi-agent [[Corrections annales Multi-agent]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -8925,7 +8925,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Noe/Projets/websites/deluvi-blog/static/staticfiles/cours.html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/No%C3%A9%20Baylac-Jacqu%C3%A9/Documents/Projets/deluvi.github.io/staticfiles/cours.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -8945,7 +8945,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Noe/Projets/websites/deluvi-blog/static/staticfiles/cours.html&quot;
+            &quot;text&quot;: &quot;/C:/Users/No%C3%A9%20Baylac-Jacqu%C3%A9/Documents/Projets/deluvi.github.io/staticfiles/cours.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -8957,11 +8957,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
+            &quot;text&quot;: &quot;1536&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
+            &quot;text&quot;: &quot;864&quot;
         }
     }
 }</pre>
@@ -9806,8 +9806,10 @@ Risque complet :
 
 Traduction : le directeur se connecte sur un réseau public dans une salle d'attente. Il veut envoyer un courrier électronique confidentiel qui contient un secret. Ce réseau public est écouté par un pirate qui intercepte les communications. Comme le transfert des mails n'est pas sécurisé, le pirate intercepte le mail et peut lire son contenu. Le pirate viole le besoin de confidentialité du contenu du mail. Son impact est la fuite d'un secret industriel et la perte financière lors de la diffusion de ce secret.</pre>
 </div>
-<div created="20190108174111324" modified="20190109181359891" tags="multi-agent" title="Corrections annales Multi-agent">
-<pre>!! 2012
+<div created="20190108174111324" modified="20190112105538854" tags="multi-agent" title="Corrections annales Multi-agent">
+<pre>''Nicolas et Kevin :''
+
+!! 2012
 
 ''Q2: Quelles sont les différents types de problèmes qui se posent lors de l'utilisation de KQML et de ACL-FIPA pour la spécification des conversation/protocoles dans un SMA?''
 
@@ -9887,7 +9889,44 @@ L'ingénierie des protocoles consiste en plusieurs étapes pour sa mise en oeuvr
 
 ''Q3: Expliquer comment on peut augmenter le degré d'autonomie des agents participant à un protocole d'interaction ou de négociation. Donner des exemples.''
 
-Afin d'augmenter l'autonomie d'un agent il est possible de le doter d'un kit stratégique, qui lui permettra de prendre des décisions suivant le contexte de la situation (voir exemples dans la réponse Q3 2016)</pre>
+Afin d'augmenter l'autonomie d'un agent il est possible de le doter d'un kit stratégique, qui lui permettra de prendre des décisions suivant le contexte de la situation (voir exemples dans la réponse Q3 2016)
+
+''Noé :''
+
+!! 2017
+
+!!! Partie 1
+
+''1.'' Les différents rôles divisés dans les groupes dans lesquels ils sont présents sont :
+
+* Groupe ServiceClient :
+** Client
+** SCConseillerClientèle
+** SCGestionnaireDeDevis
+* Groupe Prestataires :
+** SFConseillerClientèle
+** Prestataire
+* Groupe ServiceConception :
+** CGestionnaireDeDevis
+** CConcepteurDeRéseau
+* Groupe ServiceJuridique
+** JConcepteurDeRéseau
+** ConseillerJuridique
+
+''2.'' Les relations d'interactions sont :
+
+* Client -&gt; SCConseillerClientèle : Demande_Devis
+* SFConseillerClientèle -&gt; Prestataire : Vérifier_Identité
+* SCConseillerClientèle -&gt; Client : Réponse_Vérification
+* SCConseillerClientèle -&gt; SCGestionnaireDeDevis : Analyse_Besoin
+* CGestionnaireDeDevis -&gt; CConcepteurDeRéseau : Etudier_Solution
+* JConcepteurDeRéseau -&gt; ConseillerJuridique : Vérification_Spécification
+* ConseillerJuridique -&gt; JConcepteurDeRéseau : Analyse_Juridique
+* CConcepteurDeRéseau -&gt; CGestionnaireDeDevis : Transmission_Devis
+* SCGestionnaireDeDevis -&gt; SCConseillerClientèle : Transmission_Devis
+* SCConseillerClientèle -&gt; Client : Transmission_Devis
+
+[img[https://i.imgur.com/eZV85Ob.png]]</pre>
 </div>
 <div created="20190108102802930" modified="20190108102840714" tags="iot" title="Corrections annales RESA">
 <pre>* [[Correction RESA 2014]]
