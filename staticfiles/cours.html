@@ -209,6 +209,10 @@ Error message and password prompt
 
 <li>Correction annales Android</li>
 
+<li>Correction annales Android 2015</li>
+
+<li>Correction annales Android 2017</li>
+
 <li>Correction étude de cas société JVD</li>
 
 <li>Correction GREX03</li>
@@ -8905,8 +8909,8 @@ Error message and password prompt
 <div created="20181002083656210" modified="20181002083705027" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div created="20181008164651333" modified="20190108174720821" title="$:/state/sidebar">
-<pre>yes</pre>
+<div created="20181008164651333" modified="20190112180416866" title="$:/state/sidebar">
+<pre>no</pre>
 </div>
 <div created="20181002173755313" modified="20181002173804864" title="$:/state/tab--1963855381">
 <pre>$:/core/ui/ControlPanel/StoryView</pre>
@@ -8917,7 +8921,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20190108103311977" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue" title="$:/StoryList">
+<div list="Bienvenue Android [[Correction annales Android]] [[Correction annales Android 2015]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9297,10 +9301,207 @@ Le serveur peut effectuer des vérifications pour nous pour vérifier si certain
 
 Compound TCP combine à la fois le facteur perte de paquet et le facteur délai pour faire un contrôle de la congestion. Microsoft est le détenteur de ce protocole et il l'a implémenté sur Windows. On ne dispose que de peu d'information vu que Windows n'est pas open-source. On sait néanmoins qu'il faut en théorie l'activer manuellement et qu'il n'est pas par défaut.</pre>
 </div>
-<div created="20190109180331816" modified="20190111134558451" tags="android" title="Correction annales Android">
-<pre>!! 2016-2017
+<div created="20190109180331816" modified="20190112170351803" tags="android" title="Correction annales Android">
+<pre>* [[Correction annales Android 2015]]
+* [[Correction annales Android 2017]]
 
-''Kevin :''
+</pre>
+</div>
+<div created="20190112170402148" modified="20190112180540243" tags="android" title="Correction annales Android 2015">
+<pre>''Jérémy :''
+
+''Q1 -'' Il permet de donner un accès unfié au ressource avec un chemin commun. Les ressources sont ainsi transformées en classe et en sous classe chaque fichier représentant une classe.
+
+''Q2 -'' Par défaut une apk est signée avec une clef de debugage
+
+''Q3 -''  SharedPreferences 
+
+''Q4 -'' Dans le cas d'une notification qui doit lancer une opération sur l'application cible lorsque l'on clique dessus.
+
+''Q5 -''
+
+* Activity : Le systeme demande à l'utilisateur quelle application doit l'utiliser.
+* BroadcastReceiver : Chaque instance fait appel à sa fonction onReceive()
+* Service : On ne sait pas quel service va repondre.
+
+''MyTweeter''
+
+''Q1 -'' 
+
+```
+&lt;intent-filter&gt;
+        &lt;action android:name=&quot;android.intent.action.VIEW&quot;/&gt;
+        &lt;category android:name=&quot;android.intent.category.DEFAULT&quot;/&gt;
+        &lt;data scheme=&quot;tweet&quot;/&gt;
+&lt;/intent-filter&gt;
+```
+
+''Q2 -''
+
+```
+Intent i = getIntent();
+int num_tweet = i.getExtras().getInt(&quot;????&quot;);
+```
+
+''Q3 -''
+
+```
+URI content_uri = Uri.parse(&quot;content://org.mytweeter/followers&quot;);
+Cursor result = getContentResolver().query(content_uri,null,null,null); // Pas sur pour les null
+do{
+  Log.println(Log.DEBUG,&quot;TI&quot;, result.getString(result.getColumnIndex(&quot;nickname&quot;)) + 
+  result.getString(result.getColumnIndex(&quot;country&quot;)));
+} while(result.hasNext());
+```
+
+''Q4 -'' 
+
+```
+public class BroadcastCharge extends BroadcastReceiver {
+  @Override
+  public void onReceive(Context ctx, Intent i){
+	Intent i = new Intent(ctx, PostTweetDaemon.class);
+	i.putStringExtra(&quot;message&quot;,&quot;Je recharge mon téléphone&quot;);
+	ctx.startService(i);
+  }
+}
+```
+
+```
+&lt;receiver android:name=&quot;.BroadcastCharge&quot;  android:exported=&quot;true&quot;&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;android.intent.action.ACTION_POWER_CONNECTED&quot;/&gt;
+    &lt;/intent-filter&gt;
+&lt;/receiver&gt;
+```
+
+''DIVERS''
+
+```
+Public class Student {
+  private String nom;
+  private String prenom;
+  private int numero
+  public String getNom(){
+    return nom;
+  }
+  public String getPrenom();
+    return prenom;
+  }
+etc...
+}
+```
+
+```
+public class MyAdapter extends ArrayAdapter&lt;Student&gt; {
+ @Override    
+  public View getView(int position, View convertView, ViewGroup p) { 
+	Student s = (Student) getItem(postion);
+	if(convertView == null){
+	convertView = new TextView(getApplicationContext());
+	}
+	convertView.setText(s.getNom() + &quot; &quot; + s.getPrenom() + &quot; &quot; + s.getNumero());
+	return convertView;
+  }
+}
+```
+
+''Q2- ''
+
+```
+SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE); 
+int nb = prefs.getInt(&quot;nb&quot;, 0); //0 is the default value.
+nb++;
+SharedPreferences.Editor editor = prefs.edit();
+editor.putInt(&quot;nb&quot;, nb);
+editor.apply();
+lb.setText(&quot;j'ai été lancé &quot; + nb + &quot;fois&quot;);
+```
+
+''Noé :''
+
+''Questions de cours''
+
+''Q1.'' Le fichier R.java enregistre les références vers toutes les ressources externes du programme à la compilation. Ainsi, si on tente de faire une référence vers une ressource qui n'existe pas ou qui n'existe plus, on aura une erreur claire à la compilation. Le programmeur ne peut donc pas faire référence à une ressource externe qui n'existe pas.
+
+''Q2.'' Par défaut, le .apk est signé avec le certificat de débug par défaut.
+
+''Q3.'' android.content.SharedPreferences
+
+''Q4.'' Un PendingIntent est utilisé pour exécuter un Intent au nom d'une autre activité.
+
+''Q5.'' Le calcul de la correspondance est basé d'abord sur les Actions, puis sur les Catégories, puis enfin sur les Data.
+
+''Cycle de vie''
+
+Flemme et c'est plus au programme
+
+''MyTweeter''
+
+''Q1.'' Il faut ajouter du code dans l'`&lt;activity` :
+
+```
+&lt;activity android:name=&quot;TweetViewer&quot;&gt;
+  &lt;intent-filter&gt;
+    &lt;action android:name=&quot;ACTION_VIEW&quot;/&gt;
+    &lt;data android:scheme=&quot;tweet&quot;/&gt;
+  &lt;/intent-filter&gt;
+&lt;/activity&gt;
+```
+
+''Q2.''  Voici le code :
+
+```
+Intent intent = getIntent();
+String num_tweet_str = intent.getData().getHost();
+int num_tweet = Integer.decode(num_tweet_str);
+```
+
+Pour l'explication du getHost, [[voir ici|https://developer.android.com/guide/topics/manifest/data-element]], on peut penser que le numéro du tweet va être interprété comme un nom d'host, mais c'est pas sûr. Si ce truc retombe en exam, [[une seule chose reste à faire|https://www.youtube.com/watch?v=v1mxMtr8Mws]].
+
+''Q3.'' Voici le code :
+
+```
+Cursor mCursor = getContentResolver().query(&quot;content://org.mytweeter/followers&quot;, new String[] {&quot;nickname&quot;,&quot;country&quot;}, null, null, null);
+if (mCursor.moveToFirst()) {
+  do {
+    Log.d(&quot;NICKNAME:&quot;, mCursor.getString(0));
+    Log.d(&quot;COUNTRY&quot;, mCursor.getString(1));
+  } while (mCursor.moveToNext());
+}
+```
+
+''Q4.'' Dans ReceiveCharge.java :
+
+```
+public class ReceiveCharge extends BroadcastReceiver {
+  @Override
+  public void onReceive (Context context, Intent intent) {
+    Intent newIntent = new Intent(context,  PostTweetDeamon.class);
+    newIntent.putExtra(&quot;message&quot;, &quot;Je recharge mon tel...&quot;);
+    context.startService(newIntent);
+  }
+}
+```
+
+Dans le manifest.xml :
+
+```
+&lt;receiver android:name=&quot;ReceiveCharge&quot;&gt;
+  &lt;intent-filter&gt;
+    &lt;action android:name=&quot;android.intent.action.ACTION_POWER_CONNECTED&quot;/&gt;
+  &lt;/intent-filter&gt;
+&lt;/receiver&gt;
+```
+
+''Divers''
+
+''Q1.''
+
+''Q2.''</pre>
+</div>
+<div created="20190112170333063" modified="20190112170339315" tags="android" title="Correction annales Android 2017">
+<pre>''Kevin :''
 
 ''De quelle classe de l’API doit-on hériter pour mémoriser des données globales à toute une application?''
 
