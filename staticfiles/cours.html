@@ -227,9 +227,9 @@ Error message and password prompt
 
 <li>Corrections annales Multi-agent 2015</li>
 
-<li>Corrections annales Multi-agent 2016</li>
-
 <li>Corrections annales Multi-agent 2017</li>
+
+<li>Corrections annales Multi-agent 2018</li>
 
 <li>Corrections annales RESA</li>
 
@@ -8917,7 +8917,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20190108103311977" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue [[Corrections annales Multi-agent]] [[Corrections annales Multi-agent 2015]]" title="$:/StoryList">
+<div list="" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9814,23 +9814,21 @@ Risque complet :
 
 Traduction : le directeur se connecte sur un réseau public dans une salle d'attente. Il veut envoyer un courrier électronique confidentiel qui contient un secret. Ce réseau public est écouté par un pirate qui intercepte les communications. Comme le transfert des mails n'est pas sécurisé, le pirate intercepte le mail et peut lire son contenu. Le pirate viole le besoin de confidentialité du contenu du mail. Son impact est la fuite d'un secret industriel et la perte financière lors de la diffusion de ce secret.</pre>
 </div>
-<div created="20190108174111324" modified="20190112121721711" tags="multi-agent" title="Corrections annales Multi-agent">
+<div created="20190108174111324" modified="20190112135332833" tags="multi-agent" title="Corrections annales Multi-agent">
 <pre>* [[Corrections annales Multi-agent 2012]]
 * [[Corrections annales Multi-agent 2015]]
-* [[Corrections annales Multi-agent 2016]]
-* [[Corrections annales Multi-agent 2017]]</pre>
+* [[Corrections annales Multi-agent 2017]]
+* [[Corrections annales Multi-agent 2018]]</pre>
 </div>
-<div created="20190112121501350" modified="20190112121800263" tags="multi-agent" title="Corrections annales Multi-agent 2012">
+<div created="20190112121501350" modified="20190112135407951" tags="multi-agent" title="Corrections annales Multi-agent 2012">
 <pre>''Nicolas : Hameurlain only edition''
-
-!! 2012
 
 ''Q2: Quelles sont les différents types de problèmes qui se posent lors de l'utilisation de KQML et de ACL-FIPA pour la spécification des conversation/protocoles dans un SMA?''
 
 Les diagrammes KQML font preuve de beaucoup d'ambiguïté en ce qui concerne les communications entre agents. Egalement, les protocoles et les primitives KQML n'ont pas de sémantique formelle.
 ACL-FIPA est le successeur de KQML et dispose d'une syntaxe similaire. (hérite des mêmes problèmes?)</pre>
 </div>
-<div created="20190112121545057" modified="20190112124132702" tags="multi-agent" title="Corrections annales Multi-agent 2015">
+<div created="20190112121545057" modified="20190112132304929" tags="multi-agent" title="Corrections annales Multi-agent 2015">
 <pre>''Nicolas : Hameurlain only edition''
 
 ''Q2: Quels sont les différents modes d'interaction/coordination dans un système multi agent?''
@@ -9872,7 +9870,7 @@ ACL-FIPA est le successeur de KQML et dispose d'une syntaxe similaire. (hérite 
 
 [img[https://i.imgur.com/Qtv1Q3T.png]]</pre>
 </div>
-<div created="20190112121619356" modified="20190112121813600" tags="multi-agent" title="Corrections annales Multi-agent 2016">
+<div created="20190112121619356" modified="20190112135318164" tags="multi-agent" title="Corrections annales Multi-agent 2017">
 <pre>''Nicolas et Kevin : Hameurlain only edition''
 
 ''Q1: Comment peut on distinguer un système multi agent d'un système distribué?''
@@ -9923,7 +9921,7 @@ Elle peut consister par exemple à vendre le plus cher possible,  acheter le moi
 
 [img[https://i.imgur.com/8OJmi0W.jpg]]</pre>
 </div>
-<div created="20190112121656820" modified="20190112121829735" tags="multi-agent" title="Corrections annales Multi-agent 2017">
+<div created="20190112121656820" modified="20190112142747072" tags="multi-agent" title="Corrections annales Multi-agent 2018">
 <pre>''Nicolas et Kevin : Hameurlain only edition''
 
 ''Q1: Pourquoi a-t-on besoin d'une ingénierie de protocoles d'interaction dans un système multi agent et en quoi ça consiste?''
@@ -9971,7 +9969,34 @@ Afin d'augmenter l'autonomie d'un agent il est possible de le doter d'un kit str
 * GestionnaireDeDevis -&gt; BTConseillerClientèle : Transmission_Devis
 * CConseillerClientèle -&gt; Client : Transmission_Devis
 
-[img[https://i.imgur.com/M71soZj.png]]</pre>
+[img[https://i.imgur.com/M71soZj.png]]
+
+!!! Partie 2
+
+''Question 1.'' Dès qu'il faut développer un protocole, il faut appliquer l'ingénierie de protocoles d'interaction. L'ingénierie de protocoles d'interaction consiste à spécifier des protocoles d'interaction qui seront utilisés entre agents dans le cadre d'un système multi-agents. Ces spécifications sont validés selon les propriétés établies des protocoles dans le cahier des charges.
+
+''Question 2.'' L'utilisation de protocoles permet de modéliser proprement les interactions entre agents. Si les protocoles sont validés, cela signifie que les agents, de par leurs interactions entre eux, vont obéir aux propriétés demandés dans le cahier des charges. L'inconvénient majeur des protocoles est que ces derniers réduisent le degré d'autonomie des agents qui sont obligés d'obéir au protocole à la lettre.
+
+''Question 3.'' Afin d'augmenter le degré d'autonomie des agents, on peut leur fournir un kit stratégique. Il y a deux types de kits stratégiques :
+
+* le but stratégique : en fonction des croyances stratégiques sur le protocole et les autres agents (vendre à la fin, diminuer le temps de la conversation...)
+* le but fonctionnel : en fonction des croyances de base de l'environnement et de l'objet (vendre le plus cher possible, acheter le moins cher possible...)
+
+''Question 4.''
+
+''1.'' Les propriétés spécifiques de ce protocole sont :
+
+* Initialement, un manager ne peut qu'effectuer un //Annonce//.
+* Lorsqu'un participant reçoit un //Annonce//, il peut envoyer en réponse un //Pre-Propose// ou ignorer.
+* Chaque fois qu'un manager reçoit un //Pre-Propose//, il doit systématiquement répondre avec un //Pre-Accept//.
+* Lorsqu'un participant reçoit un //Pre-Accept//, il doit systématiquement répondre par soit //Refuse//, soit //Definitive-Propose//.
+* Lorsqu'un manager reçoit un //Definitive-Propose// du meilleur participant toujours en course, il doit répondre par un //Definitive-Accept// au meilleur participant et par un //Definitive-Reject// à tout les autres participants.
+
+''2.'' Voici le RDP avec un Manager et un Participant :
+
+[img[https://i.imgur.com/GNB3DhY.png]]
+
+''3.''</pre>
 </div>
 <div created="20190108102802930" modified="20190108102840714" tags="iot" title="Corrections annales RESA">
 <pre>* [[Correction RESA 2014]]
