@@ -223,6 +223,14 @@ Error message and password prompt
 
 <li>Corrections annales Multi-agent</li>
 
+<li>Corrections annales Multi-agent 2012</li>
+
+<li>Corrections annales Multi-agent 2015</li>
+
+<li>Corrections annales Multi-agent 2016</li>
+
+<li>Corrections annales Multi-agent 2017</li>
+
 <li>Corrections annales RESA</li>
 
 <li>Différentiation de service sur Internet</li>
@@ -8909,7 +8917,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20190108103311977" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue [[Réseau émergent sans fil et applications]] [[Corrections annales RESA]] [[Correction RESA 2015]] Multi-agent [[Corrections annales Multi-agent]]" title="$:/StoryList">
+<div list="Bienvenue [[Corrections annales Multi-agent]] [[Corrections annales Multi-agent 2015]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9806,17 +9814,24 @@ Risque complet :
 
 Traduction : le directeur se connecte sur un réseau public dans une salle d'attente. Il veut envoyer un courrier électronique confidentiel qui contient un secret. Ce réseau public est écouté par un pirate qui intercepte les communications. Comme le transfert des mails n'est pas sécurisé, le pirate intercepte le mail et peut lire son contenu. Le pirate viole le besoin de confidentialité du contenu du mail. Son impact est la fuite d'un secret industriel et la perte financière lors de la diffusion de ce secret.</pre>
 </div>
-<div created="20190108174111324" modified="20190112120529795" tags="multi-agent" title="Corrections annales Multi-agent">
-<pre>''Nicolas et Kevin : Hameurlain only edition''
+<div created="20190108174111324" modified="20190112121721711" tags="multi-agent" title="Corrections annales Multi-agent">
+<pre>* [[Corrections annales Multi-agent 2012]]
+* [[Corrections annales Multi-agent 2015]]
+* [[Corrections annales Multi-agent 2016]]
+* [[Corrections annales Multi-agent 2017]]</pre>
+</div>
+<div created="20190112121501350" modified="20190112121800263" tags="multi-agent" title="Corrections annales Multi-agent 2012">
+<pre>''Nicolas : Hameurlain only edition''
 
 !! 2012
 
 ''Q2: Quelles sont les différents types de problèmes qui se posent lors de l'utilisation de KQML et de ACL-FIPA pour la spécification des conversation/protocoles dans un SMA?''
 
 Les diagrammes KQML font preuve de beaucoup d'ambiguïté en ce qui concerne les communications entre agents. Egalement, les protocoles et les primitives KQML n'ont pas de sémantique formelle.
-ACL-FIPA est le successeur de KQML et dispose d'une syntaxe similaire. (hérite des mêmes problèmes?)
-
-!! 2015
+ACL-FIPA est le successeur de KQML et dispose d'une syntaxe similaire. (hérite des mêmes problèmes?)</pre>
+</div>
+<div created="20190112121545057" modified="20190112124132702" tags="multi-agent" title="Corrections annales Multi-agent 2015">
+<pre>''Nicolas : Hameurlain only edition''
 
 ''Q2: Quels sont les différents modes d'interaction/coordination dans un système multi agent?''
 
@@ -9825,7 +9840,40 @@ ACL-FIPA est le successeur de KQML et dispose d'une syntaxe similaire. (hérite 
 * La coordination par planification consiste à l'ordonnancement d'un ensemble d'action afin d'atteindre un objectif donné.
 *La coordination par protocoles, elle consiste à établir un protocole dictant à l'agent comment il doit interagir avec ses pairs, cette coordination comporte les notions de rôles, d'états, et de conversations, chacunes contraignant l'agent à agir de manière précise.
 
-!! 2016
+''Noé :''
+
+!!! Partie 1
+
+''1.'' Les groupes et les rôles sont les suivants :
+
+* Groupe EntréeSortie
+** Voiture
+** ESPorteEntrée
+** ESPorteSortie
+* Groupe RequêtePlace
+** RPGestionnaireDePlace
+** RPPorteEntrée
+** RPPorteSortie
+* Groupe Affichage
+** AGestionnaireDePlace
+** PanneauAffichage
+
+''2.'' Les différentes relations d'interactions sont :
+
+* Voiture -&gt; ESPorteEntrée : Demande_Place
+* RPPorteEntrée -&gt; RPGestionnaireDePlace : Requête_Place
+* RPGestionnaireDePlace -&gt; RPPorteEntrée : Réponse_Place
+* ESPorteEntrée -&gt; Voiture : Transmission_Place
+* AGestionnaireDeplace -&gt; PanneauAffichage : Mis_A_Jour_Nbre_Place
+* Voiture -&gt; ESPorteSortie : Libère_Place
+* RPPorteSortie -&gt; RPGestionnaireDePlace : Désalloue_Place
+
+''3.'' Voici la structure organisationnelle :
+
+[img[https://i.imgur.com/Qtv1Q3T.png]]</pre>
+</div>
+<div created="20190112121619356" modified="20190112121813600" tags="multi-agent" title="Corrections annales Multi-agent 2016">
+<pre>''Nicolas et Kevin : Hameurlain only edition''
 
 ''Q1: Comment peut on distinguer un système multi agent d'un système distribué?''
 
@@ -9873,9 +9921,10 @@ Elle peut consister par exemple à vendre le plus cher possible,  acheter le moi
 
 ''Donner une spécification par RdP du comportement d’un modérateur de ce protocole. Expliciter et vérifier ses propriétés.''
 
-[img[https://i.imgur.com/8OJmi0W.jpg]]
-
-!! 2017
+[img[https://i.imgur.com/8OJmi0W.jpg]]</pre>
+</div>
+<div created="20190112121656820" modified="20190112121829735" tags="multi-agent" title="Corrections annales Multi-agent 2017">
+<pre>''Nicolas et Kevin : Hameurlain only edition''
 
 ''Q1: Pourquoi a-t-on besoin d'une ingénierie de protocoles d'interaction dans un système multi agent et en quoi ça consiste?''
 
@@ -9892,8 +9941,6 @@ L'ingénierie des protocoles consiste en plusieurs étapes pour sa mise en oeuvr
 Afin d'augmenter l'autonomie d'un agent il est possible de le doter d'un kit stratégique, qui lui permettra de prendre des décisions suivant le contexte de la situation (voir exemples dans la réponse Q3 2016)
 
 ''Noé :''
-
-!! 2017
 
 !!! Partie 1
 
