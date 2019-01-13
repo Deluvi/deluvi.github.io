@@ -8929,7 +8929,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20190108103311977" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue [[Ingéniérie des modèles]] [[Correction annales Modèles]] [[Correction annales Modèles 2017]] Android [[Méga feuille de note de l'enfer qui tue]]" title="$:/StoryList">
+<div list="Bienvenue Android [[Correction annales Android]] [[Correction annales Android 2017]] [[Méga feuille de note de l'enfer qui tue]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9511,7 +9511,7 @@ Dans le manifest.xml :
 
 ''Q2.''</pre>
 </div>
-<div created="20190112170333063" modified="20190112170339315" tags="android" title="Correction annales Android 2017">
+<div created="20190112170333063" modified="20190113124422744" tags="android" title="Correction annales Android 2017">
 <pre>''Kevin :''
 
 ''De quelle classe de l’API doit-on hériter pour mémoriser des données globales à toute une application?''
@@ -10894,8 +10894,8 @@ Voir Constructeur dans [[Session Beans]].</pre>
 
 Il y a [[une équation sur Wikipédia|https://en.wikipedia.org/wiki/Link_budget#Equation]]. C'est la même qu'on a vu en cours. Généralement, la plus grande perte est au niveau de la transmission dans l'air, elle est représentée par L,,Fs,,.</pre>
 </div>
-<div created="20190113091348042" modified="20190113105058804" tags="android" title="Méga feuille de note de l'enfer qui tue">
-<pre>!! Le AndroidManifest.xml de ces morts
+<div created="20190113091348042" modified="20190113125449801" tags="android" title="Méga feuille de note de l'enfer qui tue">
+<pre>!! Le AndroidManifest.xml de ses morts
 
 Au début, on peut rajouter des permissions avec `&lt;uses-permission android:name=&quot;MAPERMISSION&quot; /&gt;`
 
@@ -10905,17 +10905,17 @@ Dans les quatres cas, `&lt;X android:name=&quot;.MACLASSE&quot;&gt;`. Puis, à l
 
 Dans `&lt;intent-filter&gt;`, on peut mettre plusieurs balises pour filtrer les différentes parties de l'intent : `&lt;action android:name=&quot;NOMACTION&quot; /&gt;`, `&lt;category android:name=&quot;NOMCATEGORIE&quot; /&gt;` et `&lt;data android:X=&quot;NOMX&quot; /&gt;` en remplaçant, dans ce dernier, X par une des parties de l'URI : `&lt;scheme&gt;://&lt;host&gt;:&lt;port&gt;[&lt;path&gt;|&lt;pathPrefix&gt;|&lt;pathPattern&gt;]`.
 
-!! Activité de ces morts
+!! Activité de ses morts
 
 Plusieurs méthodes à surcharger possible : `onCreate(Bundle)`, `onStart()`, `onRestart()`, `onResume()`, `onPause()`, `onStop()`, `onDestroy()`. Elles seront appelés selon le cycle de vie de l'activité.
 
 [img[https://developer.android.com/images/activity_lifecycle.png]]
 
-!! Service de ces morts
+!! Service de ses morts
 
 Plusieurs méthodes à surcharger possible : `onCreate()`, `onStartCommand(intent, int flags, int startId)` (dans le cas où on utilise la méthode `startService()`), `onDestroy()`, `IBinder onBind(Intent)` et `onUnbind(Intent)` (pour ces deux derniers, dans le cas où on utilise `bindService()`.
 
-!! Intent de ces morts
+!! Intent de ses morts
 
 On peut construire un Intent de plusieurs manières selon ce dont on a besoin :
 
@@ -10930,13 +10930,13 @@ implicite.addCategory(&quot;MACATEGORIE&quot;);
 
 En plus de l'action, la catégorie et la data (en Uri), on peut rajouter des données en extra avec `intent.putExtra(&quot;maclé&quot;, maDonnée)`. On peut ajouter la plupart des données de base.
 
-Pour récupérer la donnée de l'autre côté, on utilise `maDonnée = intent.getXExtra(&quot;maClé&quot;)`.
+Pour récupérer la donnée de l'autre côté, on utilise `maDonnée = intent.getXExtra(&quot;maClé&quot;)`. Pour récupérer l'action, les catégories ou la data, on peut faire `intent.getData()` par exemple. La data est une URI, on peut obtenir les différentes parties de l'URI en faisant un `getX()` comme `getHost()` par exemple.
 
 Pour récupérer l'Intent qui a appelé l'activité ou le service, on utilise la méthode `getIntent()` sur l'activité et en paramètre de la méthode `onStartCommand(Intent intent, int flags, int startId)` pour le service.
 
 On peut aussi utiliser un PendingIntent pour exécuter un intent par procuration, c'est à dire pour qu'une autre application puisse exécuter un Intent à notre place.
 
-!! Broadcast Receiver de ces morts
+!! Broadcast Receiver de ses morts
 
 Permet de recevoir les intents lancés par `context.sendBroadcast(intent)`. Beaucoup d'évènements du systèmes sont lancés de cette manière.
 
@@ -10944,7 +10944,7 @@ La méthode à surcharger du BroadcastReceiver est la méthode `onReceive(Contex
 
 Dans le AndroidManifest.xml, si on veut recevoir des évènements extérieurs à l'application, il faut ajouter dans la balise `&lt;receiver&gt;` l'attribut suivant : `android:exported=&quot;true&quot;`. Puis, à l'intérieur du `&lt;receiver&gt;`, on rajoute un `&lt;intent-filter&gt;` qui filtre l'action que l'on veut traiter.
 
-!! Cursor de ces morts
+!! Cursor de ses morts
 
 ```
 if (cursor.moveToFirst()) {
@@ -10957,7 +10957,7 @@ if (cursor.moveToFirst()) {
 
 Avec X étant un type primitif à récupérer.
 
-!! Context de ces morts
+!! Context de ses morts
 
 On peut récupérrer le contexte de différentes manières selon où on est :
 
@@ -10972,7 +10972,7 @@ Grâce au contexte, on peut démarrer des trucs :
 * un service : `context.startService(intent)`, `context.bindService(intent)` (on peut aussi les arrêter avec `context.stopService(intent)` et `context.unbindService(serviceConnection)`)
 * un BroadcastReceiver : `context.sendBroadcast(intent)`
 
-!! Content Provider de ces morts
+!! Content Provider de ses morts
 
 Pour faire une requête à un ContentProvider :
 
@@ -10984,11 +10984,11 @@ On peut mettre des `null` aux arguments qui ne nous intéressent pas. La uri est
 
 Si on désire créer un ContentProvider, il faut surcharger les méthodes suivantes : `onCreate()`, `query()`, `insert()`, `update()`, `delete()`, `getType()`.
 
-!! Manipulation des layouts GUI
+!! Manipulation des layouts GUI de ses morts
 
 Pour obtenir un élément du GUI par son Id, on utilise `myView.findViewById(R.id.idDeLobjet)`. Si on veut rechercher un élément depuis la racine de l'activité, on peut tout simplement utiliser l'activité elle-même avec `this.findViewByid(R.id.idDeLobjet)`.
 
-!!! Adapter
+!!! Adapter de ses morts
 
 Un Adapter lie les données aux vues de l'UI. Pour créer un Adapter, on peut hériter de plusieurs classes : `BaseAdapter` pour partir de zéro ou `SimpleAdapter` ou `ArrayAdapter&lt;T&gt;`. Dans ces deux derniers, il faut surcharger la méthode `getView(int position, View, ViewGroup)`.
 
@@ -11007,12 +11007,13 @@ public View getView(int position, View convertView, ViewGroup parent) {
 }
 ```
 
-!! Persistence
+!! Persistence de ses morts
 
 On peut utiliser les Shared Preferences pour enregistrer des données globales à l'application :
 
 ```
-SharedPreferences pref = context.getPreferences(&quot;MONFICHIERPREFERENCE&quot;,Activity.MODE_PRIVATE);
+SharedPreferences pref = context.getPreferences(&quot;MONFICHIERPREFERENCE&quot;, Activity.MODE_PRIVATE);
+String prefCoucou = pref.getString(&quot;coucou&quot;,&quot;default&quot;);
 Editor ed = pref.edit();
 ed.putString(&quot;MACLE&quot;, &quot;JEAN-MICHEL APATHIE&quot;);
 ed.putX(&quot;MACLE2&quot;, maValeurDeTypeX);
@@ -11023,7 +11024,38 @@ Sinon, on peut utiliser la base de donnée SQLite.
 
 On peut définir un objet global à toute une application en créant une sous-classe de Application. Les méthodes principales à surcharger sont `onCreate()`, `onTerminate()`, `onLowMemory()`.
 
-Pour obtenir l'objet, on effectue `MyApplication app = (MyApplication) context.getApplicationContext()`</pre>
+Pour obtenir l'objet, on effectue `MyApplication app = (MyApplication) context.getApplicationContext()`
+
+!! Capteurs de ses morts
+
+```
+SensorManager sm = (SensorManager) context.getSystemService(SENSOR_SERVICE);
+Sensor accelerometer = sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+sm.registerListener(SensorEventListener listener, accelerometer, int sampling
+
+...
+
+sm.unregisterListener(listener, accelerometer);
+```
+
+Pour définir le listener, on dispose de deux méthodes : `onAccuracyChanged(Sensor sensor, int accuracy)` et `onSensorChanged(SensorEvent event)`. Le Sensor Event contient l'accuracy, le timestamp, et des values (float[]) en champs publics.
+
+Pour obtenir la position GPS de l'appareil, on utilise le LocationManager, accessible à partir des services systèmes avec `LOCATION_SERVICE`.
+
+!! Alarme de ses morts
+
+Il est possible d'activer des alarmes et des timers qui vont déclencher après un certains temps un Intent.
+
+```
+AlarmManager am = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+am.set(TYPE, TIME, pendingIntent);
+```
+
+!! Des trucs juste au cas où
+
+`context.getResources().getConfiguration().locale.getCountry()`
+
+Logcat : ``Log.d`</pre>
 </div>
 <div created="20181002083353070" modified="20181002084720902" tags="ejb" title="Message-Driven Beans">
 <pre>Pour implémenter un Message-Driven Beans, il faut surcharger la méthode onMessage.</pre>
