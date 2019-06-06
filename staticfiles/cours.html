@@ -295,6 +295,8 @@ Error message and password prompt
 
 <li>MIMO</li>
 
+<li>Modèle d'accès discrétionnaire</li>
+
 <li>Multi-agent</li>
 
 <li>PDH</li>
@@ -10710,7 +10712,7 @@ Le coeur d'Internet en lui-même n'a aucun problème : il est surdimensionné co
 
 Lorsque l'on tente d'implémenter du QOS au niveau réseau, on peut avoir des conflits entre [[QOS et Neutralité du Net]].</pre>
 </div>
-<div created="20190606174030671" modified="20190606181438763" tags="sécurité" title="Introduction à la Sécurité Informatique">
+<div created="20190606174030671" modified="20190606204233112" tags="sécurité" title="Introduction à la Sécurité Informatique">
 <pre>La sécurité en informatique consiste, intuitivement, à permettre uniquement les actions légitimes, c'est-à-dire empêcher qu'un utilisateur puisse exécuter des opérations qui ne devraient pas lui être permises.
 
 Les ITSEC définissent une politique desécurité comme étant &quot;l'ensemble des lois, règles et pratiques qui régissent la façon dont l'information sensible et les autres ressources sont gérées protégées et distribuées à l'intérieur d'un système spécifique&quot;.
@@ -10781,9 +10783,9 @@ Un modèle de sécurité exprime les besoins de sécurité d'un système d'infor
 
 Il existe différents types de modèles de sécurité :
 
-* les modèles ''discrétionnaires'' (DAC) : les plus répandus et implémentés mais sont vulnérables aux attaques par cheval de Troie.
-* les modèles ''obligatoires'' (MAC) : imposent des règles incontournables pour forcer le respect des exigences sécurités. Ils sont très formels et difficiles à implémenter. Ils permettent néanmoins d'atteindre un très haut niveau de sécurité théoriquement.
-* les modèles de ''contrôle d'usage'' : un exemple connu de contrôle d'usage est le DRM multimédia.</pre>
+* [[les modèles ''discrétionnaires'' (DAC)|Modèle d'accès discrétionnaire]] : les plus répandus et implémentés mais sont vulnérables aux attaques par cheval de Troie.
+* [[les modèles ''obligatoires'' (MAC)|Modèle d'accès obligatoire]] : imposent des règles incontournables pour forcer le respect des exigences sécurités. Ils sont très formels et difficiles à implémenter. Ils permettent néanmoins d'atteindre un très haut niveau de sécurité théoriquement.
+* [[les modèles de ''contrôle d'usage''|Modèle de contrôle d'usage]] : un exemple connu de contrôle d'usage est le DRM multimédia.</pre>
 </div>
 <div created="20181009140648142" modified="20181009150009230" tags="sécurité" title="ISO 27001-27002">
 <pre>Les normes ISO27001-27002 proposent de mettre en œuvre un SMSI.
@@ -11139,6 +11141,95 @@ Logcat : ``Log.d`</pre>
 </div>
 <div created="20181003175124607" modified="20181003175136298" tags="haut-debit" title="MIMO">
 <pre>Dans les intérieurs, les ondes sont réfléchis par les murs et le mobilier, ce qui peut causer des interférences : ce sont des trajets multiples. Les équipements MIMO (Multiple Antenna Systems) exploitent ces trajets multiples.</pre>
+</div>
+<div created="20190606202902343" modified="20190606204151230" tags="sécurité" title="Modèle d'accès discrétionnaire">
+<pre>
+!! Modèle HRU
+
+Le but de ce modèle est de contrôler tout accès des sujets aux objets via l'utilisation des actions. Le réglement est composé d'un ensemble d'autorisations positives du style &quot;Le sujet s a la permission de réaliser l'action a sur l'objet o&quot;. Par défaut, tous les accès sont interdits.
+
+La matrice de contrôle d'accès (où les lignes représentent les sujets et les colonnes les objets) permet de formaliser le modèle. Chaque cellule contient l'ensemble des actions qu'un sujet a la permission d'effectuer sur un objet.
+
+Le modèle est implémenté dans la plupart des systèmes d'exploitations actuels comme Windows ou Unix. Néanmoins, en pratique, la matrice n'est pas directement implémenté. La décomposition se fait soi :
+
+* en colonne : c'est une liste de contrôle d'accès (ou ACL). Une ACL représente l'ensemble des sujets ayant des droits d'accès sur l'objet considéré avec pour chaque sujet l'ensemble des actions que ce sujet peut réaliser sur l'objet.
+* en ligne : c'est une liste de capacité. Un ensemble de capacités associé à un sujet représente l'ensemble des objets auxquels le sujet considéré a accès avec pour chaque objet la liste des actions que peut réaliser le sujet.
+
+Il existe la notion de propriétaire. Le propriétaire initial d'un objet est celui qui a créé l'objet. Il dispose tout les droits sur l'objets. Il peut déléguer ses droits à un autre sujet.
+
+Pour administrer un modèle à accès discrétionnaire, il faut définir un ensemble de règles. Ces règles sont définies selon les primitives suivantes :
+
+* créer un sujet s (ajouter une ligne et une colonne car le sujet est aussi un objet).
+* créer un objet o (ajouter une colonne).
+* donner un droit r à un sujet s sur un objet o.
+* enlever un droit r à un sujet s sur un objet o.
+* détruire un sujet s.
+* détruire un objet o.
+
+Analysons l'implémentation du modèle d'accès discrétionnaire d'Unix :
+
+* sujets = utilisateurs
+* objets = fichiers/répertoires
+* actions = (r, w, x) (read, write, execute)
+* permissions représentées sous forme d'ACL
+* administration via la commande chmod (pour changer les actions autorisées) et chown (pour changer le propriétaire d'un objet).
+
+Les avantages de ce modèle est qu'il est simple, souvent déjà implémenté par les systèmes et l'administration est décentralisée de la réglementation.
+
+Néanmoins, ce système a énormément de limites :
+
+* énumération exhaustive des autorisations fastidieuse et coûteuse en mémoire. La formation de groupes d'utilisateurs peut aider à réduire la taille de la matrice.
+* mise à jour du règlement à chaque création de sujets et d'objets.
+* problème de la fuite des droits : il est impossible d'assurer qu'un sujet ne pourra jamais obtenir un droit particulier sur un certains objet.
+* vulnérable aux attaques par cheval de Troie.
+
+!! Modèle RBAC
+
+Ce modèle se structure autour du concept de rôles.  Un rôle est un concept organisationnel structurant les sujets :
+
+* des rôles sont affectés aux utilisateurs conformément à la fonction que ces utilisateurs jouent dans l'organisation.
+* les autorisations (droits d'effectuer des actions sur des objets) sont affectées aux rôles.
+
+Comme pour le modèle HRU, le modèle RBAC suppose que tous les accès sont interdits par défaut.
+
+Pour que l'utilisateur puisse exploiter ses rôles, il doit initier une session. Il endossera les rôles qu'il aura choisi et dont il a accès au cours de la session, gagnant les droits que les rôles lui autorise.
+
+Les rôles peuvent être organisés hiérarchiquement : les rôles héritent des autorisations des rôles hiérarchiquement inférieurs.
+
+Il est possible d'introduire des contraintes permettant de spécifier des réglementations :
+
+* une séparation de tâches ''statique'' prévoit que 2 rôles (par exemple médecin et infirmier) ne peuvent pas être assignés à un même utilisateur.
+* une séparation de tâches ''dynamique'' prévoit que 2 rôles (par exemple médecin libéral et chirurgien) ne peuvent être activés en même temps par un même utilisateur.
+
+Le modèle RBAC initial ne définissait pas de modèle d'administration :  il ne prévoyait pas qui avait le droit de créer et mettre à jour les rôles. Pour combler cette lacune, le modèle ARBAC (Administrative Role Based Access Control) a été proposé.
+
+Les avantages du modèle RBAC est la structuration du règlement de sécurité dans le système. Il est également de plus en plus implémenté dans des systèmes récents. Néanmoins, ce modèle est toujours vulnérable aux attaques par cheval de Troie et il nécessite de mettre en place une procédure d'administration des rôles qui n'est pas prise en charge par le système.
+
+!! Modèle TBAC et VBAC
+
+Le modèle TBAC introduit la notion de tâche. Une tâche est une suite d'actions élémentaires. Par exemple, dans une agence de voyage, achat d'un billet = réservation du billet + paiement + édition de la facture. La notion d'autorisation just in time est aussi introduite : dans notre exemple, la permission d'éditer une facture ne doit être activée qu'après réservation et paiement.
+
+Le modèle VBAC introduit la notiion de vue. L'exemple le plus connu est SQL. Une vue permet de structurer les objets (les tuples) (une vue est le résultat d'une requête auquel on a donné un nom). Les autorisations sont dé?nies sur les vues. Les systèmes SQL les plus récents introduisent le concept de rôle. Ainsi, on pourrait qualifier ce système de type VRBAC.
+
+La notion de vue pourrait aussi concerner les systèmes de fichiers des systèmes d'exploitation. Actuellement, les systèmes d'exploitation existants ne proposent que la notion physique de répertoire pour structurer les objets (fichiers). Avec un langage de requête approprié il pourrait être intéressant de définir une vue résultat de la requête renvoyant la liste des fichiers .doc du répertoire de Pierre et d'utiliser cette vue dans la définition du règlement de sécurité
+
+!! Contexte et interdiction
+
+En pratique, de nombreuses autorisations ne sont pas statiques mais dépendent de conditions qui, si elles sont satisfaites, permettent d'activer dynamiquement les autorisations. On parle d'''autorisations contextuelles''. Il est possible d'identifier plusieurs contextes :
+
+* contexte ''temporel'' : permission pendant les heures de travail.
+* contexte ''géographique'' : permission uniquement à l'intérieur de l'enceinte sécurisée.
+* contexte ''provisionnel'' : permission si d'autres actions ont été réalisées comme dans le cas d'un workflow.
+
+De nouveaux modèles de contrôle d'accès permettent d'exprimer des autorisations négatives (''interdictions'') sont apparus. Utiliser des interdictions peut souvent répondre à un besoin : certaines règlementations sont plus faciles à exprimer à l'aide d'interdictions (vidéo interdite au moins de 18 ans). Combiner des permissions et des interdictions permet de spécifier de manière concise des autorisations souffrant d'exceptions (les infirmiers ont l'interdiction d'accéder au dossier médical des patients mais en situation d'urgence, les infirmiers ont la permission d'accéder au dossier médical du patient).
+
+Utiliser simultanément des permissions et des interdictions peut créer des conflits dans la règlementation (dans l'exemple précédent, la règle 1 est en conflit avec la règle 2 dès lors que nous sommes dans un contexte d'urgence). Pour résoudre ces con?its diverses approches ont été proposées :
+
+* les interdictions (ou les permissions) l'emportent toujours.
+* les règles reçoivent des niveaux de priorité.
+* le plus spécifique l'emporte
+* ordre dans lequel les règles sont écrites (first-matching applies)
+* ...</pre>
 </div>
 <div created="20190108174044675" modified="20190109101949221" tags="multi-agent" title="Multi-agent">
 <pre>* [[Corrections annales Multi-agent]]</pre>
