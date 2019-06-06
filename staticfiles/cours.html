@@ -269,6 +269,8 @@ Error message and password prompt
 
 <li>Introduction à la qualité de service</li>
 
+<li>Introduction à la Sécurité Informatique</li>
+
 <li>ISO 27001-27002</li>
 
 <li>ISO 27005</li>
@@ -8929,7 +8931,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20190108103311977" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue Android [[Correction annales Android]] [[Correction annales Android 2017]] [[Méga feuille de note de l'enfer qui tue]]" title="$:/StoryList">
+<div list="Bienvenue [[Sécurité Informatique]] [[Introduction à la Sécurité Informatique]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -8977,11 +8979,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1536&quot;
+            &quot;text&quot;: &quot;1920&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;864&quot;
+            &quot;text&quot;: &quot;1080&quot;
         }
     }
 }</pre>
@@ -10708,6 +10710,81 @@ Le coeur d'Internet en lui-même n'a aucun problème : il est surdimensionné co
 
 Lorsque l'on tente d'implémenter du QOS au niveau réseau, on peut avoir des conflits entre [[QOS et Neutralité du Net]].</pre>
 </div>
+<div created="20190606174030671" modified="20190606181438763" tags="sécurité" title="Introduction à la Sécurité Informatique">
+<pre>La sécurité en informatique consiste, intuitivement, à permettre uniquement les actions légitimes, c'est-à-dire empêcher qu'un utilisateur puisse exécuter des opérations qui ne devraient pas lui être permises.
+
+Les ITSEC définissent une politique desécurité comme étant &quot;l'ensemble des lois, règles et pratiques qui régissent la façon dont l'information sensible et les autres ressources sont gérées protégées et distribuées à l'intérieur d'un système spécifique&quot;.
+
+!! Comment définir une politique de sécurité ?
+
+Une politique de sécurité est composée d'un ensemble de propriétés de sécurité qui doivent être satisfaites par le système et d'un schéma d'autorisation qui présente les règles permettant de modifier l'état de protection du système.
+
+Une politique de sécurité est dites cohérente quand il ne doit pas être possible, en partant d'un état sûr qui satisfait les propriétés de sécurité, d'atteindre un état d'insécurité (où les propriétés de sécurité ne sont plus satisfaites) en appliquant le schéma d'autorisation.
+
+Les ITSEC définissent 3 grandes propriétés de sécurité :
+
+* la ''confidentialité'' : prévention de la divulgation non-autorisée de l'information.
+* l'''intégrité'' : prévention de la modification non-autorisée de l'information. Cela inclu également prévention de la corruption d'une information.
+* la ''disponibilité'' : prévention d'un refus d'accès à une ressource ou à une information normalement autorisée (déni de service).
+
+Une politique de sécurité peut être conçu en exploitant 3 grands pilliers :
+
+* ''physique'' : ensemble de procédures et de moyens physiques pour protéger les locaux et les matériels (protection contre les incendies, inondations mais aussi des contrôles d'accès comme des gardiens, des codes ou des badges.
+* ''administrative'' : ensemble de procédures et moyens organisationnels pour protéger l'information (organisation, séparation des responsabilités et des pouvoirs).
+* ''logique'' : le système qui fournit ses propres outils de protections. L'utilisateur doit passer par 3 étapes :
+** ''identification'' : l'utilisateur décline son identité.
+** ''authentification'' : l'utilisateur prouve qu'il est bien la personne qu'il prétend être.
+** ''autorisation'' : l'utilisateur a le droit d'exploiter la ressource ou l'information qu'il demande. Cette autorisation découle d'une politique d'autorisation. Le sujet possède un droit d'accès sur un objet si et seulement si il est autorisé à effectuer la fonction d'accès (l'action) correspondante sur cet objet. Les droits d'accès peuvent être géré par une matrice de droit d'accès où les lignes représentent les sujets et les colonnes les objets.
+
+Un règlement de sécurité définit ce qui est autorisé et ce qui ne l'est pas. Un règlement permet de faire connaître ce qui est permit, ce qui est interdit et ce qui est obligatoire.
+
+!! Comment évaluer une politique de sécurité ?
+
+Les premiers critères d'évaluation de la sécurité ont été défini aux Etats-Unis dans ce qui est appelé le Livre Orange ou le TCSEC. Ce livre définit sept niveaux, ces niveaux sont atteints sur des listes de fonctions de sécurité à remplir et des techniques employés pour la vérification.
+
+Les niveaux, dans l'ordre croissant de fiabilité : (D, C1, C2, B1, B2, B3, A1).
+
+Pour chaque niveau, il y a quatres familles de critères :
+
+* la ''politique d'autorisation'' stipule une politique précise à suivre en fonction des différents niveaux de certifications visés.
+* les ''critères d'audit'' précisent les fonctions requises en matière d'identification, d'authentification et d'audit des actions.
+* les ''critères d'assurance'' fixent des recommandations concernant des méthodes de conception et de véri?cation utilisées afin d'augmenter la confiance de l'évaluateur.
+* les ''critères de documentation'' spécifient les documents qui doivent être fournis avec le produit lors de l'évaluation.
+
+Les caractéristiques principales de chaque niveau sont :
+
+* ''D'' : système non-évalué.
+* ''C1, C2'' : le système peut utiliser une politique discrétionnaire.
+* ''B1, B2, B3'' : le système utilise une politique obligatoire.
+* ''A1'' : équivalent à un système B3, il est caractérisé par l'utilisation de méthodes formelles pour prouver que les contrôles effectués permettent bien d'assurer la protection des informations sensibles.
+
+Les TCSEC ont été utilisé principalement par le Department of Defense des Etats-Unis pour la confidentialité des données militaires. Les autres pays ont élaborés des méthodes similaires : ITSEC (ex-Communauté Européenne, 1991), CTCPEC (Canada, 1993), JCSEC (Japon, 1992).
+
+Les ITSEC sont une harmonisation entre l'Allemagne, la France, le Royaume-Uni et les Pays-Bas. La différence essentielle entre les TCSEC et les ITSEC réside dans la distinction entre fonctionnalité et assurance :  une classe de fonctionnalité décrit les fonctions que doit mettre en oeuvre un système tandis qu'une classe d'assurance décrit l'ensemble des preuves qu'un système doit apporter pour montrer qu'il implémente les fonctions qu'il prétend fournir.
+
+De plus, les ITSEC introduisent la notion de cible d'évaluation (Target Of Evaluation ou TOE). Les ITSEC définissent eux-aussi des niveaux différents :
+
+* ''F-C1, F-C2, F-B1, F-B2, F-B3'' : ils correspondent aux niveaux de C1 à A1 dans les TCSEC.
+* ''F-IN'' : concerne les TOE qui comprennent des exigences d'intégrité.
+* ''F-AV'' : impose des exigences de disponibilité.
+* ''F-DI'' : impose des exigences pour l'intégrité des données au cours de leur transmission.
+* ''F-DX'' : impose des exigences en matière de confidentialité et d'intégrité de l'information.
+
+La norme ISO 15408 harmonise les critères communs canadiens, européens et américains.
+
+!! Quels sont les différents modèles de sécurité ?
+
+Un modèle de sécurité exprime les besoins de sécurité d'un système d'information. Il inclut
+
+* un règlement de sécurité
+* un modèle d'administration spécifiant qui a le droit de mettre à jour le règlement de sécurité.
+
+Il existe différents types de modèles de sécurité :
+
+* les modèles ''discrétionnaires'' (DAC) : les plus répandus et implémentés mais sont vulnérables aux attaques par cheval de Troie.
+* les modèles ''obligatoires'' (MAC) : imposent des règles incontournables pour forcer le respect des exigences sécurités. Ils sont très formels et difficiles à implémenter. Ils permettent néanmoins d'atteindre un très haut niveau de sécurité théoriquement.
+* les modèles de ''contrôle d'usage'' : un exemple connu de contrôle d'usage est le DRM multimédia.</pre>
+</div>
 <div created="20181009140648142" modified="20181009150009230" tags="sécurité" title="ISO 27001-27002">
 <pre>Les normes ISO27001-27002 proposent de mettre en œuvre un SMSI.
 
@@ -11630,8 +11707,9 @@ En premier lieux, pour faire communiquer des routeurs par la fibre optique, on c
 
 Dans l'idée, on pourrait disposer de routeurs qui fonctionnent entière en optique, sans transformation intermédiaires pour effectuer un traitement. Cela pourrait être possible dans le cas du routage par circuits virtuels, où les étiquettes seraient des couleurs différentes. Si un signal avec une certaine couleur arrive à une certaine interface, alors on redirige ce signal vers cette interface avec cette couleur. Il existe aujourd'hui des technologies qui permettraient d'effectuer ce traitement sans convertir le signal lumineux en signal électrique mais en effectuant les transformations directement dans le signal lumineux.</pre>
 </div>
-<div created="20181008121043098" modified="20181105193026090" tags="sécurité" title="Sécurité Informatique">
-<pre>* [[Gestion des risques]]
+<div created="20181008121043098" modified="20190606174025075" tags="sécurité" title="Sécurité Informatique">
+<pre>* [[Introduction à la Sécurité Informatique]]
+* [[Gestion des risques]]
 * [[Algorithme de chiffrement]]
 * [[Java Cryptography Extension]]
 * [[Droit et Numérique]]
