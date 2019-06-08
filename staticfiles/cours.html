@@ -297,6 +297,10 @@ Error message and password prompt
 
 <li>Modèle d'accès discrétionnaire</li>
 
+<li>Modèle d'accès obligatoire</li>
+
+<li>Modèle de contrôle d'usage</li>
+
 <li>Multi-agent</li>
 
 <li>PDH</li>
@@ -8933,7 +8937,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20190108103311977" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue [[Sécurité Informatique]] [[Introduction à la Sécurité Informatique]]" title="$:/StoryList">
+<div list="Bienvenue [[Sécurité Informatique]] [[Introduction à la Sécurité Informatique]] [[Modèle de contrôle d'usage]] [[Modèle d'accès obligatoire]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11143,8 +11147,7 @@ Logcat : ``Log.d`</pre>
 <pre>Dans les intérieurs, les ondes sont réfléchis par les murs et le mobilier, ce qui peut causer des interférences : ce sont des trajets multiples. Les équipements MIMO (Multiple Antenna Systems) exploitent ces trajets multiples.</pre>
 </div>
 <div created="20190606202902343" modified="20190606204151230" tags="sécurité" title="Modèle d'accès discrétionnaire">
-<pre>
-!! Modèle HRU
+<pre>!! Modèle HRU
 
 Le but de ce modèle est de contrôler tout accès des sujets aux objets via l'utilisation des actions. Le réglement est composé d'un ensemble d'autorisations positives du style &quot;Le sujet s a la permission de réaliser l'action a sur l'objet o&quot;. Par défaut, tous les accès sont interdits.
 
@@ -11230,6 +11233,70 @@ Utiliser simultanément des permissions et des interdictions peut créer des con
 * le plus spécifique l'emporte
 * ordre dans lequel les règles sont écrites (first-matching applies)
 * ...</pre>
+</div>
+<div created="20190608083719183" modified="20190608090630273" tags="sécurité" title="Modèle d'accès obligatoire">
+<pre>Un modèle d'accès est dit obligatoire lorsque le règlement de sécurité s'impose à tous les utilisateurs : il ne contient pas de règle adressant un utilisateur en particulier. On appelle également le modèle d'accès obligatoire un modèle de ''contrôle des flux''.
+
+Pour comprendre l'intérêt des modèles de contrôle des flux, il est nécessaire de revenir à la notion de sujet : un sujet est un utilisateur ou un processus s'exécutant pour le compte d'un utilisateur.
+
+Tous les modèles de sécurité font implicitement les hypothèses suivantes sur les sujets :
+
+* un utilisateur peut potentiellement chercher à violer le règlement en tentant d'accéder à des objets pour lesquels il n'a pas d'autorisation.
+* un utilisateur est supposé de confiance :  un utilisateur ne va pas délibérément divulguer de l'information à laquelle il a légalement accès.
+* la plupart des processus ne sont pas de confiance car ils peuvent être potentiellement piégés et contenir un cheval de Troie. Problème : : un processus hérite des droits de l'utilisateur pour le compte duquel il s'exécute.
+* les seuls processus supposés de confiance sont ceux implantant les mécanismes de sécurité (les contrôles d'accès par exemple).
+
+Par exemple, un médecin pourrait utiliser une application médicale piégée par un cheval de Troie qui transmet à l'insu du médecin le contenu d'un dossier médical par Internet à une personne tierce non-autorisée. Les modèles de contrôle d'accès ne permettent pas d'empêcher de telles actions malveillantes car le piège introduit dans l'application médical ne viole pas la réglementation de sécurité (le médecin et donc l'application médicale ont le droit d'accéder à un dossier médical et ont le droit d'accéder à Internet).
+
+Les modèles d'accès obligatoire visent à garantir une certaine confidentialité.
+
+Le système informatique représenté par le modèle Sujet-Objet : chaque sujet et chaque objet reçoit respectivement un niveau d'habilitation et un niveau de classification (public, confidentiel, secret...).
+
+Le modèle de Bell et LaPadula décrit 2 propriétés :
+
+Le règlement de sécurité est simple : un sujet s est autorisé à connaître la valeur de l'objet o si et seulement si hab(s) ≥ class(o). Par exemple, un utilisateur habilité confidentielle aura le droit de connaître une information classifiée public ou confidentielle mais n'aura pas le droit de connaître une information classifiée secret. Il s'agit du No Read up. Cette propriété empêche un utilisateur d'accéder à une information non-autorisée.
+
+A l'inverse, un sujet s ne peut modifier le contenu d'un objet o que si hab(s) ≤ class(o). Autrement dit, un utilisateur habilité C a le droit de modifier une information classifiée confidentielle ou secret mais n'a pas le droit de modifier une information classifiée public. Il s'agit du No Write Down. Cette propriété empêche un cheval de Troie de déclassifier une information.
+
+Un utilisateur habilité à un niveau I peut initier une session à tout niveau dominé par le niveau l. Par exemple, un utilisateur habilité secret se connecte au niveau Secret pour accéder à des informations secrètes mais se connecte au niveau public pour modifier des informations publiques. Cette mécanique permet de déclassifier certaines informations en passant par l'utilisateur (qui est toujours supposé être de confiance).
+
+Les avantages de ces modèles de contrôle de flux comparés aux modèles discrétionnaires sont évident : ils permettent de lutter contre les chevaux de Troie.
+
+Néanmoins, ces modèles disposent d'un règlement très rigide. Ce sont des modèles généralement réservés à des usages militaires ou industriels critiques. De plus, ces modèles ne sont généralement pas aussi répandus dans leurs implémentations, ce qui peut complexifier l'implémentation du modèle dans un processus existant.
+
+Les deux propriétés listées ci-dessus sont nécessaires mais ne sont pas suffisante pour garantir une confidentialité parfaite. En effet, tous les flux d'informations ne sont pas contrôlés : il existe des flux alternatifs comme les canaux cachés ou l'inférence.
+
+!!! Canal caché
+
+Un canal caché est  un canal de communication non prévu mais pouvant potentiellement servir à communiquer de l'information de façon illégale. Les canaux cachés résultent très souvent de particularités liées à des détails implémentations, détails difficile à prendre en compte dans un modèle théorique.
+
+Par exemple, un processus piégé exécuté au niveau secret peut accéder à une ressource quelconque pour transmettre des infos sensibles; un sujet public peut observer ces accès et en déduire ces infos sensibles. Un processus piégé exécuté au niveau S peut moduler son temps d'exécution pour transmettre des infos sensibles : il s'agit d'un canal caché temporel. On peut encore observer la consommation d'énergie d'un processus pour en déduire des infos sensibles
+
+!!! Inférence
+
+Un utilisateur peut déduire des informations sensibles en utilisant des informations qu'il est autorisé à connaître : il s'agit de l'inférence. Par exemple, un médecin est tenu au secret médical mais pourtant il délivre une ordonnance qui peut être aisément lue par des tiers (pharmacien, famille, clients dans la pharmacie...). Cette ordonnance peut révéler, par déduction, la nature de la maladie du patient.
+
+C'est un problème difficile à résoudre complètement dans la mesure où il est difficile de recenser toutes les connaissances possédées par l'utilisateur.
+
+Pour déduire (ou inférer) des informations sensibles un utilisateur peut utiliser :
+
+* des informations présentes dans le système informatique et auxquelles il a légalement accès : le contrôle de l'inférence est possible.
+* des connaissances générales non représentées dans le système informatique : le contrôle de l'inférence est difficile.</pre>
+</div>
+<div created="20190608090653056" modified="20190608091514672" tags="sécurité" title="Modèle de contrôle d'usage">
+<pre>L'objectif du contrôle d'usage est de contrôler non seulement l'accès au document mais également l'usage qui en est fait. Initialement, le contrôle d'usage visait principalement (mais pas seulement) à contrôler la recopie des fichiers non-autorisée. Ainsi, le contrôle d'usage correspond à des obligations à respecter.
+
+Les modèles de contrôle d'usage dont la première version est le modèle UCON permettent d'énoncer des règles de sécurité qu'il est difficile d'implanter avec des mécanismes classiques de contrôle d'accès. Par exemple :
+
+*  l'acheteur de ce morceau de musique ne pourra l'écouter que dix fois au plus.
+*  l'utilisateur de ce document ne pourra effectuer qu'une seule copie de sauvegarde.
+*  le médecin aura l'obligation de mettre à jour le dossier médical du patient avant de pouvoir imprimer l'ordonnance.
+
+La mise en oeuvre d'un règlement de contrôle d'usage se fait généralement en utilisant des techniques de DRM. les DRM se caractérisent par le fait que les contrôles de sécurité s'effectuent non pas du côté du serveur mais du côté du client.
+
+Comme dans les autres modèles, La partie du logiciel client qui effectue les contrôles de sécurité doit être de confiance. On appelle cette partie du logiciel le noyau de sécurité et elle est supposée ne pas être détournable et être dépourvu de failles.
+
+Les applications des DRM ont initialement été orientés vers la protection des droits d'auteurs et des intérêts commerciaux des distributeurs de contenus multimédia (films, musique, jeux vidéo...). Maintenant, les DRM sont de plus en plus utilisés dans des applications dont l'objectif est de contrôler la distribution de contenus sensibles (il s'agit de Entreprise-DRM)</pre>
 </div>
 <div created="20190108174044675" modified="20190109101949221" tags="multi-agent" title="Multi-agent">
 <pre>* [[Corrections annales Multi-agent]]</pre>
