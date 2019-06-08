@@ -329,7 +329,11 @@ Error message and password prompt
 
 <li>Routeur et réseaux haut-débit</li>
 
+<li>Sécurité des Bases de Données</li>
+
 <li>Sécurité Informatique</li>
+
+<li>Sécurité Java</li>
 
 <li>Session Beans</li>
 
@@ -8937,7 +8941,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20190108103311977" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue [[Sécurité Informatique]] [[Introduction à la Sécurité Informatique]] [[Modèle de contrôle d'usage]] [[Modèle d'accès obligatoire]]" title="$:/StoryList">
+<div list="Bienvenue [[Sécurité Informatique]] [[Sécurité Java]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9250,7 +9254,7 @@ Ils sont divisés dans 3 catégories, où il y a 7 sous-catégories :
 * Communication (Organisation)
 * Locaux (Locaux)</pre>
 </div>
-<div created="20181002085653327" modified="20190113105745979" tags="" title="Bienvenue">
+<div created="20181002085653327" modified="20190608134522974" tags="" title="Bienvenue">
 <pre>Bienvenue sur ce [[TiddlyWiki|https://tiddlywiki.com/]] pour les cours de M2 fait par Noé. Ici, je prend des notes sur des particularités et des choses que je pense importante de chaque cours que j'ai eu en M2. Cela pourrait te servir pour tes révisions !
 
 Si vous voulez contribuer, vous pouvez faire une copie de ce wiki en local. Ensuite, vous pouvez modifier des articles ou ajouter de nouveaux articles et enregistrer les modifications. Une fois les modifications faites, cliquez sur la flèche en haut de l'article et cliquez sur &quot;export tiddler&quot;. Sélectionnez le format .json et envoyez-moi le fichier sur Discord par exemple.
@@ -11865,13 +11869,72 @@ En premier lieux, pour faire communiquer des routeurs par la fibre optique, on c
 
 Dans l'idée, on pourrait disposer de routeurs qui fonctionnent entière en optique, sans transformation intermédiaires pour effectuer un traitement. Cela pourrait être possible dans le cas du routage par circuits virtuels, où les étiquettes seraient des couleurs différentes. Si un signal avec une certaine couleur arrive à une certaine interface, alors on redirige ce signal vers cette interface avec cette couleur. Il existe aujourd'hui des technologies qui permettraient d'effectuer ce traitement sans convertir le signal lumineux en signal électrique mais en effectuant les transformations directement dans le signal lumineux.</pre>
 </div>
-<div created="20181008121043098" modified="20190606174025075" tags="sécurité" title="Sécurité Informatique">
+<div created="20190608131047669" modified="20190608134411476" tags="sécurité" title="Sécurité des Bases de Données">
+<pre>Selon les ITSEC, la sécurité informatique est composé de 3 objectifs de sécurité : la confidentialité, l'intégrité et la disponibilité. Une violation de sécurité peut être accidentelle ou résulter d'une action malveillante. Pour assurer les 2 premiers objectifs, il y a différentes fonctionnalités des bases de données utilisables :
+
+* pour la confidentialité, la cryptographie, le contrôle d'accès et gestions des droits (GRANT et REVOKE), la définition de rôles et l'utilisation de vues.
+* pour l'intégrité, les contraintes d'intégrités, la gestion des transactions (concurrence d'accès), contrôle d'accès, assignation des droits et reprise après panne.
+
+!! Confidentialité
+
+Notion de privilèges systèmes et privilèges sur des objets.
+
+* les ''privilèges systèmes'' permettent de créer des tables, des utilisateurs, des vues, de lire n'importe quelle table et d'octroyer/retirer des privilèges systèmes à des personnes. L'administrateur (DBA) possède tous les privilèges et un utilisateur qui détient un privilège avec l'ADMIN OPTION peut octroyer ce privilège ou le révoquer à un utilisateur descendant dans le graphe d'autorisation du privilège.
+
+* les objets dans une base de données sont les tables, les vues et les index. Les ''privilèges sur les objets'' sont l'ajout, la suppression, la consultation et la mise à jour d'une table et le droit d'octroyer/retirer des privilèges sur des objets. Le propriétaire (créateur de l'objet) possède tous les privilèges sur l'objet. Il peut donner le droit d'octroyer des privilèges avec la GRANT OPTION. Pour la révocation, seul l'administrateur et le détenteur original du privilège peut le faire.
+
+Pour octroyer ou révoquer des privilèges, on utilise les commandes GRANT et REVOKE.
+
+Afin de simplifier l'administration des privilèges il est possible de définir des ''rôles''. Les commandes sont CREATE ROLE et les commandes GRANT [role] to [user | role]. Pour assigner des privilèges au rôle, il suffit d'utiliser les commande GRANT et REVOKE vu précédemment.
+
+Lorsqu'un utilisateur ouvre une session sous oracle, seuls les rôles par défaut sont activés. Pour activer un autre rôle, l'utilisateur doit utiliser la commande SET ROLE pour activer/désactiver le rôle lors de la session. SET ROLE NONE permet de désactiver tous les rôles.
+
+Pour restreindre l'accès à certaines lignes et/ou masquer certaines colonnes d'une table, il faut utiliser les ''vues''. Une vue est une table virtuelle résultat d'une requête. Une vue peut être utilisée dans des requêtes au même titre qu'une table permanente. Par contre, la mise à jour au travers d'une vue est soumise à des restrictions. Pour créer/supprimer une vue, il faut utiliser les commandes CREATE VIEW et DROP VIEW.
+
+!! Intégrité
+
+Contraintes d'Intégrité Référentielle (CIR) : une table qui référence une autre table à l'aide des clés étrangères (FOREIGN KEY). Ces contraintes sont générées automatiquement lors du passage du schéma E/A au schéma relationnel.
+
+Contrainte de validité : conditionne la création/modification d'un tuble à la validité de certaines propriétés (une note doit être entre 0 et 20).
+
+Concurrence d'accès : transaction.
+
+Une transaction telle qu'une réservation, un achat ou un paiement est mise en oeuvre via une suite d'opérations qui font passer la base de données d'un état A (antérieur à la transaction) à un état B (postérieur). Cette suite d'opération doit être à la fois Atomique, Cohérente, Isolée et Durable (ACID).
+
+En pratique, les transactions s'appuient sur la notion de point de synchronisation : ces points représentent un état stable du système informatique (en particulier de ses données).
+
+Propriétés ACID :
+
+* ''atomicité :''  la suite d'opérations est indivisible. En cas d'échec en cours d'une des opérations, la suite d'opérations doit être complètement annulée (rollback) quel que soit le nombre d'opérations déjà réussies.
+* ''cohérence :''  le contenu de la base de données à la fin de la transaction doit être cohérent sans pour autant que chaque opération durant la transaction donne un contenu cohérent un contenu final incohérent doit entraîner l'échec et l'annulation de toutes opérations de la transaction.
+* ''isolation :''  lorsque deux transactions A et B sont exécutées en même temps, les modifications effectuées par A ne sont ni visibles par B, ni modifiables par B tant que la transaction A n'est pas terminée et validée (commit).
+* ''durabilité :'' une fois validé, l'état de la base de données doit être permanent, et aucun incident technique (ex : crash) ne doit pouvoir engendrer une annulation des opérations effectuées durant la transaction.
+
+Pour maintenir ces propriétés, il est possible d'utiliser plusieurs mécanismes de verrouillage des données :
+
+* ''partagé :'' un verrou partagé peut être détenu simultanément par un nombre arbitraire de transactions.
+* ''exclusif :'' un verrou exclusif ne peut être détenu que par une seule transaction à la fois. Il est également exclusif par rapport aux verrous partagés.
+
+Une transaction qui requiert un verrou déjà utilisé est bloquée jusqu'à ce que le verrou soit relâché. Certains verrous entraînent des problèmes :
+
+* ''Lost updates :'' si deux requêtes manipulent une variable en même temps, la dernière assignation réalisée détermine la valeur de la variable au dépend des updates précédentes.
+* ''Phantom reads :'' au sein d'une même transaction, deux requêtes identiques sont exécutées et la collection de lignes retournées par les deux transactions sont différentes.
+* ''Dirty reads :'' une transaction peut voir une ligne modifiée par une autre transaction en cours d'exécution.
+
+Ces différents problèmes d'intégrité sont incontournables dès lors que plusieurs composants logiciels accèdent de manière concurrente à des ressources communes. Il y a donc besoin de mécanismes de synchronisation.</pre>
+</div>
+<div created="20181008121043098" modified="20190608134437420" tags="sécurité" title="Sécurité Informatique">
 <pre>* [[Introduction à la Sécurité Informatique]]
+* [[Sécurité des Bases de Données]]
+* [[Sécurité Java]]
 * [[Gestion des risques]]
 * [[Algorithme de chiffrement]]
 * [[Java Cryptography Extension]]
 * [[Droit et Numérique]]
 * [[Questions récurrentes pour sécurité informatique]]</pre>
+</div>
+<div created="20190608134447283" modified="20190608135445939" tags="sécurité" title="Sécurité Java">
+<pre>[[Ressource externe très informative sur l'importance de la sécurité en Java et de l'utilisation des politiques de sécurité en Java et de son utilisation dans des application professionnelles|https://youtu.be/ZUbmmI5utBc]]</pre>
 </div>
 <div created="20181002083344603" modified="20181013113252904" tags="ejb" title="Session Beans">
 <pre>Un session bean est un objet qui expose une interface utilisable par d'autres session beans qui sont extérieurs ou intérieur au serveur. Ils implémentent une interface locale (utilisable par les beans qui sont dans le même projet) et/ou remote (utilisable par tout les beans). L'interface locale doit disposer de l'annotation `@javax.ejb.Local` alors que l'interface remote doit disposer de l'annotation `@javax.ejb.Remote`. Pour que le serveur comprennent que l'interface est utilisé par un bean, il faut déclarer que le bean implémente l'interface via la mécanique `implements`.
