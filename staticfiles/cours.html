@@ -8945,7 +8945,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20190108103311977" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue [[Sécurité Informatique]] [[Sécurité Java]]" title="$:/StoryList">
+<div list="Bienvenue [[Sécurité Informatique]] [[Java Cryptography Extension]] [[Sécurité Java]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9280,7 +9280,7 @@ Ils sont divisés dans 3 catégories, où il y a 7 sous-catégories :
 * Communication (Organisation)
 * Locaux (Locaux)</pre>
 </div>
-<div created="20181002085653327" modified="20190609174850216" tags="" title="Bienvenue">
+<div created="20181002085653327" modified="20190609180456343" tags="" title="Bienvenue">
 <pre>Bienvenue sur ce [[TiddlyWiki|https://tiddlywiki.com/]] pour les cours de M2 fait par Noé. Ici, je prend des notes sur des particularités et des choses que je pense importante de chaque cours que j'ai eu en M2. Cela pourrait te servir pour tes révisions !
 
 Si vous voulez contribuer, vous pouvez faire une copie de ce wiki en local. Ensuite, vous pouvez modifier des articles ou ajouter de nouveaux articles et enregistrer les modifications. Une fois les modifications faites, cliquez sur la flèche en haut de l'article et cliquez sur &quot;export tiddler&quot;. Sélectionnez le format .json et envoyez-moi le fichier sur Discord par exemple.
@@ -9302,7 +9302,8 @@ Contributeurs :
 * Imane
 * Kevin
 * Jérémy
-* Benoit</pre>
+* Benoit
+* Grall</pre>
 </div>
 <div created="20181003191456808" modified="20181003191917914" tags="haut-debit" title="CDN">
 <pre>CDN (ou Content Delivery Network) est un système de cache pour fournir une copie des données d'un serveur fortement demandé (comme Netflix par exemple). Cela permet de distribuer du contenu lourd comme des images ou des vidéos à un plus grand nombre. Ces serveurs de caches sont disponible partout dans le monde et permettent donc également une plus petite latence lorsque l'on charge du contenu qui est censé provenir de l'autre bout du monde car il y a un serveur de cache disponible plus proche. Akamai est un des plus gros fournisseur de contenu.</pre>
@@ -11991,7 +11992,7 @@ Ces différents problèmes d'intégrité sont incontournables dès lors que plus
 * [[Droit et Numérique]]
 * [[Questions récurrentes pour sécurité informatique]]</pre>
 </div>
-<div created="20190608134447283" modified="20190609174836996" tags="sécurité" title="Sécurité Java">
+<div created="20190608134447283" modified="20190609180419739" tags="sécurité" title="Sécurité Java">
 <pre>!! Introduction
 
 La sécurité en informatique c’est :
@@ -12097,15 +12098,66 @@ Il contrôle l'accès aux ressources « protégées ».
 !!! Contrôleur d’accès
 
 C'est lui qui décide si un accès à une ressource système est autorisé.
+
 Il tient compte :
 
 * du contexte d'appel de la méthode qui veut accéder à la ressource système
 * du domaine de sécurité de toutes les classes qui sont dans le contexte d’appel
 
-
 !!! Contexte d’appel
 
 Il est utilisé pour vérifier les droits d'une méthode.
+
+!! Cryptographie
+
+Propriétés à garantir :
+
+* Confidentialité 
+* Authentification de l'expéditeur
+* Intégrité du message
+* Non répudiation (ne pas pouvoir nier avoir envoyé le message ni l'avoir reçu)
+
+La cryptographie repose sur la notion de clef de deux types : 
+
+* Cachée (symetrique)
+* Publique (asymétrique)
+
+!!! Clef cachée
+
+Une même clef pour chiffrer et déchiffrer partagée entre le destinataire et l'expéditeur. Risque d'interception de la clef au moment de l'échange.
+
+!!! Clef publique
+
+Utilisation de chiffrement, signature ou certificats. Moins rapide qu'avec une clef cachée.
+
+Chaque acteur à deux clefs : publique et privée. Un message chiffré ave une clef ne se déchiffre qu'avec l'autre clef.
+
+Nécessite la certification des identités (autorités d'enregistrement et certification).
+
+Assure : confidentialité et authentification + (intégrité et non répudiation avec une signature)
+
+!!! Signature numérique
+
+Principalement pour garantir l'intégrité.
+
+A partir d'un message et d'une fonction de hachage l'expéditeur calcule un « résumé ». Ensuite le destinataire recalcule le résumé avec le message grâce à la fonction de hachage et compare les deux résumés. Exemple (SHA-2).
+
+!!! Certificats
+
+Il s'agit d'un message signé diffusé à grande échelle certifié par une autorité de certification. Si on connait la clef publique de l'autorité et qu'on a confiance en cette autorité alors on est sur de la certification. Le certificat peut être autosigné.  Il contient divers informations : clef publique de l'autorité, nom, entreprise, adresse, pays...
+
+!!! JAAS
+
+Se compose de deux parties :
+
+* L'authentification
+* Les autorisations de l'utilisateur
+
+L'architecture JAAS découpe :
+
+* Les informations demandées à l'utilisateur (login password)
+* La manière de demander (UI)
+* Les mécanismes d'authentification
 
 [[Ressource externe très informative sur l'importance de la sécurité en Java et de l'utilisation des politiques de sécurité en Java et de son utilisation dans des application professionnelles|https://youtu.be/ZUbmmI5utBc]]</pre>
 </div>
