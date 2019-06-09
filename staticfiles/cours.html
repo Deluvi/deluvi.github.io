@@ -8945,7 +8945,7 @@ Error message and password prompt
 <div created="20181002173649754" modified="20190108103311977" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="Bienvenue [[Sécurité Informatique]] [[Gestion des risques]] [[ISO 27001-27002]]" title="$:/StoryList">
+<div list="Bienvenue [[Sécurité Informatique]] [[Sécurité Java]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9280,7 +9280,7 @@ Ils sont divisés dans 3 catégories, où il y a 7 sous-catégories :
 * Communication (Organisation)
 * Locaux (Locaux)</pre>
 </div>
-<div created="20181002085653327" modified="20190608134522974" tags="" title="Bienvenue">
+<div created="20181002085653327" modified="20190609174850216" tags="" title="Bienvenue">
 <pre>Bienvenue sur ce [[TiddlyWiki|https://tiddlywiki.com/]] pour les cours de M2 fait par Noé. Ici, je prend des notes sur des particularités et des choses que je pense importante de chaque cours que j'ai eu en M2. Cela pourrait te servir pour tes révisions !
 
 Si vous voulez contribuer, vous pouvez faire une copie de ce wiki en local. Ensuite, vous pouvez modifier des articles ou ajouter de nouveaux articles et enregistrer les modifications. Une fois les modifications faites, cliquez sur la flèche en haut de l'article et cliquez sur &quot;export tiddler&quot;. Sélectionnez le format .json et envoyez-moi le fichier sur Discord par exemple.
@@ -9301,7 +9301,8 @@ Contributeurs :
 * Nicolas
 * Imane
 * Kevin
-* Jérémy</pre>
+* Jérémy
+* Benoit</pre>
 </div>
 <div created="20181003191456808" modified="20181003191917914" tags="haut-debit" title="CDN">
 <pre>CDN (ou Content Delivery Network) est un système de cache pour fournir une copie des données d'un serveur fortement demandé (comme Netflix par exemple). Cela permet de distribuer du contenu lourd comme des images ou des vidéos à un plus grand nombre. Ces serveurs de caches sont disponible partout dans le monde et permettent donc également une plus petite latence lorsque l'on charge du contenu qui est censé provenir de l'autre bout du monde car il y a un serveur de cache disponible plus proche. Akamai est un des plus gros fournisseur de contenu.</pre>
@@ -11990,8 +11991,123 @@ Ces différents problèmes d'intégrité sont incontournables dès lors que plus
 * [[Droit et Numérique]]
 * [[Questions récurrentes pour sécurité informatique]]</pre>
 </div>
-<div created="20190608134447283" modified="20190608135445939" tags="sécurité" title="Sécurité Java">
-<pre>[[Ressource externe très informative sur l'importance de la sécurité en Java et de l'utilisation des politiques de sécurité en Java et de son utilisation dans des application professionnelles|https://youtu.be/ZUbmmI5utBc]]</pre>
+<div created="20190608134447283" modified="20190609174836996" tags="sécurité" title="Sécurité Java">
+<pre>!! Introduction
+
+La sécurité en informatique c’est :
+
+* Authentifier les utilisateurs ou les programmes avec des signatures.
+* Contrôler les autorisations d'accès aux ressources (système &amp; utilisateur) d'une entité authentifiée.
+* Assurer par le cryptage la confidentialité des transmissions ou des données stockées.
+
+Pour effectuer la protection des ressources, Java interdit aux classes Java non sûres (essentiellement celles qui viennent d'une autre machine) d'effectuer des opérations potentiellement dangereuses.
+
+!! Le langage Java lui même
+
+!!! La sécurité dans le langage 
+
+Vérifications à la compilation : 
+
+* Java est fortement typé
+* pas d'arithmétique des pointeurs
+* les variables non initialisées sont inutilisables
+* return obligatoire à la fin des méthodes non void
+* protection des variables d'état (private,. . . )
+* possibilité de déclarer final les variables, méthodes et classes
+
+Vérififcations à l'exécution :
+
+* contrôle des débordements dans les tableaux
+* contrôle des casts
+* vérification des classes au chargement
+
+!!! La sécurité dans les API
+
+Les API liées a la sécurité permettent : 
+
+* de délimiter ce qui est autorisé
+* protéger la confidentialité
+* authentifier les données
+
+!!! Vérification du ByteCode
+
+Vérification en 4 étapes : 
+
+* Vérification de la structure du fichier
+* Vérification qui ne dépendent pas du code particulier des méthodes 
+* Vérification du code de chaque méthode 
+* Vérifications sur le code des méthodes, qui sont repoussées pour des raisons 	d’efficacité jusqu'au moment où le code est exécuté pour la première fois
+
+Plus de détail sur les étapes diapo 166. 
+
+!!! Protection par le classloader
+
+Il met en place tout le contexte qui sera utilisé par les gestionnaires de sécurité pour délimiter ce qui sera autorisé pendant l’exécution.
+
+En particulier, il associe les classes chargées à un domaine de protection.
+
+!! Politique de sécurité
+
+!!! Introduction
+
+En java, les droits d’un code sont définis par une politique de sécurité enregistré à part dans des fichiers.
+
+Une classe se voit attribuée un domaine de sécurité une fois chargée dans la JVM.
+
+Un domaine de sécurité ajoute des permissions à une classe. 
+
+Il est déterminé par :
+
+* l’origine de la classe 
+* la politique de sécurité au moment ou la classe est chargée  par le class loader
+
+Toutes les actions potentiellement dangereuses effectuées par une méthode des API Java sont controlées par le gestionnaire de sécurité.
+
+!!! Acteur de la sécurité en Java 
+
+4 acteurs majeurs :
+
+* la politique de sécurité
+* les domaines de sécurité
+* le gestionnaire de sécurité et le contrôleur d’accès
+* le contexte d’appel de méthode
+
+La politique de sécurité détermine le domaine de sécurité d’une classe au moment de son chargement.
+
+Si une méthode veut effectuer une action dangereuse, alors le gestionnaire de sécurité  charge le contrôleur d’accès de vérifier qu’elle en a le droit dans le contexte d’appel.
+
+!!! Politique de Sécurité
+
+Par défaut elle est déterminée par la lecture d'un fichier de propriétés au démarrage de la JVM.
+
+Elle est utilisée au moment du chargement des classes pour créer des domaines de sécurité
+
+La vérification des droits d'une classe n'utilise ensuite plus que ces domaines de sécurité.
+
+!!! Domaine de Sécurité
+
+Une classe appartient à un et un seul domaine déterminé par la politique de sécurité au moment de son chargement et par son code source, c'est-à-dire l'origine du code.
+
+Un domaine de protection est composé d'un codesource, d'une collection de permissions, d'un classloader et d'un tableau de principals (servent à identifier un utilisateur).
+
+!!! Gestionnaire de Sécurité
+
+Il contrôle l'accès aux ressources « protégées ».
+
+!!! Contrôleur d’accès
+
+C'est lui qui décide si un accès à une ressource système est autorisé.
+Il tient compte :
+
+* du contexte d'appel de la méthode qui veut accéder à la ressource système
+* du domaine de sécurité de toutes les classes qui sont dans le contexte d’appel
+
+
+!!! Contexte d’appel
+
+Il est utilisé pour vérifier les droits d'une méthode.
+
+[[Ressource externe très informative sur l'importance de la sécurité en Java et de l'utilisation des politiques de sécurité en Java et de son utilisation dans des application professionnelles|https://youtu.be/ZUbmmI5utBc]]</pre>
 </div>
 <div created="20181002083344603" modified="20181013113252904" tags="ejb" title="Session Beans">
 <pre>Un session bean est un objet qui expose une interface utilisable par d'autres session beans qui sont extérieurs ou intérieur au serveur. Ils implémentent une interface locale (utilisable par les beans qui sont dans le même projet) et/ou remote (utilisable par tout les beans). L'interface locale doit disposer de l'annotation `@javax.ejb.Local` alors que l'interface remote doit disposer de l'annotation `@javax.ejb.Remote`. Pour que le serveur comprennent que l'interface est utilisé par un bean, il faut déclarer que le bean implémente l'interface via la mécanique `implements`.
