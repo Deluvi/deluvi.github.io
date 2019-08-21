@@ -6,10 +6,19 @@
     <description>Recent content in Games on Deluvi&#39;s website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 25 Jan 2018 11:42:13 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 04 Aug 2019 19:00:00 +0200</lastBuildDate>
     
 	<atom:link href="https://deluvi.com/games/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Sprout Planet</title>
+      <link>https://deluvi.com/games/sprout-planet/</link>
+      <pubDate>Sun, 04 Aug 2019 19:00:00 +0200</pubDate>
+      
+      <guid>https://deluvi.com/games/sprout-planet/</guid>
+      <description>This game has been made during the gamejam Crée Le Jeu 2019. It was my first gamejam where there was a meat-space meeting at the beginning of the jam. This meeting was great: we pitched the games that we wanted to develop during the jam and anyone could help us to improve our concept. It was during this meeting that I met the graphics person with whom I made this game.</description>
+    </item>
     
     <item>
       <title>Sid Le Meilleur&#39;s Battleground</title>

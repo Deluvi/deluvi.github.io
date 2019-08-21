@@ -6,10 +6,30 @@
     <description>Recent posts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Aug 2018 14:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 04 Aug 2019 19:00:00 +0200</lastBuildDate>
     
         <atom:link href="https://deluvi.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Sprout Planet</title>
+      <link>https://deluvi.com/games/sprout-planet/</link>
+      <pubDate>Sun, 04 Aug 2019 19:00:00 +0200</pubDate>
+      
+      <guid>https://deluvi.com/games/sprout-planet/</guid>
+      <description>&lt;p&gt;This game has been made during the gamejam &lt;a href=&#34;https://itch.io/jam/cree-le-jeu&#34;&gt;Crée Le Jeu 2019&lt;/a&gt;. It was my first gamejam where there was a meat-space meeting at the beginning of the jam. This meeting was great: we pitched the games that we wanted to develop during the jam and anyone could help us to improve our concept. It was during this meeting that I met the graphics person with whom I made this game. We also met our soon to be sound partner who made all the sound effects and the music for the game.&lt;/p&gt;
+
+&lt;p&gt;It was the first time that I used &lt;a href=&#34;https://godotengine.org&#34;&gt;Godot&lt;/a&gt; in a complete project. I have been practicing with Godot for some time but it was on small prototypes and tutorials. It was a pleasure to code on Godot (the editor is really good) and it&amp;rsquo;s so cool that you can export for the web on HTML5, as the majority of the people are very lazy and/or paranoid and don&amp;rsquo;t want to run executable code from a stranger of the Internet.&lt;/p&gt;
+
+&lt;p&gt;The game is about this planet that you can click on it to wake it up.&lt;/p&gt;
+
+&lt;p&gt;While we went a bit off-topic from the subject of the Gamejam, we had a lot of fun when we made it and we are proud of it, which is the most important things!&lt;/p&gt;
+
+&lt;p&gt;You can play this game &lt;a href=&#34;https://deluvi.itch.io/sprout-planet&#34;&gt;on Itch.io&lt;/a&gt;. The source code is available &lt;a href=&#34;https://github.com/Deluvi/forest-clicker&#34;&gt;on Github&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://deluvi.com/img/games/sprout-planet.jpg&#34; alt=&#34;Ingame screenshot of Sprout Planet&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Implementing Webmention on a static website</title>
