@@ -6,10 +6,19 @@
     <description>Recent content in Blogs on Deluvi&#39;s website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Aug 2018 14:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 11 Apr 2020 13:15:00 +0200</lastBuildDate>
     
 	<atom:link href="https://deluvi.com/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The NAT, its issues and some solutions in peer to peer context</title>
+      <link>https://deluvi.com/blog/nat/</link>
+      <pubDate>Sat, 11 Apr 2020 13:15:00 +0200</pubDate>
+      
+      <guid>https://deluvi.com/blog/nat/</guid>
+      <description>If you were to setup a standard server (like a Minecraft server or a web server for example) locally in your home to be accessible outside your local network, you might have encountered some issues and some confusion when your friends couldn&amp;rsquo;t connect and a guide asked you to change some settings on your router. This is due to some persons performing a dirty trick a few decades ago, a dirty trick that became so widespread that now, almost anyone that connect to the Internet today is using this trick.</description>
+    </item>
     
     <item>
       <title>Implementing Webmention on a static website</title>

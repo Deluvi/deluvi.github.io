@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://deluvi.com/blog/nat/</loc>
+    <lastmod>2020-04-11T13:15:00+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://deluvi.com/games/sprout-planet/</loc>
     <lastmod>2019-08-04T19:00:00+02:00</lastmod>
   </url>
@@ -24,12 +29,12 @@
   
   <url>
     <loc>https://deluvi.com/</loc>
-    <lastmod>2019-08-04T19:00:00+02:00</lastmod>
+    <lastmod>2020-04-11T13:15:00+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://deluvi.com/blog/</loc>
-    <lastmod>2018-08-09T14:00:00+02:00</lastmod>
+    <lastmod>2020-04-11T13:15:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
