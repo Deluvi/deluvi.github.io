@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Deluvi&#39;s website </title>
@@ -6,151 +5,27 @@
     <description>Recent posts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 04 Aug 2019 19:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 11 Apr 2020 13:15:00 +0200</lastBuildDate>
     
         <atom:link href="https://deluvi.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Sprout Planet</title>
-      <link>https://deluvi.com/games/sprout-planet/</link>
+      <title>Blogs</title>
+      <link>https://deluvi.com/blog/</link>
+      <pubDate>Sat, 11 Apr 2020 13:15:00 +0200</pubDate>
+      
+      <guid>https://deluvi.com/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Games</title>
+      <link>https://deluvi.com/games/</link>
       <pubDate>Sun, 04 Aug 2019 19:00:00 +0200</pubDate>
       
-      <guid>https://deluvi.com/games/sprout-planet/</guid>
-      <description>&lt;p&gt;This game has been made during the gamejam &lt;a href=&#34;https://itch.io/jam/cree-le-jeu&#34;&gt;Crée Le Jeu 2019&lt;/a&gt;. It was my first gamejam where there was a meat-space meeting at the beginning of the jam. This meeting was great: we pitched the games that we wanted to develop during the jam and anyone could help us to improve our concept. It was during this meeting that I met the graphics person with whom I made this game. We also met our soon to be sound partner who made all the sound effects and the music for the game.&lt;/p&gt;
-
-&lt;p&gt;It was the first time that I used &lt;a href=&#34;https://godotengine.org&#34;&gt;Godot&lt;/a&gt; in a complete project. I have been practicing with Godot for some time but it was on small prototypes and tutorials. It was a pleasure to code on Godot (the editor is really good) and it&amp;rsquo;s so cool that you can export for the web on HTML5, as the majority of the people are very lazy and/or paranoid and don&amp;rsquo;t want to run executable code from a stranger of the Internet.&lt;/p&gt;
-
-&lt;p&gt;The game is about this planet that you can click on it to wake it up.&lt;/p&gt;
-
-&lt;p&gt;While we went a bit off-topic from the subject of the Gamejam, we had a lot of fun when we made it and we are proud of it, which is the most important things!&lt;/p&gt;
-
-&lt;p&gt;You can play this game &lt;a href=&#34;https://deluvi.itch.io/sprout-planet&#34;&gt;on Itch.io&lt;/a&gt;. The source code is available &lt;a href=&#34;https://github.com/Deluvi/forest-clicker&#34;&gt;on Github&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://deluvi.com/img/games/sprout-planet.jpg&#34; alt=&#34;Ingame screenshot of Sprout Planet&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Implementing Webmention on a static website</title>
-      <link>https://deluvi.com/blog/webmention/</link>
-      <pubDate>Thu, 09 Aug 2018 14:00:00 +0200</pubDate>
-      
-      <guid>https://deluvi.com/blog/webmention/</guid>
-      <description>
-
-&lt;p&gt;On my first blog post, I mentioned that my first project for this website is to experiment with some technologies from &lt;a href=&#34;https://indieweb.org/&#34;&gt;the Indieweb&lt;/a&gt;. The technology that attracted me the most is &lt;a href=&#34;https://indieweb.org/Webmention&#34;&gt;Webmention&lt;/a&gt;.&lt;br /&gt;
-In this article, I will first elaborate on what are webmentions. Then, I will explain how to send them. Finally, I will show the different ways to receive them when using a static website.&lt;/p&gt;
-
-&lt;h2 id=&#34;what-is-webmention&#34;&gt;What is Webmention?&lt;/h2&gt;
-
-&lt;p&gt;Webmention is a web standard that allows having interactions in a decentralized way. For example, if you link someone on one of your articles, you can inform that person of the mention. That person can then display your mention on his article page. Mentions can be of different types: comment, like, repost, mention, bookmark, etc. As long as there is a link to the source on the page, the webmention is valid.&lt;/p&gt;
-
-&lt;p&gt;The big advantage of Webmention is that the protocol is very simple: it only relies on an HTTP POST request.&lt;/p&gt;
-
-&lt;h2 id=&#34;sending-webmentions&#34;&gt;Sending webmentions&lt;/h2&gt;
-
-&lt;p&gt;Sending a webmention to someone is easy. As detailed in &lt;a href=&#34;https://aaronparecki.com/2018/06/30/11/your-first-webmention&#34;&gt;Sending your First Webmention from Scratch&lt;/a&gt; (which I recommend you to read to have more information about Webmention and implementing microformats), you just need to create an HTML document accessible on the web with some basic content and notify the person. To notify a website, you first have to find a link tag in the head of the page with the attribute &lt;code&gt;rel=&amp;quot;webmention&amp;quot;&lt;/code&gt; (here, it is &lt;code&gt;&amp;lt;link rel=&amp;quot;webmention&amp;quot; href=&amp;quot;https://webmention.io/deluvi.com/webmention&amp;quot;/&amp;gt;&lt;/code&gt;). Then, you do an HTTP POST request on that URL with two fields: &lt;code&gt;source&lt;/code&gt; which contains the URL of your post and &lt;code&gt;target&lt;/code&gt; which contains the URL of the page you are mentioning. Once notified, the server checks if the target is linked by the source anywhere on the page and adds a new entry internally if that&amp;rsquo;s the case so he can retrieve it later. Some websites (like mine, see below) have a form to submit your webmention via a browser. In theory, the HTTP POST request should be automatic according to &lt;a href=&#34;https://www.w3.org/TR/2017/REC-webmention-20170112/#protocol-summary&#34;&gt;the W3C recommendation&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;On most webmention implementations, the server gets more information about the post like the title, the content of the post and the author info by parsing the &lt;a href=&#34;https://indieweb.org/microformats&#34;&gt;microformats&lt;/a&gt; contained in the HTML of the article. Microformats are simply some class attributes added on some HTML tags. The most important microformats to implement are &lt;a href=&#34;http://microformats.org/wiki/h-card&#34;&gt;h-card&lt;/a&gt; which represent your identity and &lt;a href=&#34;http://microformats.org/wiki/h-entry&#34;&gt;h-entry&lt;/a&gt; which contains the information for a particular post. You can test the microformats of your website &lt;a href=&#34;https://indiewebify.me/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;As a side note, you don&amp;rsquo;t have to write an official blog post to answer someone. For example, I have a section /replies/ where I put all my replies. Just do not forget to add the microformat class attribute &lt;code&gt;u-in-reply-to&lt;/code&gt; to a link of the post you are responding to somewhere on your page.&lt;/p&gt;
-
-&lt;h2 id=&#34;receiving-webmentions-in-a-static-context&#34;&gt;Receiving webmentions in a static context&lt;/h2&gt;
-
-&lt;p&gt;In this article, we are assuming that we don&amp;rsquo;t have any dedicated server available to us, only a static webpage provider. First issue, we need something to receive those HTTP POST requests on our behalf. Thankfully for us, there are &lt;a href=&#34;https://indieweb.org/Webmention#Services&#34;&gt;some free services&lt;/a&gt; that can help us receiving and storing webmentions so we can query them later. One of those services, the one I am using, is &lt;a href=&#34;https://webmention.io/&#34;&gt;webmention.io&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Once you have a backend, you have mainly two options to display the webmentions to the client when you are working with a static website. You can make your readers query the server and display the comments using JavaScript. This option is the most dynamic one as the commenter can see his reply as soon as the backend processed his notice. It is also very simple to set up since you just have to include a JavaScript file on the page and let it do its job. However, it means using JavaScript when it is not necessary and also adds more load to the webmention backend that has to be used every time you load the page.&lt;br /&gt;
-The other option is to include the webmention directly in the HTML when the website is generated. With that alternative, you don&amp;rsquo;t need any javascript nor external query on the client side. However, this comes with a cost of interactivity and complexity, since you have to rebuild and reupload your website as you receive new mentions.&lt;br /&gt;
-As an experiment, I chose the second option.&lt;/p&gt;
-
-&lt;p&gt;To be able to query the webmention server and store the mentions so that they can be accessed by my static blog generator, I developed a small tool in Rust called &lt;a href=&#34;https://github.com/Deluvi/getwms&#34;&gt;getwms&lt;/a&gt;. This tool retrieves the webmentions from webmention.io, convert them into a standard JSON format and store them into separate files for each post. In the future, I intend to improve this program by having it only retrieving the newest webmentions, not all of them, building the JSON files incrementally as new mentions appear. Additionally, I will make sure that it notifies if there are no new webmentions available.&lt;/p&gt;
-
-&lt;p&gt;Once the webmentions have been pulled, we just have to use the data to generate the website&amp;rsquo;s webmention sections using our static blog generator functionalities. Hugo has some good functionalities to load and use JSON data. If you want to see the source code to set up your Hugo website to process the JSON, you can check the bottom of &lt;a href=&#34;https://github.com/Deluvi/website/blob/master/themes/deluvi/layouts/_default/single.html&#34;&gt;single.html&lt;/a&gt; and &lt;a href=&#34;https://github.com/Deluvi/website/blob/master/themes/deluvi/layouts/partials/webmention.html&#34;&gt;webmention.html&lt;/a&gt; to have an idea how I am achieving that. Here is the most important part of the code:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;{{ $pathJSON := (print &amp;quot;data&amp;quot; (strings.TrimSuffix &amp;quot;/&amp;quot; .URL) &amp;quot;.json&amp;quot;) }}
-{{ if fileExists $pathJSON }}
-&amp;lt;div class=&amp;quot;webmentions&amp;quot;&amp;gt;
-    {{ $mJSON := getJSON $pathJSON }}
-    {{ partial &amp;quot;webmention.html&amp;quot; $mJSON }}
-&amp;lt;/div&amp;gt;
-{{ end }}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;It generates the path where the JSON file should be, then gives the JSON to the partial template if the file exists. Once this is included in your article template and you defined a partial template to turn the JSON into displayable HTML, you should start to see your webmention on your website! It should be possible to do a similar thing in any static website generator that supports JSON files.&lt;/p&gt;
-
-&lt;p&gt;The process has been automated for my website. Right now, I execute a script every hour on my PC. My script:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Runs getwms to get the JSON.&lt;/li&gt;
-&lt;li&gt;Builds the website with Hugo.&lt;/li&gt;
-&lt;li&gt;Tries to commit all changed files on my website repository: it will fail if there were no new changes.&lt;/li&gt;
-&lt;li&gt;Tries to push: it will fail if there were no new changes.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Here is a copy of my batch script:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;getwms -u &amp;quot;https://webmention.io/api/mentions?domain=deluvi.com&amp;amp;token=NOTHINGTOSEEHERE&amp;quot;
-hugo
-cd public
-git commit -a -m &amp;quot;Update&amp;quot;
-git push
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And that&amp;rsquo;s it! This is my current setup to receive webmentions. Feel free to inspire yourself from this method if you think this is suitable for your needs.&lt;/p&gt;
-
-&lt;p&gt;If you are using a more conventional website engine like WordPress, you will probably have a webmention plugin available to you: no need to put so much effort into it. If you want to receive webmentions of likes and replies from social networks, you can syndicate them back to your website using &lt;a href=&#34;https://brid.gy/&#34;&gt;Bridgy&lt;/a&gt;. Syndicating the reaction of your content is important as it makes you more independent from centralized social websites.&lt;br /&gt;
-If you want to send me a webmention, go ahead! The form is just below. Just be patient if you want to see the result, the webmentions will be refreshed as soon as possible.&lt;/p&gt;
-
-&lt;p&gt;As a bonus, here is an interesting conference about Indieweb and some technologies you can use (Webmention, rel=&amp;ldquo;me&amp;rdquo;, IndieAuth, Micropub&amp;hellip;): &lt;a href=&#34;https://vimeo.com/265121482&#34;&gt;Taking Back The Web&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://news.indieweb.org/en&#34; class=&#34;u-syndication&#34;&gt;Posted on IndieNews&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Hello World! 🎉</title>
-      <link>https://deluvi.com/blog/hello-world/</link>
-      <pubDate>Sun, 29 Jul 2018 14:23:10 +0200</pubDate>
-      
-      <guid>https://deluvi.com/blog/hello-world/</guid>
-      <description>&lt;p&gt;Hello people! This is Deluvi speaking. Welcome to my first blog post!&lt;/p&gt;
-
-&lt;p&gt;I have been inspired by the &lt;a href=&#34;https://indieweb.org/&#34;&gt;Indieweb movement&lt;/a&gt; to make my own website. I really like their ideas of owning our own data and content and not letting companies owning them for convenience&amp;rsquo;s sake, since it can be as simple to share on our own website with the help of modern tooling.&lt;/p&gt;
-
-&lt;p&gt;In this first blog post, I will share my current setup of this static website. Mostly, to make a static blogging website, you will need three things:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;A &lt;strong&gt;static site generator&lt;/strong&gt;: this is a software that you use to generate your html that you will feed to your provider. To generate my whole website, I use &lt;a href=&#34;https://gohugo.io&#34;&gt;Hugo&lt;/a&gt;. I made my own minimal theme just for funsies, but there are a lot of already made themes that looks good. Once you have a theme, you can start producing content right away. The posts are written in Markdown (a very simple language to write content). You can divide your blog content in different sections (here for example, there is a &lt;a href=&#34;https://deluvi.com/blog&#34;&gt;blog&lt;/a&gt; section and a &lt;a href=&#34;https://deluvi.com/games&#34;&gt;games&lt;/a&gt; section).&lt;/li&gt;
-&lt;li&gt;A &lt;strong&gt;hosting solution&lt;/strong&gt;: you need a server somewhere in the world to serve your html content. For this end, I am using &lt;a href=&#34;https://pages.github.com/&#34;&gt;Github Pages&lt;/a&gt;. The main selling point of this solution is that it allows custom domain names for free unlike some other solutions.&lt;/li&gt;
-&lt;li&gt;A &lt;strong&gt;domain name&lt;/strong&gt;: this part is not mandatory to be able to publish, but if you are farsighted, it is probably more than recommended to have one. Say you don&amp;rsquo;t take one and you are currently hosted on Github pages, if someone wants to link one of your blog post, they will use something like &amp;ldquo;username.github.io/blog/my-awesome-post.html&amp;rdquo;. The day you change your hosting solution, those links will be broken. If you had one domain name, everything will be redirected automatically. The domain name is also your main identity on the web: it is something that you own and that is only for you.&lt;br /&gt;
-As for my setup, I use &lt;a href=&#34;https://www.gandi.net/&#34;&gt;Gandi&lt;/a&gt; as a domain name service for the &lt;a href=&#34;https://deluvi.com&#34;&gt;deluvi.com&lt;/a&gt; name mainly because it has been recommanded to me by someone else; just use one that you trust.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;And that&amp;rsquo;s it! With those things, you have a website and are ready to publish on the internet, independently of any entity!&lt;/p&gt;
-
-&lt;p&gt;In the next weeks, I will be trying to implement some of the Indieweb standards into this static website. Currently, I am aiming to implement &lt;a href=&#34;https://indieweb.org/Webmention&#34;&gt;Webmentions&lt;/a&gt; so you can leave me a comment below this article later (maybe you just did, person from the future). I will share my technique on how to implement them in Hugo and the principles to implement them in any static website generator.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Sid Le Meilleur&#39;s Battleground</title>
-      <link>https://deluvi.com/games/sid-le-meilleur/</link>
-      <pubDate>Thu, 25 Jan 2018 11:42:13 +0100</pubDate>
-      
-      <guid>https://deluvi.com/games/sid-le-meilleur/</guid>
-      <description>&lt;p&gt;This game has been made for the &lt;a href=&#34;https://itch.io/jam/make-something-horrible-2018&#34;&gt;Make something horrible 2018&lt;/a&gt; gamejam.&lt;/p&gt;
-
-&lt;p&gt;The subject of the gamejam was to make, as the name subject, a horrible game. The theme of this year was: &amp;ldquo;What if the creators switched their games?&amp;rdquo;. For my game, I choosed Sid Meier (Civilization&amp;rsquo;s gamedesigner) with PUBG (a battleroyale game).&lt;/p&gt;
-
-&lt;p&gt;Funfact, it has been my first real game project that I actually finished: even though it has a very unusual graphic style and a very simple gameplay, I look back to this game fondly because I actually finished it on time.&lt;/p&gt;
-
-&lt;p&gt;Check out the game &lt;a href=&#34;https://deluvi.itch.io/cid-le-meilleurs-battleground&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The game has been made with Gamemaker. You can find the source code &lt;a href=&#34;https://github.com/Deluvi/BRStrategy.gmx&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://deluvi.com/img/games/sid-le-meilleur.png&#34; alt=&#34;Ingame screenshot of Sid Le Meilleur&#39;s Battleground&#34; /&gt;&lt;/p&gt;
-</description>
+      <guid>https://deluvi.com/games/</guid>
+      <description></description>
     </item>
     
   </channel>
