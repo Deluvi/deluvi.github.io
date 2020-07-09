@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blogs on Deluvi&#39;s website</title>
@@ -6,19 +6,10 @@
     <description>Recent content in Blogs on Deluvi&#39;s website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Apr 2020 13:15:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 09 Aug 2018 14:00:00 +0200</lastBuildDate>
     
 	<atom:link href="https://deluvi.com/blog/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>The NAT, its issues and some solutions in peer to peer context</title>
-      <link>https://deluvi.com/blog/nat/</link>
-      <pubDate>Sat, 11 Apr 2020 13:15:00 +0200</pubDate>
-      
-      <guid>https://deluvi.com/blog/nat/</guid>
-      <description>An overview of the NAT and NAT-traversal techniques</description>
-    </item>
     
     <item>
       <title>Implementing Webmention on a static website</title>
@@ -26,7 +17,9 @@
       <pubDate>Thu, 09 Aug 2018 14:00:00 +0200</pubDate>
       
       <guid>https://deluvi.com/blog/webmention/</guid>
-      <description>An explanation of Webmentions and an implementation on Hugo</description>
+      <description>On my first blog post, I mentioned that my first project for this website is to experiment with some technologies from the Indieweb. The technology that attracted me the most is Webmention.
+In this article, I will first elaborate on what are webmentions. Then, I will explain how to send them. Finally, I will show the different ways to receive them when using a static website.
+What is Webmention? Webmention is a web standard that allows having interactions in a decentralized way.</description>
     </item>
     
     <item>
@@ -35,7 +28,9 @@
       <pubDate>Sun, 29 Jul 2018 14:23:10 +0200</pubDate>
       
       <guid>https://deluvi.com/blog/hello-world/</guid>
-      <description>My very first blog post!</description>
+      <description>Hello people! This is Deluvi speaking. Welcome to my first blog post!
+I have been inspired by the Indieweb movement to make my own website. I really like their ideas of owning our own data and content and not letting companies owning them for convenience&amp;rsquo;s sake, since it can be as simple to share on our own website with the help of modern tooling.
+In this first blog post, I will share my current setup of this static website.</description>
     </item>
     
   </channel>
